@@ -1,0 +1,21 @@
+CHECK:
+ - java.lang.PrintStream vs. java.io.PrintStream (why lang package?)
+ 
+To Implement:
+ - java.nio.channel (java.io.FileOutputStream.getChannel())
+ - java.text.MessageFormat
+ - FileLock (see http://social.msdn.microsoft.com/Forums/en-US/csharpgeneral/thread/a5300fc5-126c-4e33-8ae6-13376031e9fe/)
+ - Serialism in Java format (see ... and ...)
+
+Some tools are needed:
+
+Not implemented:
+ - PoRE (see later)
+
+
+(1) [PoRE] Potentially release error checking tool:
+    All time check before release:
+    (A) all "catch (java.lang.InterruptedException e) {" need same code including 
+        into "catch (System.Threading.ThreadInterruptedException e){"
+    (B) Serialize check. Because Java implements serialize over interface for all
+        subclasses but C# used annotations to be declared at single types.

@@ -1,0 +1,59 @@
+* JavApi 0.? (Target: MonoBuild, packages: java.lang)
+  - javax.xml.crypto package
+  - java.lang package extended
+  + java.io.PrintStream
+    - print(char)
+    - println(char)
+  + BugFixes:
+    - JavaExtensions.getClass()
+    - Runtime.getRuntime.exec()
+* JavApi 0.8.0.1
+  - platform depended classes extracted
+  + BugFixes:
+    - java.io.FileInputStream catching System.IO.DirectoryNotFoundException to throw java.io.IOException
+    - biz.ritter.javapi.dotnet.nio.charset.CharsetDecoderImpl
+* JavApi 0.8 (Target: Apache Common Pool, TinySQL)
+  - API compatibility: java.lang.OutOfMemoryError
+  - java.lang.ThreadDeath
+  - java.lang.Thread.stop() / java.lang.Thread.interrupt()
+  + java.io.File
+      .mkdir()
+      .canWrite()
+  - java.io.FileReader
+  - java.io.FileWriter
+  + java.io.RandomAccessFile
+      .readLine()
+      .readByte()
+      .write(byte)
+      .write(char) 
+      .writeByte(byte)
+      .writeBytes(String) 
+      .write(byte[])
+  - java.sql.Types
+  - java.sql.DriverManager
+  - java.sql.SQLPermission
+  - java.sql.SQLClientInfoException
+  - java.sql.ClientInfoStatus
+  - extends java.io.FileOutputStream, java.util.Properties, java.lang.StringJ
+  + Bugfixes: 
+    - java.util.AbstractMap
+    - java.lang.Class
+    - String extension method: lastIndexOf (char,int)
+* JavApi 0.7 (Target: compile jrpm (not now runable), compile Apache Common Codec, including JavApi SevenZip compiling)
+  - java.beans.PropertyChangeSupport: class implementation with dependencies
+  - java.util.logging.*: some implementations
+  - java.io.Piped*
+  - java.security.* some implementations
+  - java.util.Properties extends java.util.Hashtable
+  - new package java.util.prefs
+  - new package java.util.regex
+  - new package javax.xml.transform
+  - simple SimpleDateFormat implementation
+  - new package java.sql (JDBC SPI)
+  - Bugfixes: java.io.File
+* JavApi 0.6 (Target: compile Apache Commons Compress 1.1)
+* JavApi 0.5 (Target: SAX)
+* JavApi 0.4 (Target: compile Apache Commons Collections 3.2.1)
+* JavApi 0.3 (Target: compile jzlib)
+* JavApi 0.2 (Target: some base classes, test some implementations)
+* JavApi 0.1 (Target: To be or not to be)
