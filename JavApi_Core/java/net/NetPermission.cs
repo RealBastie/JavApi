@@ -20,7 +20,7 @@ namespace biz.ritter.javapi.net
     /**
      * This class represents permissions to configure the access to network
      * resources.
-     * <p>
+     * <p/>
      * There are three valid target names:
      * <dl>
      * <dt>setDefaultAuthenticator</dt>

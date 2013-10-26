@@ -241,7 +241,7 @@ namespace biz.ritter.javapi.lang
 			return getProperties();
 		}
 
-        /// <see cref="java.lang.SystemJ.outj"/>
+        /// <see cref="java.lang.SystemJ.outJ"/>
         public static PrintStream outJ;
         public static PrintStream err;
         public static java.io.InputStream inJ;

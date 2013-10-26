@@ -71,7 +71,7 @@ namespace biz.ritter.javapi.io
          * @param size
          *            the size of the buffer in bytes.
          * @throws IllegalArgumentException
-         *             if {@code size <= 0}.
+         *             if {@code size &lt;= 0}.
          */
         public BufferedWriter(Writer outj, int size) :
             base(outj)
@@ -202,7 +202,7 @@ namespace biz.ritter.javapi.io
          * @param count
          *            the maximum number of characters to write.
          * @throws IndexOutOfBoundsException
-         *             if {@code offset < 0} or {@code count < 0}, or if
+         *             if {@code offset &lt; 0} or {@code count &lt; 0}, or if
          *             {@code offset + count} is greater than the size of
          *             {@code cbuf}.
          * @throws IOException
@@ -301,7 +301,7 @@ namespace biz.ritter.javapi.io
          *             if this writer has already been closed or another I/O error
          *             occurs.
          * @throws IndexOutOfBoundsException
-         *             if {@code offset < 0} or {@code offset + count} is greater
+         *             if {@code offset &lt; 0} or {@code offset + count} is greater
          *             than the length of {@code str}.
          */
         public override void write(String str, int offset, int count)

@@ -202,15 +202,15 @@ namespace biz.ritter.javapi.sql
          *         the commands were added to the batch.
          *         <p/>
          *         <ol>
-         *         <li>If the value of an element is &ge; 0, the corresponding
+         *         <li>If the value of an element is &gt; 0, the corresponding
          *         command completed successfully and the value is the <i>update
          *         count</i> (the number of rows in the database affected by the
          *         command) for that command.</li>
          *         <li>If the value is {@code SUCCESS_NO_INFO}, the command
          *         completed successfully but the number of rows affected is
          *         unknown.
-         *         <li>
-         *         <li>If the value is {@code EXECUTE_FAILED}, the command failed.
+         *         </li>
+         *         <li>If the value is {@code EXECUTE_FAILED}, the command failed.</li>
          *         </ol>
          * @throws SQLException
          *             if an error occurs accessing the database.
@@ -594,7 +594,7 @@ namespace biz.ritter.javapi.sql
          * @param max
          *            the maximum number of rows. {@code 0} means "no limit".
          * @throws SQLException
-         *             if an error occurs accessing the database or if max < {@code
+         *             if an error occurs accessing the database or if max &lt; {@code
          *             0}.
          */
         void setMaxRows(int max);// throws SQLException;
@@ -607,7 +607,7 @@ namespace biz.ritter.javapi.sql
          * @param seconds
          *            timeout in seconds. 0 means no timeout ("wait forever")
          * @throws SQLException
-         *             if an error occurs accessing the database or if seconds <
+		 *             if an error occurs accessing the database or if seconds &lt;
          *             {@code 0}.
          */
         void setQueryTimeout(int seconds);// throws SQLException;

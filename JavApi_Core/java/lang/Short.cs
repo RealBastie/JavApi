@@ -284,8 +284,8 @@ namespace biz.ritter.javapi.lang
          *         by {@code string} using {@code radix}.
          * @throws NumberFormatException
          *             if {@code string} is {@code null} or has a length of zero,
-         *             {@code radix < Character.MIN_RADIX},
-         *             {@code radix > Character.MAX_RADIX}, or if {@code string}
+         *             {@code radix &lt; Character.MIN_RADIX},
+         *             {@code radix &gt; Character.MAX_RADIX}, or if {@code string}
          *             can not be parsed as a short value.
          * @see #parseShort(String, int)
          */
@@ -311,7 +311,7 @@ namespace biz.ritter.javapi.lang
 
         /**
          * Returns a {@code Short} instance for the specified short value.
-         * <p>
+         * <p/>
          * If it is not necessary to get a new {@code Short} instance, it is
          * recommended to use this method instead of the constructor, since it
          * maintains a cache of instances which may result in better performance.
@@ -332,7 +332,7 @@ namespace biz.ritter.javapi.lang
         /// <summary>
         /// Implicit convert java.lang.Double to .net double type
         /// </summary>
-        /// <param name="d"></param>
+        /// <param name="s"></param>
         /// <returns></returns>
         public static implicit operator short(java.lang.Short s)
         {

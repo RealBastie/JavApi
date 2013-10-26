@@ -150,7 +150,7 @@ internal sealed class BasicPermissionCollection : PermissionCollection {
         return false;
     }
 
-    /**
+    /*
      * Expected format is the following:
      * <dl>
      * <dt>boolean all_allowed
@@ -174,7 +174,7 @@ internal sealed class BasicPermissionCollection : PermissionCollection {
         out.writeFields();
     }*/
 
-    /**
+    /*
      * Reads the object from stream and checks its consistency: all contained
      * permissions must be of the same subclass of BasicPermission.
      */

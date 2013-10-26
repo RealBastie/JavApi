@@ -86,7 +86,7 @@ namespace biz.ritter.javapi.nio
             return new ReadWriteCharArrayBuffer(capacity);
         }
 
-/**
+/*
         /// <summary>
         /// Returns a new direct byte buffer with the specified capacity.
         /// 

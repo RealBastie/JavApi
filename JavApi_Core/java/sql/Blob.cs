@@ -19,10 +19,10 @@ namespace biz.ritter.javapi.sql
 {
     /**
      * A Java interface representing the SQL {@code BLOB} type.
-     * <p>
+     * <p/>
      * An SQL {@code BLOB} type stores a large array of binary data (bytes) as the
      * value in a column of a database.
-     * <p>
+     * <p/>
      * The {@code java.sql.Blob} interface provides methods for setting and
      * retrieving data in the {@code Blob}, for querying {@code Blob} data length,
      * and for searching for data within the {@code Blob}.

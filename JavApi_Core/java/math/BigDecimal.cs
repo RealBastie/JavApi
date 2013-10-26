@@ -288,8 +288,8 @@ namespace biz.ritter.javapi.math
          * @throws NullPointerException
          *             if {@code in == null}.
          * @throws NumberFormatException
-         *             if {@code offset < 0} or {@code len <= 0} or {@code
-         *             offset+len-1 < 0} or {@code offset+len-1 >= in.length}.
+         *             if {@code offset &lt; 0} or {@code len &lt;= 0} or {@code
+         *             offset+len-1 &lt; 0} or {@code offset+len-1 &gt;= in.length}.
          * @throws NumberFormatException
          *             if in does not contain a valid string representation of a big
          *             decimal.
@@ -401,13 +401,13 @@ namespace biz.ritter.javapi.math
          * @throws NullPointerException
          *             if {@code in == null}.
          * @throws NumberFormatException
-         *             if {@code offset < 0} or {@code len <= 0} or {@code
-         *             offset+len-1 < 0} or {@code offset+len-1 >= in.length}.
+         *             if {@code offset &lt; 0} or {@code len &lt;= 0} or {@code
+         *             offset+len-1 &lt; 0} or {@code offset+len-1 &gt;= in.length}.
          * @throws NumberFormatException
          *             if {@code in} does not contain a valid string representation
          *             of a big decimal.
          * @throws ArithmeticException
-         *             if {@code mc.precision > 0} and {@code mc.roundingMode ==
+         *             if {@code mc.precision &gt; 0} and {@code mc.roundingMode ==
          *             UNNECESSARY} and the new big decimal cannot be represented
          *             within the given precision without rounding.
          */
@@ -497,7 +497,7 @@ namespace biz.ritter.javapi.math
          * double. For example, {@code new BigDecimal(0.1)} is equal to {@code
          * 0.1000000000000000055511151231257827021181583404541015625}. This happens
          * as {@code 0.1} cannot be represented exactly in binary.
-         * <p>
+         * <p/>
          * To generate a big decimal instance which is equivalent to {@code 0.1} use
          * the {@code BigDecimal(String)} constructor.
          *
@@ -563,7 +563,7 @@ namespace biz.ritter.javapi.math
          * double. For example, {@code new BigDecimal(0.1)} is equal to {@code
          * 0.1000000000000000055511151231257827021181583404541015625}. This happens
          * as {@code 0.1} cannot be represented exactly in binary.
-         * <p>
+         * <p/>
          * To generate a big decimal instance which is equivalent to {@code 0.1} use
          * the {@code BigDecimal(String)} constructor.
          *
@@ -646,7 +646,7 @@ namespace biz.ritter.javapi.math
          * @param mc
          *            rounding mode and precision for the result of this operation.
          * @throws ArithmeticException
-         *             if {@code mc.precision > 0} and {@code mc.roundingMode ==
+         *             if {@code mc.precision &gt; 0} and {@code mc.roundingMode ==
          *             UNNECESSARY} and the new big decimal cannot be represented
          *             within the given precision without rounding.
          * @throws NullPointerException
@@ -676,7 +676,7 @@ namespace biz.ritter.javapi.math
          * @param mc
          *            rounding mode and precision for the result of this operation.
          * @throws ArithmeticException
-         *             if {@code mc.precision > 0} and {@code c.roundingMode ==
+         *             if {@code mc.precision &gt; 0} and {@code c.roundingMode ==
          *             UNNECESSARY} and the new big decimal cannot be represented
          *             within the given precision without rounding.
          */
@@ -1557,7 +1557,7 @@ namespace biz.ritter.javapi.math
 
         /**
          * Returns a new {@code BigDecimal} whose value is {@code this % divisor}.
-         * <p>
+         * <p/>
          * The remainder is defined as {@code this -
          * this.divideToIntegralValue(divisor) * divisor}.
          *
@@ -1575,10 +1575,10 @@ namespace biz.ritter.javapi.math
 
         /**
          * Returns a new {@code BigDecimal} whose value is {@code this % divisor}.
-         * <p>
+         * <p/>
          * The remainder is defined as {@code this -
          * this.divideToIntegralValue(divisor) * divisor}.
-         * <p>
+         * <p/>
          * The specified rounding mode {@code mc} is used for the division only.
          *
          * @param divisor
@@ -1591,7 +1591,7 @@ namespace biz.ritter.javapi.math
          * @throws ArithmeticException
          *             if {@code divisor == 0}.
          * @throws ArithmeticException
-         *             if {@code mc.getPrecision() > 0} and the result of {@code
+         *             if {@code mc.getPrecision() &gt; 0} and the result of {@code
          *             this.divideToIntegralValue(divisor, mc)} requires more digits
          *             to be represented.
          */
@@ -1657,9 +1657,9 @@ namespace biz.ritter.javapi.math
         /**
          * Returns a new {@code BigDecimal} whose value is {@code this ^ n}. The
          * scale of the result is {@code n} times the scales of {@code this}.
-         * <p>
+         * <p/>
          * {@code x.pow(0)} returns {@code 1}, even if {@code x == 0}.
-         * <p>
+         * <p/>
          * Implementation Note: The implementation is based on the ANSI standard
          * X3.274-1996 algorithm.
          *
@@ -1667,7 +1667,7 @@ namespace biz.ritter.javapi.math
          *            exponent to which {@code this} is raised.
          * @return {@code this ^ n}.
          * @throws ArithmeticException
-         *             if {@code n < 0} or {@code n > 999999999}.
+         *             if {@code n &lt; 0} or {@code n &gt; 999999999}.
          */
         public BigDecimal pow(int n) {
             if (n == 0) {
@@ -1687,7 +1687,7 @@ namespace biz.ritter.javapi.math
         /**
          * Returns a new {@code BigDecimal} whose value is {@code this ^ n}. The
          * result is rounded according to the passed context {@code mc}.
-         * <p>
+         * <p/>
          * Implementation Note: The implementation is based on the ANSI standard
          * X3.274-1996 algorithm.
          *
@@ -1697,7 +1697,7 @@ namespace biz.ritter.javapi.math
          *            rounding mode and precision for the result of this operation.
          * @return {@code this ^ n}.
          * @throws ArithmeticException
-         *             if {@code n < 0} or {@code n > 999999999}.
+         *             if {@code n &lt; 0} or {@code n &gt; 999999999}.
          */
         public BigDecimal pow(int n, MathContext mc) {
             // The ANSI standard X3.274-1996 algorithm
@@ -1814,9 +1814,9 @@ namespace biz.ritter.javapi.math
         /**
          * Returns the sign of this {@code BigDecimal}.
          *
-         * @return {@code -1} if {@code this < 0},
+         * @return {@code -1} if {@code this &lt; 0},
          *         {@code 0} if {@code this == 0},
-         *         {@code 1} if {@code this > 0}.     */
+         *         {@code 1} if {@code this &gt; 0}.     */
         public virtual int signum() {
             if( bitLengthJ < 64) {
                 return java.lang.Long.signum( this.smallValue );
@@ -1893,10 +1893,10 @@ namespace biz.ritter.javapi.math
         /**
          * Returns a new {@code BigDecimal} whose value is {@code this}, rounded
          * according to the passed context {@code mc}.
-         * <p>
+         * <p/>
          * If {@code mc.precision = 0}, then no rounding is performed.
-         * <p>
-         * If {@code mc.precision > 0} and {@code mc.roundingMode == UNNECESSARY},
+         * <p/>
+         * If {@code mc.precision &gt; 0} and {@code mc.roundingMode == UNNECESSARY},
          * then an {@code ArithmeticException} is thrown if the result cannot be
          * represented exactly within the given precision.
          *
@@ -1904,7 +1904,7 @@ namespace biz.ritter.javapi.math
          *            rounding mode and precision for the result of this operation.
          * @return {@code this} rounded according to the passed context.
          * @throws ArithmeticException
-         *             if {@code mc.precision > 0} and {@code mc.roundingMode ==
+         *             if {@code mc.precision &gt; 0} and {@code mc.roundingMode ==
          *             UNNECESSARY} and this cannot be represented within the given
          *             precision.
          */
@@ -1917,10 +1917,10 @@ namespace biz.ritter.javapi.math
 
         /**
          * Returns a new {@code BigDecimal} instance with the specified scale.
-         * <p>
+         * <p/>
          * If the new scale is greater than the old scale, then additional zeros are
          * added to the unscaled value. In this case no rounding is necessary.
-         * <p>
+         * <p/>
          * If the new scale is smaller than the old scale, then trailing digits are
          * removed. If these trailing digits are not zero, then the remaining
          * unscaled value has to be rounded. For this rounding operation the
@@ -1964,10 +1964,10 @@ namespace biz.ritter.javapi.math
 
         /**
          * Returns a new {@code BigDecimal} instance with the specified scale.
-         * <p>
+         * <p/>
          * If the new scale is greater than the old scale, then additional zeros are
          * added to the unscaled value. In this case no rounding is necessary.
-         * <p>
+         * <p/>
          * If the new scale is smaller than the old scale, then trailing digits are
          * removed. If these trailing digits are not zero, then the remaining
          * unscaled value has to be rounded. For this rounding operation the
@@ -1994,7 +1994,7 @@ namespace biz.ritter.javapi.math
          * added to the unscaled value. If the new scale is smaller than the old
          * scale, then trailing zeros are removed. If the trailing digits are not
          * zeros then an ArithmeticException is thrown.
-         * <p>
+         * <p/>
          * If no exception is thrown, then the following equation holds: {@code
          * x.setScale(s).compareTo(x) == 0}.
          *
@@ -2010,15 +2010,15 @@ namespace biz.ritter.javapi.math
 
         /**
          * Returns a new {@code BigDecimal} instance where the decimal point has
-         * been moved {@code n} places to the left. If {@code n < 0} then the
+		 * been moved {@code n} places to the left. If {@code n &lt; 0} then the
          * decimal point is moved {@code -n} places to the right.
-         * <p>
+         * <p/>
          * The result is obtained by changing its scale. If the scale of the result
          * becomes negative, then its precision is increased such that the scale is
          * zero.
-         * <p>
+         * <p/>
          * Note, that {@code movePointLeft(0)} returns a result which is
-         * mathematically equivalent, but which has {@code scale >= 0}.
+         * mathematically equivalent, but which has {@code scale &gt;= 0}.
          *
          * @param n
          *            number of placed the decimal point has to be moved.
@@ -2049,15 +2049,15 @@ namespace biz.ritter.javapi.math
 
         /**
          * Returns a new {@code BigDecimal} instance where the decimal point has
-         * been moved {@code n} places to the right. If {@code n < 0} then the
+         * been moved {@code n} places to the right. If {@code n &lt; 0} then the
          * decimal point is moved {@code -n} places to the left.
-         * <p>
+         * <p/>
          * The result is obtained by changing its scale. If the scale of the result
          * becomes negative, then its precision is increased such that the scale is
          * zero.
-         * <p>
+         * <p/>
          * Note, that {@code movePointRight(0)} returns a result which is
-         * mathematically equivalent, but which has scale >= 0.
+         * mathematically equivalent, but which has scale &gt;= 0.
          *
          * @param n
          *            number of placed the decimal point has to be moved.
@@ -2071,7 +2071,7 @@ namespace biz.ritter.javapi.math
          * Returns a new {@code BigDecimal} whose value is {@code this} 10^{@code n}.
          * The scale of the result is {@code this.scale()} - {@code n}.
          * The precision of the result is the precision of {@code this}.
-         * <p>
+         * <p/>
          * This method has the same effect as {@link #movePointRight}, except that
          * the precision is not changed.
          *
@@ -2140,14 +2140,14 @@ namespace biz.ritter.javapi.math
          * Compares this {@code BigDecimal} with {@code val}. Returns one of the
          * three values {@code 1}, {@code 0}, or {@code -1}. The method behaves as
          * if {@code this.subtract(val)} is computed. If this difference is > 0 then
-         * 1 is returned, if the difference is < 0 then -1 is returned, and if the
+         * 1 is returned, if the difference is &lt; 0 then -1 is returned, and if the
          * difference is 0 then 0 is returned. This means, that if two decimal
          * instances are compared which are equal in value but differ in scale, then
          * these two instances are considered as equal.
          *
          * @param val
          *            value to be compared with {@code this}.
-         * @return {@code 1} if {@code this > val}, {@code -1} if {@code this < val},
+		 * @return {@code 1} if {@code this &gt; val}, {@code -1} if {@code this &lt; val},
          *         {@code 0} if {@code this == val}.
          * @throws NullPointerException
          *             if {@code val == null}.
@@ -2259,8 +2259,8 @@ namespace biz.ritter.javapi.math
          * Returns a canonical string representation of this {@code BigDecimal}. If
          * necessary, scientific notation is used. This representation always prints
          * all significant digits of this value.
-         * <p>
-         * If the scale is negative or if {@code scale - precision >= 6} then
+         * <p/>
+         * If the scale is negative or if {@code scale - precision &gt;= 6} then
          * scientific notation is used.
          *
          * @return a string representation of {@code this} in scientific notation if
@@ -2309,11 +2309,11 @@ namespace biz.ritter.javapi.math
         /**
          * Returns a string representation of this {@code BigDecimal}. This
          * representation always prints all significant digits of this value.
-         * <p>
-         * If the scale is negative or if {@code scale - precision >= 6} then
+         * <p/>
+         * If the scale is negative or if {@code scale - precision &gt;= 6} then
          * engineering notation is used. Engineering notation is similar to the
          * scientific notation except that the exponent is made to be a multiple of
-         * 3 such that the integer part is >= 1 and < 1000.
+         * 3 such that the integer part is &gt;= 1 and &lt; 1000.
          *
          * @return a string representation of {@code this} in engineering notation
          *         if necessary.
@@ -2375,14 +2375,14 @@ namespace biz.ritter.javapi.math
         /**
          * Returns a string representation of this {@code BigDecimal}. No scientific
          * notation is used. This methods adds zeros where necessary.
-         * <p>
+         * <p/>
          * If this string representation is used to create a new instance, this
          * instance is generally not identical to {@code this} as the precision
          * changes.
-         * <p>
+         * <p/>
          * {@code x.equals(new BigDecimal(x.toPlainString())} usually returns
          * {@code false}.
-         * <p>
+         * <p/>
          * {@code x.compareTo(new BigDecimal(x.toPlainString())} returns {@code 0}.
          *
          * @return a string representation of {@code this} without exponent part.
@@ -2562,15 +2562,15 @@ namespace biz.ritter.javapi.math
          * Returns this {@code BigDecimal} as a float value. If {@code this} is too
          * big to be represented as an float, then {@code Float.POSITIVE_INFINITY}
          * or {@code Float.NEGATIVE_INFINITY} is returned.
-         * <p>
+         * <p/>
          * Note, that if the unscaled value has more than 24 significant digits,
          * then this decimal cannot be represented exactly in a float variable. In
          * this case the result is rounded.
-         * <p>
+         * <p/>
          * For example, if the instance {@code x1 = new BigDecimal("0.1")} cannot be
          * represented exactly as a float, and thus {@code x1.equals(new
          * BigDecimal(x1.folatValue())} returns {@code false} for this case.
-         * <p>
+         * <p/>
          * Similarly, if the instance {@code new BigDecimal(16777217)} is converted
          * to a float, the result is {@code 1.6777216E}7.
          *
@@ -2597,18 +2597,18 @@ namespace biz.ritter.javapi.math
          * Returns this {@code BigDecimal} as a double value. If {@code this} is too
          * big to be represented as an float, then {@code Double.POSITIVE_INFINITY}
          * or {@code Double.NEGATIVE_INFINITY} is returned.
-         * <p>
+         * <p/>
          * Note, that if the unscaled value has more than 53 significant digits,
          * then this decimal cannot be represented exactly in a double variable. In
          * this case the result is rounded.
-         * <p>
+         * <p/>
          * For example, if the instance {@code x1 = new BigDecimal("0.1")} cannot be
          * represented exactly as a double, and thus {@code x1.equals(new
          * BigDecimal(x1.doubleValue())} returns {@code false} for this case.
-         * <p>
+         * <p/>
          * Similarly, if the instance {@code new BigDecimal(9007199254740993L)} is
          * converted to a double, the result is {@code 9.007199254740992E15}.
-         * <p>
+         * <p/>
          *
          * @return this {@code BigDecimal} as a double value.
          */
@@ -2717,13 +2717,13 @@ namespace biz.ritter.javapi.math
          * Returns the unit in the last place (ULP) of this {@code BigDecimal}
          * instance. An ULP is the distance to the nearest big decimal with the same
          * precision.
-         * <p>
+         * <p/>
          * The amount of a rounding error in the evaluation of a floating-point
          * operation is often expressed in ULPs. An error of 1 ULP is often seen as
          * a tolerable error.
-         * <p>
+         * <p/>
          * For class {@code BigDecimal}, the ULP of a number is simply 10^(-scale).
-         * <p>
+         * <p/>
          * For example, {@code new BigDecimal(0.1).ulp()} returns {@code 1E-55}.
          *
          * @return unit in the last place (ULP) of this {@code BigDecimal} instance.
@@ -2950,7 +2950,7 @@ namespace biz.ritter.javapi.math
          * It returns the value 0 with the most approximated scale of type
          * {@code int}. if {@code longScale > Integer.MAX_VALUE} the
          * scale will be {@code Integer.MAX_VALUE}; if
-         * {@code longScale < Integer.MIN_VALUE} the scale will be
+         * {@code longScale &lt; Integer.MIN_VALUE} the scale will be
          * {@code Integer.MIN_VALUE}; otherwise {@code longScale} is
          * casted to the type {@code int}.
          *
@@ -2969,7 +2969,7 @@ namespace biz.ritter.javapi.math
             return new BigDecimal( 0, java.lang.Integer.MIN_VALUE);
         }
 
-        /**
+        /*
          * Assignes all transient fields upon deserialization of a
          * {@code BigDecimal} instance (bitLengthJ and smallValue). The transient
          * field precision is assigned lazily.
@@ -2984,7 +2984,7 @@ namespace biz.ritter.javapi.math
             }
         }
 
-        /**
+        /*
          * Prepares this {@code BigDecimal} for serialization, i.e. the
          * non-transient field {@code intVal} is assigned.
          *

@@ -166,7 +166,7 @@ namespace biz.ritter.javapi.lang
         /// <summary>
         /// Implicit convert java.lang.Float to .net float type
         /// </summary>
-        /// <param name="d"></param>
+        /// <param name="f"></param>
         /// <returns></returns>
         public static implicit operator float(java.lang.Float f)
         {

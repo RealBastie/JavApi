@@ -21,7 +21,7 @@ namespace biz.ritter.javapi.security
      * {@code BasicPermission} is the common base class of all permissions which
      * have a name but no action lists. A {@code BasicPermission} is granted or it
      * is not.
-     * <p>
+     * <p/>
      * Names of a BasicPermission follow the dot separated, hierarchical property
      * naming convention. Asterisk '*' can be used as wildcards. Either by itself,
      * matching anything, or at the end of the name, immediately preceded by a '.'.
@@ -31,7 +31,7 @@ namespace biz.ritter.javapi.security
      * java.io.*  grants all permissions under the java.io permission hierarchy
      * *          grants all permissions
      * </pre>
-     * <p>
+     * <p/>
      * While this class ignores the action list in the
      * {@link #BasicPermission(String, String)} constructor, subclasses may
      * implement actions on top of this class.
@@ -95,7 +95,7 @@ namespace biz.ritter.javapi.security
          * Compares the specified object with this {@code BasicPermission} for
          * equality. Returns {@code true} if the specified object has the same class
          * and the two {@code Permissions}s have the same name.
-         * <p>
+         * <p/>
          * The {@link #implies(Permission)} method should be used for making access
          * control checks.
          *
@@ -213,7 +213,7 @@ namespace biz.ritter.javapi.security
 
         /**
          * Returns an empty {@link PermissionCollection} for holding permissions.
-         * <p>
+         * <p/>
          * For {@code PermissionCollection} (and subclasses which do not override
          * this method), the collection which is returned does <em>not</em> invoke
          * the {@link #implies(Permission)} method of the permissions which are

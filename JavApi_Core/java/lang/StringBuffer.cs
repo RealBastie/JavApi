@@ -644,7 +644,7 @@ namespace biz.ritter.javapi.lang
          *            The char sequence to insert.
          * @return this buffer.
          * @throws IndexOutOfBoundsException
-         *             if {@code index < 0} or {@code index > length()}.
+         *             if {@code index &lt; 0} or {@code index &gt; length()}.
          * @since 1.5
          */
         public java.lang.StringBuffer insert(int index, CharSequence s) {

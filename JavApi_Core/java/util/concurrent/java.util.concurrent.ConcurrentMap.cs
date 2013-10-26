@@ -20,14 +20,14 @@ namespace biz.ritter.javapi.util.concurrent
      * actions subsequent to the access or removal of that object from
      * the {@code ConcurrentMap} in another thread.
      *
-     * <p>This interface is a member of the
+     * <p/>This interface is a member of the
      * <a href="{@docRoot}/../technotes/guides/collections/index.html">
      * Java Collections Framework</a>.
      *
      * @since 1.5
      * @author Doug Lea
-     * @param <K> the type of keys maintained by this map
-     * @param <V> the type of mapped values
+     * @param K the type of keys maintained by this map
+     * @param V the type of mapped values
      */
     public interface ConcurrentMap<K, V> : Map<K, V>
     {

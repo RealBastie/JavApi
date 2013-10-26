@@ -19,7 +19,7 @@ namespace biz.ritter.javapi.io
 /**
  * A permission for accessing a file or directory. The FilePermission is made up
  * of a pathname and a set of actions which are valid for the pathname.
- * <p>
+ * <p/>
  * The {@code File.separatorChar} must be used in all pathnames when
  * constructing a FilePermission. The following descriptions will assume the
  * char is {@code /}. A pathname that ends in {@code /*} includes all the files
@@ -317,7 +317,7 @@ public sealed class FilePermission : java.security.Permission, java.io.Serializa
                 if (!includeDir) {
                     return 0;
                 }
-                /**
+                /*
                  * If we have * for this and find a separator it is invalid. IE:
                  * this is '/a/*' and p is '/a/b/c' we should fail on the
                  * separator after the b. Except for root, canonical paths do

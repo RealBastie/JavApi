@@ -277,7 +277,7 @@ namespace biz.ritter.javapi.io
             byte currentType = currentChar > 255 ? TOKEN_WORD
                     : tokenTypes[currentChar];
             while ((currentType & TOKEN_WHITE) != 0) {
-                /**
+                /*
                  * Skip over white space until we hit a new line or a real token
                  */
                 if (currentChar == '\r') {

@@ -181,7 +181,7 @@ public class PipedReader : Reader {
      * reader has been reached. If there is no data in the pipe, this method
      * blocks until data is available, the end of the reader is detected or an
      * exception is thrown.
-     * <p>
+     * <p/>
      * Separate threads should be used to read from a {@code PipedReader} and to
      * write to the connected {@link PipedWriter}. If the same thread is used,
      * a deadlock may occur.
@@ -244,7 +244,7 @@ public class PipedReader : Reader {
             if (count == 0) {
                 return 0;
             }
-            /**
+            /*
              * Set the last thread to be reading on this PipedReader. If
              * lastReader dies while someone is waiting to write an IOException
              * of "Pipe broken" will be thrown in receive()
@@ -343,7 +343,7 @@ public class PipedReader : Reader {
     /**
      * Receives a char and stores it into the PipedReader. This called by
      * PipedWriter.write() when writes occur.
-     * <P>
+     * <p/>
      * If the buffer is full and the thread sending #receive is interrupted, the
      * InterruptedIOException will be thrown.
      * 
@@ -398,7 +398,7 @@ public class PipedReader : Reader {
     /**
      * Receives a char array and stores it into the PipedReader. This called by
      * PipedWriter.write() when writes occur.
-     * <P>
+     * <p/>
      * If the buffer is full and the thread sending #receive is interrupted, the
      * InterruptedIOException will be thrown.
      * 
@@ -421,7 +421,7 @@ public class PipedReader : Reader {
             if (lastReader != null && !lastReader.isAlive()) {
 					throw new IOException("Pipe broken"); //$NON-NLS-1$
             }
-            /**
+            /*
              * Set the last thread to be writing on this PipedWriter. If
              * lastWriter dies while someone is waiting to read an IOException
              * of "Pipe broken" will be thrown in read()

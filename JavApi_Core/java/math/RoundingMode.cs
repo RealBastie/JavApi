@@ -26,53 +26,53 @@ namespace biz.ritter.javapi.math
         /**
          * Rounding mode where positive values are rounded towards positive infinity
          * and negative values towards negative infinity.
-         * <br>
-         * Rule: {@code x.round().abs() >= x.abs()}
+         * <br/>
+         * Rule: {@code x.round().abs() &gt;= x.abs()}
          */
-        protected internal static RoundingMode UP = new RoundingMode (BigDecimal.ROUND_UP),
+		protected internal static RoundingMode UP = new RoundingMode (BigDecimal.ROUND_UP);
 
         /**
          * Rounding mode where the values are rounded towards zero.
-         * <br>
-         * Rule: {@code x.round().abs() <= x.abs()}
+         * <br/>
+         * Rule: {@code x.round().abs() &lt;= x.abs()}
          */
-        DOWN= new RoundingMode (BigDecimal.ROUND_DOWN),
+		protected internal static RoundingMode DOWN= new RoundingMode (BigDecimal.ROUND_DOWN);
 
         /**
          * Rounding mode to round towards positive infinity. For positive values
          * this rounding mode behaves as {@link #UP}, for negative values as
          * {@link #DOWN}.
-         * <br>
-         * Rule: {@code x.round() >= x}
+         * <br/>
+         * Rule: {@code x.round() &gt;= x}
          */
-        CEILING= new RoundingMode (BigDecimal.ROUND_CEILING),
+		protected internal static RoundingMode CEILING= new RoundingMode (BigDecimal.ROUND_CEILING);
 
         /**
          * Rounding mode to round towards negative infinity. For positive values
          * this rounding mode behaves as {@link #DOWN}, for negative values as
          * {@link #UP}.
-         * <br>
-         * Rule: {@code x.round() <= x}
+         * <br/>
+		 * Rule: {@code x.round() &lt;= x}
          */
-        FLOOR= new RoundingMode (BigDecimal.ROUND_FLOOR),
+		protected internal static RoundingMode FLOOR= new RoundingMode (BigDecimal.ROUND_FLOOR);
 
         /**
          * Rounding mode where values are rounded towards the nearest neighbor. Ties
          * are broken by rounding up.
          */
-        HALF_UP= new RoundingMode (BigDecimal.ROUND_HALF_UP),
+		protected internal static RoundingMode HALF_UP= new RoundingMode (BigDecimal.ROUND_HALF_UP);
 
         /**
          * Rounding mode where values are rounded towards the nearest neighbor. Ties
          * are broken by rounding down.
          */
-        HALF_DOWN= new RoundingMode (BigDecimal.ROUND_HALF_DOWN),
+		protected internal static RoundingMode HALF_DOWN= new RoundingMode (BigDecimal.ROUND_HALF_DOWN);
 
         /**
          * Rounding mode where values are rounded towards the nearest neighbor. Ties
          * are broken by rounding to the even neighbor.
          */
-        HALF_EVEN= new RoundingMode (BigDecimal.ROUND_HALF_EVEN);
+		protected internal static RoundingMode HALF_EVEN= new RoundingMode (BigDecimal.ROUND_HALF_EVEN);
 
         /// <summary>
         /// Rounding mode where the rounding operations throws an ArithmeticException

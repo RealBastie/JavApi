@@ -117,7 +117,7 @@ namespace biz.ritter.javapi.security
             return all != null;
         }
 
-        /**
+        /*
          * Writes the fields according to expected format, adding the boolean field
          * {@code all_allowed} which is {@code true} if this collection is not
          * empty.
@@ -128,7 +128,7 @@ namespace biz.ritter.javapi.security
             out.writeFields();
         }
 
-        /**
+        /*
          * Restores internal state.
          *
         private void readObject(java.io.ObjectInputStream in) throws IOException,

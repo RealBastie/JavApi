@@ -297,7 +297,7 @@ namespace biz.ritter.javapi.math
             return sb.ToString();
         }
 
-        /**
+        /*
          * Makes checks upon deserialization of a {@code MathContext} instance.
          * Checks whether {@code precision >= 0} and {@code roundingMode != null}
          *

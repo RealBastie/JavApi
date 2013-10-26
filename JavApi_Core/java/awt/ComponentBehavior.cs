@@ -16,14 +16,12 @@ using java = biz.ritter.javapi;
 
 namespace biz.ritter.javapi.awt
 {
-    /**
-     * @author Dmitry A. Durnev
-     */
     //import org.apache.harmony.awt.wtk.NativeWindow;
 
     /**
      * The interface of the helper object that encapsulates the difference
      * between lightweight and heavyweight components. 
+     * @author Dmitry A. Durnev
      */
     internal interface ComponentBehavior
     {

@@ -473,8 +473,8 @@ namespace biz.ritter.javapi.lang
          * @throws NullPointerException
          *             if {@code seq} is {@code null}.
          * @throws IndexOutOfBoundsException
-         *             if {@code index < 0}, {@code index >= limit},
-         *             {@code limit < 0} or if {@code limit} is greater than the
+         *             if {@code index &lt; 0}, {@code index &gt;= limit},
+         *             {@code limit &lt; 0} or if {@code limit} is greater than the
          *             length of {@code seq}.
          * @since 1.5
          */
@@ -689,7 +689,7 @@ namespace biz.ritter.javapi.lang
          * @throws NullPointerException
          *             if {@code seq} is {@code null}.
          * @throws IndexOutOfBoundsException
-         *             if the {@code index <= start}, {@code start < 0},
+         *             if the {@code index &lt;= start}, {@code start &lt; 0},
          *             {@code index} is greater than the length of {@code seq}, or
          *             if {@code start} is equal or greater than the length of
          *             {@code seq}.
@@ -736,7 +736,7 @@ namespace biz.ritter.javapi.lang
          * @throws NullPointerException
          *             if {@code seq} is {@code null}.
          * @throws IndexOutOfBoundsException
-         *             if {@code beginIndex < 0}, {@code beginIndex > endIndex} or
+         *             if {@code beginIndex &lt; 0}, {@code beginIndex &gt; endIndex} or
          *             if {@code endIndex} is greater than the length of {@code seq}.
          * @since 1.5
          */
@@ -790,7 +790,7 @@ namespace biz.ritter.javapi.lang
          * @throws NullPointerException
          *             if {@code seq} is {@code null}.
          * @throws IndexOutOfBoundsException
-         *             if {@code offset < 0}, {@code count < 0} or if
+         *             if {@code offset &lt; 0}, {@code count &lt; 0} or if
          *             {@code offset + count} is greater than the length of
          *             {@code seq}.
          * @since 1.5
@@ -844,7 +844,7 @@ namespace biz.ritter.javapi.lang
          * @throws NullPointerException
          *             if {@code seq} is {@code null}.
          * @throws IndexOutOfBoundsException
-         *             if {@code index < 0}, {@code index} is greater than the
+         *             if {@code index &lt; 0}, {@code index} is greater than the
          *             length of {@code seq}, or if there are not enough values in
          *             {@code seq} to skip {@code codePointOffset} code points
          *             forwards or backwards (if {@code codePointOffset} is
@@ -939,8 +939,8 @@ namespace biz.ritter.javapi.lang
          * @throws NullPointerException
          *             if {@code seq} is {@code null}.
          * @throws IndexOutOfBoundsException
-         *             if {@code start < 0}, {@code count < 0},
-         *             {@code index < start}, {@code index > start + count},
+         *             if {@code start &lt; 0}, {@code count &lt; 0},
+         *             {@code index &lt; start}, {@code index &gt; start + count},
          *             {@code start + count} is greater than the length of
          *             {@code seq}, or if there are not enough values in
          *             {@code seq} to skip {@code codePointOffset} code points

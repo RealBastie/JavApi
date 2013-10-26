@@ -20,11 +20,11 @@ namespace biz.ritter.javapi.sql
     /**
      * An interface which provides comprehensive information about the database
      * management system and its supported features.
-     * <p>
+     * <p/>
      * This interface is implemented by JDBC driver vendors in order to provide
      * information about the underlying database capabilities in association with
      * the JDBC driver.
-     * <p>
+     * <p/>
      * Some of the methods in this interface take string parameters which are
      * patterns. Within these string patterns, {@code '%'} and {@code '_'}
      * characters have special meanings. {@code '%'} means
@@ -116,7 +116,7 @@ namespace biz.ritter.javapi.sql
          * describes one attribute, and the rows are ordered by the columns {@code TYPE_SCHEM}, 
          * {@code TYPE_NAME} and {@code ORDINAL_POSITION}. Inherited attributes
          * are not included.
-         * <p>
+         * <p/>
          * The columns of the returned {@code ResultSet} object have the following
          * names and meanings:
          * <ol>
@@ -199,7 +199,7 @@ namespace biz.ritter.javapi.sql
         /**
          * Returns a list of a table's optimal set of columns that uniquely
          * identify the rows. The results are ordered by {@code SCOPE} (see below).
-         * <p>
+         * <p/>
          * The results are returned as a table, with one entry for each column, as
          * follows:
          * <ol>
@@ -292,7 +292,7 @@ namespace biz.ritter.javapi.sql
         /**
          * Returns a description of access rights for a table's columns. Only access
          * rights matching the criteria for the column name are returned.
-         * <p>
+         * <p/>
          * The description is returned as a {@code ResultSet} with rows of data for
          * each access right, with columns as follows:
          * <ol>
@@ -337,7 +337,7 @@ namespace biz.ritter.javapi.sql
          * Returns a description of table columns available in a specified catalog.
          * Only descriptions meeting the specified catalog, schema, table, and column
          * names are returned.
-         * <p>
+         * <p/>
          * The descriptions are returned as a {@code ResultSet} conforming to the
          * following data layout, with one row per table column:
          * <ol>
@@ -426,7 +426,7 @@ namespace biz.ritter.javapi.sql
          * reference the primary key columns of a supplied primary key table. This
          * describes how one table imports the key of another table. It would be
          * expected to return a single foreign key - primary key pair in most cases.
-         * <p>
+         * <p/>
          * The descriptions are returned as a {@code ResultSet} with one row for
          * each foreign key, with the following layout:
          * <ol>
@@ -611,7 +611,7 @@ namespace biz.ritter.javapi.sql
         /**
          * Returns a list of the foreign key columns that reference the primary key
          * columns of a specified table (the foreign keys exported by a table).
-         * <p>
+         * <p/>
          * The list is returned as a {@code ResultSet} with a row for each of the
          * foreign key columns, ordered by {@code FKTABLE_CAT}, {@code
          * FKTABLE_SCHEM}, {@code FKTABLE_NAME}, and {@code KEY_SEQ}, with the
@@ -721,7 +721,7 @@ namespace biz.ritter.javapi.sql
          * Returns a list columns in a table that are both primary keys and
          * referenced by the table's foreign key columns (that is, the primary keys
          * imported by a table).
-         * <p>
+         * <p/>
          * The list returned is a {@code ResultSet} with a row entry for each
          * primary key column, ordered by {@code PKTABLE_CAT}, {@code PKTABLE_SCHEM}, 
          * {@code PKTABLE_NAME}, and {@code KEY_SEQ}, with the following format:
@@ -807,7 +807,7 @@ namespace biz.ritter.javapi.sql
 
         /**
          * Returns a list of indices and statistics for a specified table.
-         * <p>
+         * <p/>
          * The list is returned as a {@code ResultSet}, with one row for each index
          * or statistic. The list is ordered by {@code NON_UNIQUE}, {@code TYPE},
          * {@code INDEX_NAME}, and {@code ORDINAL_POSITION}. Each row has the
@@ -1127,7 +1127,7 @@ namespace biz.ritter.javapi.sql
 
         /**
          * Returns a list of the primary key columns of a specified table.
-         * <p>
+         * <p/>
          * The list is returned as a {@code ResultSet} with one row for each primary
          * key column, ordered by {@code COLUMN_NAME}, with each row having the
          * structure as follows:
@@ -1165,7 +1165,7 @@ namespace biz.ritter.javapi.sql
         /**
          * Returns a list of parameter and result columns for the stored procedures
          * belonging to a specified catalog.
-         * <p>
+         * <p/>
          * The list is returned as a {@code ResultSet} with one row for each
          * parameter or result column. The data is ordered by {@code
          * PROCEDURE_SCHEM} and {@code PROCEDURE_NAME}, while for each procedure,
@@ -1243,7 +1243,7 @@ namespace biz.ritter.javapi.sql
 
         /**
          * Returns a list of the stored procedures available in a specified catalog.
-         * <p>
+         * <p/>
          * The list is returned as a {@code ResultSet} with one row for each stored
          * procedure, ordered by PROCEDURE_SCHEM and PROCEDURE_NAME, with the data
          * in each row as follows:
@@ -1385,7 +1385,7 @@ namespace biz.ritter.javapi.sql
         /**
          * Returns a listing of the hierarchies of tables in a specified schema in
          * the database.
-         * <p>
+         * <p/>
          * The listing only contains entries for tables that have a super table.
          * Super tables and corresponding subtables must be defined in the same catalog and schema. The
          * list is returned as a {@code ResultSet}, with one row for each table that
@@ -1427,7 +1427,7 @@ namespace biz.ritter.javapi.sql
          * Returns the User Defined Type (UDT) hierarchies for a given schema. Only
          * the immediate parent/child relationship is described. If a UDT does not
          * have a direct supertype, it is not listed.
-         * <p>
+         * <p/>
          * The listing is returned as a {@code ResultSet} where there is one row for
          * a specific UDT which describes its supertype, with the data organized in
          * columns as follows:
@@ -1480,7 +1480,7 @@ namespace biz.ritter.javapi.sql
          * Returns a description of access rights for each table present in a
          * catalog. Table privileges can apply to one or more columns in the table -
          * but are not guaranteed to apply to all columns.
-         * <p>
+         * <p/>
          * The privileges are returned as a {@code ResultSet}, with one row for each
          * privilege, ordered by {@code TABLE_SCHEM}, {@code TABLE_NAME}, {@code
          * PRIVILEGE}, and each row has data as defined in the following column
@@ -1523,7 +1523,7 @@ namespace biz.ritter.javapi.sql
 
         /**
          * Returns a description of the tables in a specified catalog.
-         * <p>
+         * <p/>
          * The descriptions are returned as rows in a {@code ResultSet}, one row for
          * each Table. The ResultSet is ordered by {@code TABLE_TYPE}, {@code
          * TABLE_SCHEM} and {@code TABLE_NAME}. Each row in the ResultSet consists
@@ -1576,7 +1576,7 @@ namespace biz.ritter.javapi.sql
 
         /**
          * Returns a list of table types supported by the database.
-         * <p>
+         * <p/>
          * The list is returned as a {@code ResultSet} with one row per table type,
          * ordered by the table type. The information in the {@code ResultSet} is
          * structured into a single column per row, as follows:
@@ -1665,7 +1665,7 @@ namespace biz.ritter.javapi.sql
          * Returns a description of the User Defined Types (UDTs) defined in a given
          * schema, which includes the types {@code DISTINCT}, {@code STRUCT} and
          * {@code JAVA_OBJECT}.
-         * <p>
+         * <p/>
          * The types matching the supplied the specified catalog, schema, type name
          * and type are returned as rows in a {@code ResultSet} with columns of
          * information as follows:
@@ -1683,7 +1683,7 @@ namespace biz.ritter.javapi.sql
          * This is defined in {@code java.sql.Types}, and will be {@code null} if
          * the {@code DATA_TYPE} does not match these criteria.</li>
          * </ol>
-         * <p>
+         * <p/>
          * If the driver does not support UDTs, the {@code ResultSet} is empty.
          *
          * @param catalog
@@ -1730,7 +1730,7 @@ namespace biz.ritter.javapi.sql
         /**
          * Returns which of a table's columns are automatically updated when any
          * value in a row is updated.
-         * <p>
+         * <p/>
          * The result is laid-out in the following columns:
          * <ol>
          * <li>{@code SCOPE} - short - not used</li>
@@ -2162,7 +2162,7 @@ namespace biz.ritter.javapi.sql
 
         /**
          * Determines whether the database supports column aliasing.
-         * <p>
+         * <p/>
          * If aliasing is supported, then the SQL AS clause is used to provide names
          * for computed columns and provide alias names for columns.
          *
@@ -2751,7 +2751,7 @@ namespace biz.ritter.javapi.sql
 
         /**
          * Determines whether transactions are supported.
-         * <p>
+         * <p/>
          * If transactions are not supported, then the {@code commit} method does
          * nothing and the transaction isolation level is always {@code
          * TRANSACTION_NONE}.

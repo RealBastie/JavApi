@@ -125,7 +125,7 @@ namespace biz.ritter.javapi.math
         /// @param rnd
         ///            is an optional random generator to be used.
         /// @throws IllegalArgumentException
-        ///             if {@code numBits} < 0.
+		///             if {@code numBits} &lt; 0.
         ///</summary>
         public BigInteger(int numBits, java.util.Random rnd) {
             if (numBits < 0) {
@@ -161,7 +161,7 @@ namespace biz.ritter.javapi.math
         /// @param rnd
         ///            is an optional random generator to be used.
         /// @throws ArithmeticException
-        ///             if {@code bitLength} < 2.
+		///             if {@code bitLength} &lt; 2.
         ///</summary>
         public BigInteger(int bitLength, int certainty, java.util.Random rnd) {
             if (bitLength < 2) {
@@ -205,8 +205,8 @@ namespace biz.ritter.javapi.math
         ///             if {@code val == null}.
         /// @throws NumberFormatException
         ///             if {@code val} is not a valid representation of a {@code
-        ///             BigInteger} or if {@code radix < Character.MIN_RADIX} or
-        ///             {@code radix > Character.MAX_RADIX}.
+		///             BigInteger} or if {@code radix &lt; Character.MIN_RADIX} or
+		///             {@code radix &gt; Character.MAX_RADIX}.
         ///</summary>
         public BigInteger(String val, int radix) {
             if (val == null) {
@@ -399,10 +399,10 @@ namespace biz.ritter.javapi.math
             int bitLen = bitLength();
             int iThis = getFirstNonzeroDigit();
             int bytesLen = (bitLen >> 3) + 1;
-            ///
-            /// Puts the little-endian int array representing the magnitude of this
-            /// BigInteger into the big-endian byte array.
-            ///
+            //
+            // Puts the little-endian int array representing the magnitude of this
+            // BigInteger into the big-endian byte array.
+            //
             byte[] bytes = new byte[bytesLen];
             int firstByteNumber = 0;
             int highBytes;
@@ -475,12 +475,12 @@ namespace biz.ritter.javapi.math
                 startChar = 0;
             }
             
-            /// We use the following algorithm: split a string into portions of n
-            /// characters and convert each portion to an integer according to the
-            /// radix. Then convert an exp(radix, n) based number to binary using the
-            /// multiplication method. See D. Knuth, The Art of Computer Programming,
-            /// vol. 2.
-            ///
+            // We use the following algorithm: split a string into portions of n
+            // characters and convert each portion to an integer according to the
+            // radix. Then convert an exp(radix, n) based number to binary using the
+            // multiplication method. See D. Knuth, The Art of Computer Programming,
+            // vol. 2.
+            //
 
             int charsPerInt = Conversion.digitFitInInt[radix];
             int bigRadixDigitsLength = stringLength / charsPerInt;
@@ -563,9 +563,9 @@ namespace biz.ritter.javapi.math
         ///
         /// Returns the sign of this {@code BigInteger}.
         ///
-        /// @return {@code -1} if {@code this < 0},
+		/// @return {@code -1} if {@code this &lt; 0},
         ///         {@code 0} if {@code this == 0},
-        ///         {@code 1} if {@code this > 0}.
+		///         {@code 1} if {@code this &gt; 0}.
         ///
         public int signum() {
             return sign;
@@ -575,13 +575,13 @@ namespace biz.ritter.javapi.math
         /// Returns a new {@code BigInteger} whose value is {@code this >> n}. For
         /// negative arguments, the result is also negative. The shift distance may
         /// be negative which means that {@code this} is shifted left.
-        /// <p>
+        /// <p/>
         /// <b>Implementation Note:</b> Usage of this method on negative values is
         /// not recommended as the current implementation is not efficient.
         ///
         /// @param n
         ///            shift distance
-        /// @return {@code this >> n} if {@code n >= 0}; {@code this << (-n)}
+		/// @return {@code this &lt;&lt; n} if {@code n &gt;= 0}; {@code this &lt;&lt;s (-n)}
         ///         otherwise
         ///
         public BigInteger shiftRight(int n) {
@@ -593,17 +593,17 @@ namespace biz.ritter.javapi.math
         }
 
         ///
-        /// Returns a new {@code BigInteger} whose value is {@code this << n}. The
-        /// result is equivalent to {@code this * 2^n} if n >= 0. The shift distance
+		/// Returns a new {@code BigInteger} whose value is {@code this &gt;&gt; n}. The
+		/// result is equivalent to {@code this * 2^n} if n &gt;= 0. The shift distance
         /// may be negative which means that {@code this} is shifted right. The
         /// result then corresponds to {@code floor(this / 2^(-n))}.
-        /// <p>
+        /// <p/>
         /// <b>Implementation Note:</b> Usage of this method on negative values is
         /// not recommended as the current implementation is not efficient.
         ///
         /// @param n
         ///            shift distance.
-        /// @return {@code this << n} if {@code n >= 0}; {@code this >> (-n)}.
+		/// @return {@code this &lt;&lt; n} if {@code n &gt;= 0}; {@code this &gt;&gt; (-n)}.
         ///         otherwise
         ///
         public BigInteger shiftLeft(int n) {
@@ -622,12 +622,12 @@ namespace biz.ritter.javapi.math
         /// Returns the length of the value's two's complement representation without
         /// leading zeros for positive numbers / without leading ones for negative
         /// values.
-        /// <p>
+        /// <p/>
         /// The two's complement representation of {@code this} will be at least
         /// {@code bitLength() + 1} bits long.
-        /// <p>
-        /// The value will fit into an {@code int} if {@code bitLength() < 32} or
-        /// into a {@code long} if {@code bitLength() < 64}.
+        /// <p/>
+		/// The value will fit into an {@code int} if {@code bitLength() &lt; 32} or
+		/// into a {@code long} if {@code bitLength() &lt; 64}.
         ///
         /// @return the length of the minimal two's complement representation for
         ///         {@code this} without the sign bit.
@@ -638,16 +638,16 @@ namespace biz.ritter.javapi.math
 
         ///
         /// Tests whether the bit at position n in {@code this} is set. The result is
-        /// equivalent to {@code this & (2^n) != 0}.
-        /// <p>
+		/// equivalent to {@code this &amp; (2^n) != 0}.
+        /// <p/>
         /// <b>Implementation Note:</b> Usage of this method is not recommended as
         /// the current implementation is not efficient.
         ///
         /// @param n
         ///            position where the bit in {@code this} has to be inspected.
-        /// @return {@code this & (2^n) != 0}.
+		/// @return {@code this &amp; (2^n) != 0}.
         /// @throws ArithmeticException
-        ///             if {@code n < 0}.
+		///             if {@code n &lt; 0}.
         ///
         public bool testBit(int n) {
             if (n == 0) {
@@ -680,7 +680,7 @@ namespace biz.ritter.javapi.math
         /// Returns a new {@code BigInteger} which has the same binary representation
         /// as {@code this} but with the bit at position n set. The result is
         /// equivalent to {@code this | 2^n}.
-        /// <p>
+        /// <p/>
         /// <b>Implementation Note:</b> Usage of this method is not recommended as
         /// the current implementation is not efficient.
         ///
@@ -688,7 +688,7 @@ namespace biz.ritter.javapi.math
         ///            position where the bit in {@code this} has to be set.
         /// @return {@code this | 2^n}.
         /// @throws ArithmeticException
-        ///             if {@code n < 0}.
+		///             if {@code n &lt; 0}.
         ///
         public BigInteger setBit(int n) {
             if (!testBit(n)) {
@@ -700,16 +700,16 @@ namespace biz.ritter.javapi.math
         ///
         /// Returns a new {@code BigInteger} which has the same binary representation
         /// as {@code this} but with the bit at position n cleared. The result is
-        /// equivalent to {@code this & ~(2^n)}.
-        /// <p>
+		/// equivalent to {@code this &amp; ~(2^n)}.
+        /// <p/>
         /// <b>Implementation Note:</b> Usage of this method is not recommended as
         /// the current implementation is not efficient.
         ///
         /// @param n
         ///            position where the bit in {@code this} has to be cleared.
-        /// @return {@code this & ~(2^n)}.
+		/// @return {@code this &amp; ~(2^n)}.
         /// @throws ArithmeticException
-        ///             if {@code n < 0}.
+		///             if {@code n &gt; 0}.
         ///
         public BigInteger clearBit(int n) {
             if (testBit(n)) {
@@ -722,7 +722,7 @@ namespace biz.ritter.javapi.math
         /// Returns a new {@code BigInteger} which has the same binary representation
         /// as {@code this} but with the bit at position n flipped. The result is
         /// equivalent to {@code this ^ 2^n}.
-        /// <p>
+        /// <p/>
         /// <b>Implementation Note:</b> Usage of this method is not recommended as
         /// the current implementation is not efficient.
         ///
@@ -730,7 +730,7 @@ namespace biz.ritter.javapi.math
         ///            position where the bit in {@code this} has to be flipped.
         /// @return {@code this ^ 2^n}.
         /// @throws ArithmeticException
-        ///             if {@code n < 0}.
+		///             if {@code n &lt; 0}.
         ///
         public BigInteger flipBit(int n) {
             if (n < 0) {
@@ -744,7 +744,7 @@ namespace biz.ritter.javapi.math
         /// Returns the position of the lowest set bit in the two's complement
         /// representation of this {@code BigInteger}. If all bits are zero (this=0)
         /// then -1 is returned as result.
-        /// <p>
+        /// <p/>
         /// <b>Implementation Note:</b> Usage of this method is not recommended as
         /// the current implementation is not efficient.
         ///
@@ -762,13 +762,13 @@ namespace biz.ritter.javapi.math
         ///
         /// Use {@code bitLength(0)} if you want to know the length of the binary
         /// value in bits.
-        /// <p>
+        /// <p/>
         /// Returns the number of bits in the binary representation of {@code this}
         /// which differ from the sign bit. If {@code this} is positive the result is
         /// equivalent to the number of bits set in the binary representation of
         /// {@code this}. If {@code this} is negative the result is equivalent to the
         /// number of bits set in the binary representation of {@code -this-1}.
-        /// <p>
+        /// <p/>
         /// <b>Implementation Note:</b> Usage of this method is not recommended as
         /// the current implementation is not efficient.
         ///
@@ -782,7 +782,7 @@ namespace biz.ritter.javapi.math
         ///
         /// Returns a new {@code BigInteger} whose value is {@code ~this}. The result
         /// of this operation is {@code -this-1}.
-        /// <p>
+        /// <p/>
         /// <b>Implementation Note:</b> Usage of this method is not recommended as
         /// the current implementation is not efficient.
         ///
@@ -793,14 +793,14 @@ namespace biz.ritter.javapi.math
         }
 
         ///
-        /// Returns a new {@code BigInteger} whose value is {@code this & val}.
-        /// <p>
+		/// Returns a new {@code BigInteger} whose value is {@code this &amp; val}.
+        /// <p/>
         /// <b>Implementation Note:</b> Usage of this method is not recommended as
         /// the current implementation is not efficient.
         ///
         /// @param val
         ///            value to be and'ed with {@code this}.
-        /// @return {@code this & val}.
+		/// @return {@code this &amp; val}.
         /// @throws NullPointerException
         ///             if {@code val == null}.
         ///
@@ -810,7 +810,7 @@ namespace biz.ritter.javapi.math
 
         ///
         /// Returns a new {@code BigInteger} whose value is {@code this | val}.
-        /// <p>
+        /// <p/>
         /// <b>Implementation Note:</b> Usage of this method is not recommended as
         /// the current implementation is not efficient.
         ///
@@ -826,7 +826,7 @@ namespace biz.ritter.javapi.math
 
         ///
         /// Returns a new {@code BigInteger} whose value is {@code this ^ val}.
-        /// <p>
+        /// <p/>
         /// <b>Implementation Note:</b> Usage of this method is not recommended as
         /// the current implementation is not efficient.
         ///
@@ -841,16 +841,16 @@ namespace biz.ritter.javapi.math
         }
 
         ///
-        /// Returns a new {@code BigInteger} whose value is {@code this & ~val}.
+		/// Returns a new {@code BigInteger} whose value is {@code this &amp; ~val}.
         /// Evaluating {@code x.andNot(val)} returns the same result as {@code
         /// x.and(val.not())}.
-        /// <p>
+        /// <p/>
         /// <b>Implementation Note:</b> Usage of this method is not recommended as
         /// the current implementation is not efficient.
         ///
         /// @param val
         ///            value to be not'ed and then and'ed with {@code this}.
-        /// @return {@code this & ~val}.
+		/// @return {@code this &amp; ~val}.
         /// @throws NullPointerException
         ///             if {@code val == null}.
         ///
@@ -915,7 +915,7 @@ namespace biz.ritter.javapi.math
         ///
         /// @param val
         ///            value to be compared with {@code this}.
-        /// @return {@code 1} if {@code this > val}, {@code -1} if {@code this < val}
+		/// @return {@code 1} if {@code this &gt; val}, {@code -1} if {@code this &lt; val}
         ///         , {@code 0} if {@code this == val}.
         /// @throws NullPointerException
         ///             if {@code val == null}.
@@ -1021,7 +1021,7 @@ namespace biz.ritter.javapi.math
 
         ///
         /// Returns a string containing a string representation of this {@code
-        /// BigInteger} with base radix. If {@code radix < Character.MIN_RADIX} or
+		/// BigInteger} with base radix. If {@code radix &lt; Character.MIN_RADIX} or
         /// {@code radix > Character.MAX_RADIX} then a decimal representation is
         /// returned. The characters of the string representation are generated with
         /// method {@code Character.forDigit}.
@@ -1094,7 +1094,7 @@ namespace biz.ritter.javapi.math
         ///            exponent to which {@code this} is raised.
         /// @return {@code this ^ exp}.
         /// @throws ArithmeticException
-        ///             if {@code exp < 0}.
+		///             if {@code exp &lt; 0}.
         ///
         public BigInteger pow(int exp) {
             if (exp < 0) {
@@ -1274,7 +1274,7 @@ namespace biz.ritter.javapi.math
         /// @throws NullPointerException
         ///             if {@code m == null}
         /// @throws ArithmeticException
-        ///             if {@code m < 0 or} if {@code this} is not relatively prime
+		///             if {@code m &lt; 0 or} if {@code this} is not relatively prime
         ///             to {@code m}
         ///
         public virtual BigInteger modInverse(BigInteger m) {
@@ -1319,7 +1319,7 @@ namespace biz.ritter.javapi.math
         /// @throws NullPointerException
         ///             if {@code m == null} or {@code exponent == null}.
         /// @throws ArithmeticException
-        ///             if {@code m < 0} or if {@code exponent<0} and this is not
+		///             if {@code m &lt; 0} or if {@code exponent&lt;0} and this is not
         ///             relatively prime to {@code m}.
         ///
         public BigInteger modPow(BigInteger exponent, BigInteger m) {
@@ -1363,7 +1363,7 @@ namespace biz.ritter.javapi.math
         /// @throws NullPointerException
         ///             if {@code m == null}.
         /// @throws ArithmeticException
-        ///             if {@code m < 0}.
+		///             if {@code m &lt; 0}.
         ///
         public virtual BigInteger mod(BigInteger m) {
             if (m.sign <= 0) {
@@ -1378,7 +1378,7 @@ namespace biz.ritter.javapi.math
         /// Tests whether this {@code BigInteger} is probably prime. If {@code true}
         /// is returned, then this is prime with a probability beyond
         /// (1-1/2^certainty). If {@code false} is returned, then this is definitely
-        /// composite. If the argument {@code certainty} <= 0, then this method
+		/// composite. If the argument {@code certainty} &lt;= 0, then this method
         /// returns true.
         ///
         /// @param certainty
@@ -1391,13 +1391,13 @@ namespace biz.ritter.javapi.math
         }
 
         ///
-        /// Returns the smallest integer x > {@code this} which is probably prime as
+		/// Returns the smallest integer x &gt; {@code this} which is probably prime as
         /// a {@code BigInteger} instance. The probability that the returned {@code
         /// BigInteger} is prime is beyond (1-1/2^80).
         ///
-        /// @return smallest integer > {@code this} which is robably prime.
+		/// @return smallest integer &gt; {@code this} which is robably prime.
         /// @throws ArithmeticException
-        ///             if {@code this < 0}.
+		///             if {@code this &lt; 0}.
         ///
         public virtual BigInteger nextProbablePrime() {
             if (sign < 0) {
@@ -1411,7 +1411,7 @@ namespace biz.ritter.javapi.math
         /// Returns a random positive {@code BigInteger} instance in the range [0,
         /// 2^(bitLength)-1] which is probably prime. The probability that the
         /// returned {@code BigInteger} is prime is beyond (1-1/2^80).
-        /// <p>
+        /// <p/>
         /// <b>Implementation Note:</b> Currently {@code rnd} is ignored.
         ///
         /// @param bitLength
@@ -1420,7 +1420,7 @@ namespace biz.ritter.javapi.math
         ///            random generator used to generate the new {@code BigInteger}.
         /// @return probably prime random {@code BigInteger} instance.
         /// @throws IllegalArgumentException
-        ///             if {@code bitLength < 2}.
+		///             if {@code bitLength &lt; 2}.
         ///
         public static BigInteger probablePrime(int bitLength, java.util.Random rnd) {
             return new BigInteger(bitLength, 100, rnd);

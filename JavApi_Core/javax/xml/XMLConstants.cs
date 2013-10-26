@@ -24,7 +24,7 @@ namespace biz.ritter.javapix.xml
 {
 
     /**
-     * <p>Utility class to contain basic XML values as constants.</p>
+     * Utility class to contain basic XML values as constants.
      *
      * @author <a href="mailto:Jeff.Suttor@Sun.com">Jeff Suttor</a>
      * @version $Revision: 446598 $, $Date: 2006-09-15 08:55:40 -0400 (Fri, 15 Sep 2006) $
@@ -42,7 +42,7 @@ namespace biz.ritter.javapix.xml
     {
 
         /**
-         * <p>Private constructor to prevent instantiation.</p>
+         * Private constructor to prevent instantiation.
          */
         private XMLConstants()
         {
@@ -63,8 +63,7 @@ namespace biz.ritter.javapix.xml
          *
          * <p>Defined by the XML specification to be "".</p>
          *
-         * @see <a
-         * href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">
+         * @see <a href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">
          * Namespaces in XML, 3. Qualified Names</a>
          */
         public const String DEFAULT_NS_PREFIX = "";
@@ -75,8 +74,7 @@ namespace biz.ritter.javapix.xml
          * <p>Defined by the XML specification to be
          * "<code>http://www.w3.org/XML/1998/namespace</code>".</p>
          *
-         * @see <a
-         * href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">
+         * @see <a href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">
          * Namespaces in XML, 3. Qualified Names</a>
          */
         public const String XML_NS_URI =
@@ -87,8 +85,7 @@ namespace biz.ritter.javapix.xml
          *
          * <p>Defined by the XML specification to be "<code>xml</code>".</p>
          *
-         * @see <a
-         * href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">
+         * @see <a href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">
          * Namespaces in XML, 3. Qualified Names</a>
          */
         public const String XML_NS_PREFIX = "xml";
@@ -101,11 +98,9 @@ namespace biz.ritter.javapix.xml
          * <p>Defined by the XML specification to be
          * "<code>http://www.w3.org/2000/xmlns/</code>".</p>
          *
-         * @see <a
-         * href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">
+         * @see <a href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">
          * Namespaces in XML, 3. Qualified Names</a>
-         * @see <a
-         * href="http://www.w3.org/XML/xml-names-19990114-errata/">
+         * @see <a href="http://www.w3.org/XML/xml-names-19990114-errata/">
          * Namespaces in XML Errata</a>
          */
         public const String XMLNS_ATTRIBUTE_NS_URI =
@@ -119,8 +114,7 @@ namespace biz.ritter.javapix.xml
          * prefix.  Defined by the XML specification to be
          * "<code>xmlns</code>".</p>
          *
-         * @see <a
-         * href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">
+         * @see <a href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">
          * Namespaces in XML, 3. Qualified Names</a>
          */
         public const String XMLNS_ATTRIBUTE = "xmlns";
@@ -130,8 +124,7 @@ namespace biz.ritter.javapix.xml
          * 
          * <p>Defined to be "<code>http://www.w3.org/2001/XMLSchema</code>".</p>
          * 
-         * @see <a href=
-         *  "http://www.w3.org/TR/xmlschema-1/#Instance_Document_Constructions">
+         * @see <a href="http://www.w3.org/TR/xmlschema-1/#Instance_Document_Constructions">
          *  XML Schema Part 1:
          *  Structures, 2.6 Schema-Related Markup in Documents Being Validated</a>
          */
@@ -143,8 +136,7 @@ namespace biz.ritter.javapix.xml
          * 
          * <p>Defined to be "<code>http://www.w3.org/2001/XMLSchema-instance</code>".</p>
          * 
-         * @see <a href=
-         *  "http://www.w3.org/TR/xmlschema-1/#Instance_Document_Constructions">
+         * @see <a href= "http://www.w3.org/TR/xmlschema-1/#Instance_Document_Constructions">
          *  XML Schema Part 1:
          *  Structures, 2.6 Schema-Related Markup in Documents Being Validated</a>
          */

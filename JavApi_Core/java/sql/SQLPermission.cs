@@ -20,7 +20,7 @@ namespace biz.ritter.javapi.sql
     /**
      * A Permission relating to security access control in the {@code java.sql}
      * package.
-     * <p>
+     * <p/>
      * Currently, the only permission supported has the name " {@code setLog}". The
      * {@code setLog} permission controls whether a Java application or applet can
      * open a logging stream using the {@code DriverManager.setLogWriter} method or

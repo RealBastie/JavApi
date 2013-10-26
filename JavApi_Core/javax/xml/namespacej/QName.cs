@@ -24,40 +24,40 @@ namespace biz.ritter.javapix.xml.namespacej
 {
 
     /** 
-     * <p><code>QName</code> represents a <strong>qualified name</strong>
-     * as defined in the XML specifications: <a
-     * href="http://www.w3.org/TR/xmlschema-2/#QName">XML Schema Part2:
-     * Datatypes specification</a>, <a
-     * href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">Namespaces
-     * in XML</a>, <a
-     * href="http://www.w3.org/XML/xml-names-19990114-errata">Namespaces
-     * in XML Errata</a>.</p>
+     * &lt;p&gt;&lt;code&gt;QName&lt;/code&gt; represents a &lt;strong&gt;qualified name&lt;/strong&gt;
+     * as defined in the XML specifications: &lt;a
+     * href="http://www.w3.org/TR/xmlschema-2/#QName"&gt;XML Schema Part2:
+     * Datatypes specification&lt;/a&gt;, &lt;a
+     * href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames"&gt;Namespaces
+     * in XML&lt;/a&gt;, &lt;a
+     * href="http://www.w3.org/XML/xml-names-19990114-errata"&gt;Namespaces
+     * in XML Errata&lt;/a&gt;.&lt;/p&gt;
      *
-     * <p>The value of a <code>QName</code> contains a <strong>Namespace
-     * URI</strong>, <strong>local part</strong> and
-     * <strong>prefix</strong>.</p>
+     * &lt;p&gt;The value of a &lt;code&gt;QName&lt;/code&gt; contains a &lt;strong&gt;Namespace
+     * URI&lt;/strong&gt;, &lt;strong&gt;local part&lt;/strong&gt; and
+     * &lt;strong&gt;prefix&lt;/strong&gt;.&lt;/p&gt;
      *
-     * <p>The prefix is included in <code>QName</code> to retain lexical
-     * information <strong><em>when present</em></strong> in an {@link
+     * &lt;p&gt;The prefix is included in &lt;code&gt;QName&lt;/code&gt; to retain lexical
+     * information &lt;strong&gt;&lt;em&gt;when present&lt;/em&gt;&lt;/strong&gt; in an {@link
      * javax.xml.transform.Source XML input source}. The prefix is
-     * <strong><em>NOT</em></strong> used in {@link #equals(Object)
+     * &lt;strong&gt;&lt;em&gt;NOT&lt;/em&gt;&lt;/strong&gt; used in {@link #equals(Object)
      * QName.equals(Object)} or to compute the {@link #hashCode()
      * QName.hashCode()}.  Equality and the hash code are defined using
-     * <strong><em>only</em></strong> the Namespace URI and local part.</p>
+     * &lt;strong&gt;&lt;em&gt;only&lt;/em&gt;&lt;/strong&gt; the Namespace URI and local part.&lt;/p&gt;
      *
-     * <p>If not specified, the Namespace URI is set to {@link
+     * &lt;p&gt;If not specified, the Namespace URI is set to {@link
      * javax.xml.XMLConstants#NULL_NS_URI XMLConstants.NULL_NS_URI}.
      * If not specified, the prefix is set to {@link
      * javax.xml.XMLConstants#DEFAULT_NS_PREFIX
-     * XMLConstants.DEFAULT_NS_PREFIX}.</p>
+     * XMLConstants.DEFAULT_NS_PREFIX}.&lt;/p&gt;
      *
-     * <p><code>QName</code> is immutable.</p>
+     * &lt;p&gt;&lt;code&gt;QName&lt;/code&gt; is immutable.&lt;/p&gt;
      *
-     * @author <a href="mailto:Jeff.Suttor@Sun.com">Jeff Suttor</a>
+     * @author &lt;a href="mailto:Jeff.Suttor@Sun.com"&gt;Jeff Suttor&lt;/a&gt;
      * @version $Revision: 446598 $, $Date: 2006-09-15 08:55:40 -0400 (Fri, 15 Sep 2006) $
-     * @see <a href="http://www.w3.org/TR/xmlschema-2/#QName">XML Schema Part2: Datatypes specification</a>
-     * @see <a href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">Namespaces in XML</a>
-     * @see <a href="http://www.w3.org/XML/xml-names-19990114-errata">Namespaces in XML Errata</a>
+     * @see &lt;a href="http://www.w3.org/TR/xmlschema-2/#QName"&gt;XML Schema Part2: Datatypes specification&lt;/a&gt;
+     * @see &lt;a href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames"&gt;Namespaces in XML&lt;/a&gt;
+     * @see &lt;a href="http://www.w3.org/XML/xml-names-19990114-errata"&gt;Namespaces in XML Errata&lt;/a&gt;
      * @since 1.5
      */
     [Serializable]
@@ -65,23 +65,23 @@ namespace biz.ritter.javapix.xml.namespacej
     {
 
         /**
-         * <p>Stream Unique Identifier.</p>
+         * &lt;p&gt;Stream Unique Identifier.&lt;/p&gt;
          * 
-         * <p>To enable the compatibility <code>serialVersionUID</code>
+         * &lt;p&gt;To enable the compatibility &lt;code&gt;serialVersionUID&lt;/code&gt;
          * set the System Property
-         * <code>org.apache.xml.namespace.QName.useCompatibleSerialVersionUID</code>
-         * to a value of "1.0".</p>
+         * &lt;code&gt;org.apache.xml.namespace.QName.useCompatibleSerialVersionUID&lt;/code&gt;
+         * to a value of "1.0".&lt;/p&gt;
          */
         private static readonly long serialVersionUID;
 
         /**
-         * <p>The original default Stream Unique Identifier.</p>
+         * &lt;p&gt;The original default Stream Unique Identifier.&lt;/p&gt;
          */
         private const long defaultSerialVersionUID = -9120448754896609940L;
 
         /**
-         * <p>The compatibility Stream Unique Identifier that was introduced
-         * with Java 5 SE SDK.</p>
+         * &lt;p&gt;The compatibility Stream Unique Identifier that was introduced
+         * with Java 5 SE SDK.&lt;/p&gt;
          */
         private const long compatabilitySerialVersionUID = 4418622981026545151L;
 
@@ -98,59 +98,59 @@ namespace biz.ritter.javapix.xml.namespacej
         }
 
         /**
-         * <p>Namespace URI of this <code>QName</code>.</p>
+         * &lt;p&gt;Namespace URI of this &lt;code&gt;QName&lt;/code&gt;.&lt;/p&gt;
          */
         private readonly String namespaceURI;
 
         /**
-         * <p>local part of this <code>QName</code>.</p>
+         * &lt;p&gt;local part of this &lt;code&gt;QName&lt;/code&gt;.&lt;/p&gt;
          */
         private readonly String localPart;
 
         /**
-         * <p>prefix of this <code>QName</code>.</p>
+         * &lt;p&gt;prefix of this &lt;code&gt;QName&lt;/code&gt;.&lt;/p&gt;
          */
         private String prefix;
 
         /**
-         * <p><code>String</code> representation of this <code>QName</code>.</p>
+         * &lt;p&gt;&lt;code&gt;String&lt;/code&gt; representation of this &lt;code&gt;QName&lt;/code&gt;.&lt;/p&gt;
          */
         [NonSerialized]
         private String qNameAsString;
 
         /** 
-         * <p><code>QName</code> constructor specifying the Namespace URI
-         * and local part.</p>
+         * &lt;p&gt;&lt;code&gt;QName&lt;/code&gt; constructor specifying the Namespace URI
+         * and local part.&lt;/p&gt;
          *
-         * <p>If the Namespace URI is <code>null</code>, it is set to
+         * &lt;p&gt;If the Namespace URI is &lt;code&gt;null&lt;/code&gt;, it is set to
          * {@link javax.xml.XMLConstants#NULL_NS_URI
          * XMLConstants.NULL_NS_URI}.  This value represents no
-         * explicitly defined Namespace as defined by the <a
-         * href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">Namespaces
-         * in XML</a> specification.  This action preserves compatible
+         * explicitly defined Namespace as defined by the &lt;a
+         * href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames"&gt;Namespaces
+         * in XML&lt;/a&gt; specification.  This action preserves compatible
          * behavior with QName 1.0.  Explicitly providing the {@link
          * javax.xml.XMLConstants#NULL_NS_URI
          * XMLConstants.NULL_NS_URI} value is the preferred coding
-         * style.</p>
+         * style.&lt;/p&gt;
          *
-         * <p>If the local part is <code>null</code> an
-         * <code>IllegalArgumentException</code> is thrown.
+         * &lt;p&gt;If the local part is &lt;code&gt;null&lt;/code&gt; an
+         * &lt;code&gt;IllegalArgumentException&lt;/code&gt; is thrown.
          * A local part of "" is allowed to preserve
-         * compatible behavior with QName 1.0. </p>
+         * compatible behavior with QName 1.0. &lt;/p&gt;
          *
-         * <p>When using this constructor, the prefix is set to {@link
+         * &lt;p&gt;When using this constructor, the prefix is set to {@link
          * javax.xml.XMLConstants#DEFAULT_NS_PREFIX
-         * XMLConstants.DEFAULT_NS_PREFIX}.</p>
+         * XMLConstants.DEFAULT_NS_PREFIX}.&lt;/p&gt;
          *
-         * <p>The Namespace URI is not validated as a
-         * <a href="http://www.ietf.org/rfc/rfc2396.txt">URI reference</a>.
+         * &lt;p&gt;The Namespace URI is not validated as a
+         * &lt;a href="http://www.ietf.org/rfc/rfc2396.txt"&gt;URI reference&lt;/a&gt;.
          * The local part is not validated as a
-         * <a href="http://www.w3.org/TR/REC-xml-names/#NT-NCName">NCName</a>
-         * as specified in <a href="http://www.w3.org/TR/REC-xml-names/">Namespaces
-         * in XML</a>.</p>
+         * &lt;a href="http://www.w3.org/TR/REC-xml-names/#NT-NCName"&gt;NCName&lt;/a&gt;
+         * as specified in &lt;a href="http://www.w3.org/TR/REC-xml-names/"&gt;Namespaces
+         * in XML&lt;/a&gt;.&lt;/p&gt;
          *
-         * @param namespaceURI Namespace URI of the <code>QName</code>
-         * @param localPart    local part of the <code>QName</code>
+         * @param namespaceURI Namespace URI of the &lt;code&gt;QName&lt;/code&gt;
+         * @param localPart    local part of the &lt;code&gt;QName&lt;/code&gt;
          * 
          * @see #QName(String namespaceURI, String localPart, String
          * prefix) QName(String namespaceURI, String localPart, String
@@ -162,41 +162,41 @@ namespace biz.ritter.javapix.xml.namespacej
         }
 
         /** 
-         * <p><code>QName</code> constructor specifying the Namespace URI,
-         * local part and prefix.</p>
+         * &lt;p&gt;&lt;code&gt;QName&lt;/code&gt; constructor specifying the Namespace URI,
+         * local part and prefix.&lt;/p&gt;
          *
-         * <p>If the Namespace URI is <code>null</code>, it is set to
+         * &lt;p&gt;If the Namespace URI is &lt;code&gt;null&lt;/code&gt;, it is set to
          * {@link javax.xml.XMLConstants#NULL_NS_URI
          * XMLConstants.NULL_NS_URI}.  This value represents no
-         * explicitly defined Namespace as defined by the <a
-         * href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">Namespaces
-         * in XML</a> specification.  This action preserves compatible
+         * explicitly defined Namespace as defined by the &lt;a
+         * href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames"&gt;Namespaces
+         * in XML&lt;/a&gt; specification.  This action preserves compatible
          * behavior with QName 1.0.  Explicitly providing the {@link
          * javax.xml.XMLConstants#NULL_NS_URI
          * XMLConstants.NULL_NS_URI} value is the preferred coding
-         * style.</p>
+         * style.&lt;/p&gt;
          * 
-         * <p>If the local part is <code>null</code> an
-         * <code>IllegalArgumentException</code> is thrown.
+         * &lt;p&gt;If the local part is &lt;code&gt;null&lt;/code&gt; an
+         * &lt;code&gt;IllegalArgumentException&lt;/code&gt; is thrown.
          * A local part of "" is allowed to preserve
-         * compatible behavior with QName 1.0. </p>
+         * compatible behavior with QName 1.0. &lt;/p&gt;
          * 
-         * <p>If the prefix is <code>null</code>, an
-         * <code>IllegalArgumentException</code> is thrown.  Use {@link
+         * &lt;p&gt;If the prefix is &lt;code&gt;null&lt;/code&gt;, an
+         * &lt;code&gt;IllegalArgumentException&lt;/code&gt; is thrown.  Use {@link
          * javax.xml.XMLConstants#DEFAULT_NS_PREFIX
          * XMLConstants.DEFAULT_NS_PREFIX} to explicitly indicate that no
-         * prefix is present or the prefix is not relevant.</p>
+         * prefix is present or the prefix is not relevant.&lt;/p&gt;
          *
-         * <p>The Namespace URI is not validated as a
-         * <a href="http://www.ietf.org/rfc/rfc2396.txt">URI reference</a>.
+         * &lt;p&gt;The Namespace URI is not validated as a
+         * &lt;a href="http://www.ietf.org/rfc/rfc2396.txt"&gt;URI reference&lt;/a&gt;.
          * The local part and prefix are not validated as a
-         * <a href="http://www.w3.org/TR/REC-xml-names/#NT-NCName">NCName</a>
-         * as specified in <a href="http://www.w3.org/TR/REC-xml-names/">Namespaces
-         * in XML</a>.</p>
+         * &lt;a href="http://www.w3.org/TR/REC-xml-names/#NT-NCName"&gt;NCName&lt;/a&gt;
+         * as specified in &lt;a href="http://www.w3.org/TR/REC-xml-names/"&gt;Namespaces
+         * in XML&lt;/a&gt;.&lt;/p&gt;
          *
-         * @param namespaceURI Namespace URI of the <code>QName</code>
-         * @param localPart    local part of the <code>QName</code>
-         * @param prefix       prefix of the <code>QName</code>
+         * @param namespaceURI Namespace URI of the &lt;code&gt;QName&lt;/code&gt;
+         * @param localPart    local part of the &lt;code&gt;QName&lt;/code&gt;
+         * @param prefix       prefix of the &lt;code&gt;QName&lt;/code&gt;
          */
         public QName(String namespaceURI, String localPart, String prefix)
         {
@@ -227,34 +227,34 @@ namespace biz.ritter.javapix.xml.namespacej
         }
 
         /** 
-         * <p><code>QName</code> constructor specifying the local part.</p>
+         * &lt;p&gt;&lt;code&gt;QName&lt;/code&gt; constructor specifying the local part.&lt;/p&gt;
          *
-         * <p>If the local part is <code>null</code> an
-         * <code>IllegalArgumentException</code> is thrown.
+         * &lt;p&gt;If the local part is &lt;code&gt;null&lt;/code&gt; an
+         * &lt;code&gt;IllegalArgumentException&lt;/code&gt; is thrown.
          * A local part of "" is allowed to preserve
-         * compatible behavior with QName 1.0. </p>
+         * compatible behavior with QName 1.0. &lt;/p&gt;
          *
-         * <p>When using this constructor, the Namespace URI is set to
+         * &lt;p&gt;When using this constructor, the Namespace URI is set to
          * {@link javax.xml.XMLConstants#NULL_NS_URI
          * XMLConstants.NULL_NS_URI} and the prefix is set to {@link
          * javax.xml.XMLConstants#DEFAULT_NS_PREFIX
-         * XMLConstants.DEFAULT_NS_PREFIX}.</p>
+         * XMLConstants.DEFAULT_NS_PREFIX}.&lt;/p&gt;
          *
-         * <p><em>In an XML context, all Element and Attribute names exist
+         * &lt;p&gt;&lt;em&gt;In an XML context, all Element and Attribute names exist
          * in the context of a Namespace.  Making this explicit during the
-         * construction of a <code>QName</code> helps prevent hard to
+         * construction of a &lt;code&gt;QName&lt;/code&gt; helps prevent hard to
          * diagnosis XML validity errors.  The constructors {@link
          * #QName(String namespaceURI, String localPart) QName(String
          * namespaceURI, String localPart)} and
          * {@link #QName(String namespaceURI, String localPart, String prefix)} 
-         * are preferred.</em></p>
+         * are preferred.&lt;/em&gt;&lt;/p&gt;
          * 
-         * <p>The local part is not validated as a
-         * <a href="http://www.w3.org/TR/REC-xml-names/#NT-NCName">NCName</a>
-         * as specified in <a href="http://www.w3.org/TR/REC-xml-names/">Namespaces
-         * in XML</a>.</p>
+         * &lt;p&gt;The local part is not validated as a
+         * &lt;a href="http://www.w3.org/TR/REC-xml-names/#NT-NCName"&gt;NCName&lt;/a&gt;
+         * as specified in &lt;a href="http://www.w3.org/TR/REC-xml-names/"&gt;Namespaces
+         * in XML&lt;/a&gt;.&lt;/p&gt;
          *
-         * @param localPart local part of the <code>QName</code>
+         * @param localPart local part of the &lt;code&gt;QName&lt;/code&gt;
          * @see #QName(String namespaceURI, String localPart) QName(String
          * namespaceURI, String localPart)
          * @see #QName(String namespaceURI, String localPart, String
@@ -270,9 +270,9 @@ namespace biz.ritter.javapix.xml.namespacej
         }
 
         /** 
-         * <p>Get the Namespace URI of this <code>QName</code>.</p>
+         * &lt;p&gt;Get the Namespace URI of this &lt;code&gt;QName&lt;/code&gt;.&lt;/p&gt;
          *
-         * @return Namespace URI of this <code>QName</code>
+         * @return Namespace URI of this &lt;code&gt;QName&lt;/code&gt;
          */
         public virtual String getNamespaceURI()
         {
@@ -280,9 +280,9 @@ namespace biz.ritter.javapix.xml.namespacej
         }
 
         /**
-         * <p>Get the local part of this <code>QName</code>.</p>
+         * &lt;p&gt;Get the local part of this &lt;code&gt;QName&lt;/code&gt;.&lt;/p&gt;
          *
-         *  @return local part of this <code>QName</code>
+         *  @return local part of this &lt;code&gt;QName&lt;/code&gt;
          */
         public virtual String getLocalPart()
         {
@@ -290,15 +290,15 @@ namespace biz.ritter.javapix.xml.namespacej
         }
 
         /** 
-         * <p>Get the prefix of this <code>QName</code>.</p>
+         * &lt;p&gt;Get the prefix of this &lt;code&gt;QName&lt;/code&gt;.&lt;/p&gt;
          *
-         * <p>The prefix assigned to a <code>QName</code> might
-         * <strong><em>NOT</em></strong> be valid in a different
-         * context. For example, a <code>QName</code> may be assigned a
+         * &lt;p&gt;The prefix assigned to a &lt;code&gt;QName&lt;/code&gt; might
+         * &lt;strong&gt;&lt;em&gt;NOT&lt;/em&gt;&lt;/strong&gt; be valid in a different
+         * context. For example, a &lt;code&gt;QName&lt;/code&gt; may be assigned a
          * prefix in the context of parsing a document but that prefix may
-         * be invalid in the context of a different document.</p>
+         * be invalid in the context of a different document.&lt;/p&gt;
          *
-         *  @return prefix of this <code>QName</code>
+         *  @return prefix of this &lt;code&gt;QName&lt;/code&gt;
          */
         public virtual String getPrefix()
         {
@@ -306,26 +306,26 @@ namespace biz.ritter.javapix.xml.namespacej
         }
 
         /**
-         * <p>Test this <code>QName</code> for equality with another
-         * <code>Object</code>.</p>
+         * &lt;p&gt;Test this &lt;code&gt;QName&lt;/code&gt; for equality with another
+         * &lt;code&gt;Object&lt;/code&gt;.&lt;/p&gt;
          *
-         * <p>If the <code>Object</code> to be tested is not a
-         * <code>QName</code> or is <code>null</code>, then this method
-         * returns <code>false</code>.</p>
+         * &lt;p&gt;If the &lt;code&gt;Object&lt;/code&gt; to be tested is not a
+         * &lt;code&gt;QName&lt;/code&gt; or is &lt;code&gt;null&lt;/code&gt;, then this method
+         * returns &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
          *
-         * <p>Two <code>QName</code>s are considered equal if and only if
+         * &lt;p&gt;Two &lt;code&gt;QName&lt;/code&gt;s are considered equal if and only if
          * both the Namespace URI and local part are equal. This method
-         * uses <code>String.equals()</code> to check equality of the
+         * uses &lt;code&gt;String.equals()&lt;/code&gt; to check equality of the
          * Namespace URI and local part. The prefix is
-         * <strong><em>NOT</em></strong> used to determine equality.</p>
+         * &lt;strong&gt;&lt;em&gt;NOT&lt;/em&gt;&lt;/strong&gt; used to determine equality.&lt;/p&gt;
          *
-         * <p>This method satisfies the general contract of {@link
-         * java.lang.Object#equals(Object) Object.equals(Object)}</p>
+         * &lt;p&gt;This method satisfies the general contract of {@link
+         * java.lang.Object#equals(Object) Object.equals(Object)}&lt;/p&gt;
          *
-         * @param objectToTest the <code>Object</code> to test for
-         * equality with this <code>QName</code>
-         * @return <code>true</code> if the given <code>Object</code> is
-         * equal to this <code>QName</code> else <code>false</code>
+         * @param objectToTest the &lt;code&gt;Object&lt;/code&gt; to test for
+         * equality with this &lt;code&gt;QName&lt;/code&gt;
+         * @return &lt;code&gt;true&lt;/code&gt; if the given &lt;code&gt;Object&lt;/code&gt; is
+         * equal to this &lt;code&gt;QName&lt;/code&gt; else &lt;code&gt;false&lt;/code&gt;
          */
         public override bool Equals(Object objectToTest)
         {
@@ -344,17 +344,17 @@ namespace biz.ritter.javapix.xml.namespacej
         }
 
         /**
-         * <p>Generate the hash code for this <code>QName</code>.</p>
+         * &lt;p&gt;Generate the hash code for this &lt;code&gt;QName&lt;/code&gt;.&lt;/p&gt;
          *
-         * <p>The hash code is calculated using both the Namespace URI and
-         * the local part of the <code>QName</code>.  The prefix is
-         * <strong><em>NOT</em></strong> used to calculate the hash
-         * code.</p>
+         * &lt;p&gt;The hash code is calculated using both the Namespace URI and
+         * the local part of the &lt;code&gt;QName&lt;/code&gt;.  The prefix is
+         * &lt;strong&gt;&lt;em&gt;NOT&lt;/em&gt;&lt;/strong&gt; used to calculate the hash
+         * code.&lt;/p&gt;
          *
-         * <p>This method satisfies the general contract of {@link
-         * java.lang.Object#hashCode() Object.hashCode()}.</p>
+         * &lt;p&gt;This method satisfies the general contract of {@link
+         * java.lang.Object#hashCode() Object.hashCode()}.&lt;/p&gt;
          *
-         * @return hash code for this <code>QName</code> <code>Object</code>
+         * @return hash code for this &lt;code&gt;QName&lt;/code&gt; &lt;code&gt;Object&lt;/code&gt;
          */
         public override int GetHashCode()
         {
@@ -362,26 +362,26 @@ namespace biz.ritter.javapix.xml.namespacej
         }
 
         /** 
-         * <p><code>String</code> representation of this
-         * <code>QName</code>.</p>
+         * &lt;p&gt;&lt;code&gt;String&lt;/code&gt; representation of this
+         * &lt;code&gt;QName&lt;/code&gt;.&lt;/p&gt;
          *
-         * <p>The commonly accepted way of representing a <code>QName</code>
-         * as a <code>String</code> was <a href="http://jclark.com/xml/xmlns.htm">defined</a>
-         * by James Clark.  Although this is not a <em>standard</em>
+         * &lt;p&gt;The commonly accepted way of representing a &lt;code&gt;QName&lt;/code&gt;
+         * as a &lt;code&gt;String&lt;/code&gt; was &lt;a href="http://jclark.com/xml/xmlns.htm"&gt;defined&lt;/a&gt;
+         * by James Clark.  Although this is not a &lt;em&gt;standard&lt;/em&gt;
          * specification, it is in common use,  e.g. {@link javax.xml.transform.Transformer#setParameter(String name, Object value)}.
-         * This implementation represents a <code>QName</code> as:
+         * This implementation represents a &lt;code&gt;QName&lt;/code&gt; as:
          * "{" + Namespace URI + "}" + local part.  If the Namespace URI
-         * <code>.equals(XMLConstants.NULL_NS_URI)</code>, only the
+         * &lt;code&gt;.equals(XMLConstants.NULL_NS_URI)&lt;/code&gt;, only the
          * local part is returned.  An appropriate use of this method is
-         * for debugging or logging for human consumption.</p>
+         * for debugging or logging for human consumption.&lt;/p&gt;
          *
-         * <p>Note the prefix value is <strong><em>NOT</em></strong>
-         * returned as part of the <code>String</code> representation.</p>
+         * &lt;p&gt;Note the prefix value is &lt;strong&gt;&lt;em&gt;NOT&lt;/em&gt;&lt;/strong&gt;
+         * returned as part of the &lt;code&gt;String&lt;/code&gt; representation.&lt;/p&gt;
          *  
-         * <p>This method satisfies the general contract of {@link
-         * java.lang.Object#toString() Object.toString()}.</p>
+         * &lt;p&gt;This method satisfies the general contract of {@link
+         * java.lang.Object#toString() Object.toString()}.&lt;/p&gt;
          *
-         *  @return <code>String</code> representation of this <code>QName</code>
+         *  @return &lt;code&gt;String&lt;/code&gt; representation of this &lt;code&gt;QName&lt;/code&gt;
          */
         public override String ToString()
         {
@@ -408,42 +408,42 @@ namespace biz.ritter.javapix.xml.namespacej
         }
 
         /** 
-         * <p><code>QName</code> derived from parsing the formatted
-         * <code>String</code>.</p>
+         * &lt;p&gt;&lt;code&gt;QName&lt;/code&gt; derived from parsing the formatted
+         * &lt;code&gt;String&lt;/code&gt;.&lt;/p&gt;
          *
-         * <p>If the <code>String</code> is <code>null</code> or does not conform to
+         * &lt;p&gt;If the &lt;code&gt;String&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt; or does not conform to
          * {@link #toString() QName.toString()} formatting, an
-         * <code>IllegalArgumentException</code> is thrown.</p>
+         * &lt;code&gt;IllegalArgumentException&lt;/code&gt; is thrown.&lt;/p&gt;
          *  
-         * <p><em>The <code>String</code> <strong>MUST</strong> be in the
-         * form returned by {@link #toString() QName.toString()}.</em></p>
+         * &lt;p&gt;&lt;em&gt;The &lt;code&gt;String&lt;/code&gt; &lt;strong&gt;MUST&lt;/strong&gt; be in the
+         * form returned by {@link #toString() QName.toString()}.&lt;/em&gt;&lt;/p&gt;
 
-         * <p>The commonly accepted way of representing a <code>QName</code>
-         * as a <code>String</code> was <a href="http://jclark.com/xml/xmlns.htm">defined</a>
-         * by James Clark.  Although this is not a <em>standard</em>
+         * &lt;p&gt;The commonly accepted way of representing a &lt;code&gt;QName&lt;/code&gt;
+         * as a &lt;code&gt;String&lt;/code&gt; was &lt;a href="http://jclark.com/xml/xmlns.htm"&gt;defined&lt;/a&gt;
+         * by James Clark.  Although this is not a &lt;em&gt;standard&lt;/em&gt;
          * specification, it is in common use,  e.g. {@link javax.xml.transform.Transformer#setParameter(String name, Object value)}.
-         * This implementation parses a <code>String</code> formatted
+         * This implementation parses a &lt;code&gt;String&lt;/code&gt; formatted
          * as: "{" + Namespace URI + "}" + local part.  If the Namespace
-         * URI <code>.equals(XMLConstants.NULL_NS_URI)</code>, only the
-         * local part should be provided.</p>
+         * URI &lt;code&gt;.equals(XMLConstants.NULL_NS_URI)&lt;/code&gt;, only the
+         * local part should be provided.&lt;/p&gt;
          *
-         * <p>The prefix value <strong><em>CANNOT</em></strong> be
-         * represented in the <code>String</code> and will be set to
+         * &lt;p&gt;The prefix value &lt;strong&gt;&lt;em&gt;CANNOT&lt;/em&gt;&lt;/strong&gt; be
+         * represented in the &lt;code&gt;String&lt;/code&gt; and will be set to
          * {@link javax.xml.XMLConstants#DEFAULT_NS_PREFIX
-         * XMLConstants.DEFAULT_NS_PREFIX}.</p>
+         * XMLConstants.DEFAULT_NS_PREFIX}.&lt;/p&gt;
          *
-         * <p>This method does not do full validation of the resulting
-         * <code>QName</code>. 
-         * <p>The Namespace URI is not validated as a
-         * <a href="http://www.ietf.org/rfc/rfc2396.txt">URI reference</a>.
+         * &lt;p&gt;This method does not do full validation of the resulting
+         * &lt;code&gt;QName&lt;/code&gt;. 
+         * &lt;p&gt;The Namespace URI is not validated as a
+         * &lt;a href="http://www.ietf.org/rfc/rfc2396.txt"&gt;URI reference&lt;/a&gt;.
          * The local part is not validated as a
-         * <a href="http://www.w3.org/TR/REC-xml-names/#NT-NCName">NCName</a>
+         * &lt;a href="http://www.w3.org/TR/REC-xml-names/#NT-NCName"&gt;NCName&lt;/a&gt;
          * as specified in
-         * <a href="http://www.w3.org/TR/REC-xml-names/">Namespaces in XML</a>.</p>
+         * &lt;a href="http://www.w3.org/TR/REC-xml-names/"&gt;Namespaces in XML&lt;/a&gt;.&lt;/p&gt;
          *
-         * @param qNameAsString <code>String</code> representation
-         * of the <code>QName</code>
-         * @return <code>QName</code> corresponding to the given <code>String</code>
+         * @param qNameAsString &lt;code&gt;String&lt;/code&gt; representation
+         * of the &lt;code&gt;QName&lt;/code&gt;
+         * @return &lt;code&gt;QName&lt;/code&gt; corresponding to the given &lt;code&gt;String&lt;/code&gt;
          * @see #toString() QName.toString()
          */
         public static QName valueOf(String qNameAsString)
@@ -501,8 +501,8 @@ namespace biz.ritter.javapix.xml.namespacej
 
         /*
          * For old versions of QName which didn't have a prefix field,
-         * <code>ObjectInputStream.defaultReadObject()</code> will initialize
-         * the prefix to <code>null</code> instead of the empty string. This
+         * &lt;code&gt;ObjectInputStream.defaultReadObject()&lt;/code&gt; will initialize
+         * the prefix to &lt;code&gt;null&lt;/code&gt; instead of the empty string. This
          * method fixes up the prefix field if it didn't exist in the serialized
          * object.
          */

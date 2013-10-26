@@ -75,7 +75,7 @@ namespace biz.ritter.javapi.lang.reflect
         /// <summary>
         /// Create new Array of type with giving length
         /// </summary>
-        /// <param name="type">type / classe</param>
+        /// <param name="clazz">type / classe</param>
         /// <param name="length">size of array</param>
         /// <returns></returns>
         public static Object newInstance(java.lang.Class clazz, int length)

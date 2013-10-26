@@ -227,8 +227,8 @@ namespace biz.ritter.javapi.lang
          *         {@code radix}.
          * @throws NumberFormatException
          *             if {@code string} is {@code null} or has a length of zero,
-         *             {@code radix < Character.MIN_RADIX},
-         *             {@code radix > Character.MAX_RADIX}, or if {@code string}
+         *             {@code radix &lt; Character.MIN_RADIX},
+         *             {@code radix &gt; Character.MAX_RADIX}, or if {@code string}
          *             can not be parsed as a byte value.
          */
         public static byte parseByte(String str, int radix)
@@ -294,8 +294,8 @@ namespace biz.ritter.javapi.lang
          *         {@code string} using {@code radix}.
          * @throws NumberFormatException
          *             if {@code string} is {@code null} or has a length of zero,
-         *             {@code radix < Character.MIN_RADIX},
-         *             {@code radix > Character.MAX_RADIX}, or if {@code string}
+         *             {@code radix &lt; Character.MIN_RADIX},
+         *             {@code radix &gt; Character.MAX_RADIX}, or if {@code string}
          *             can not be parsed as a byte value.
          * @see #parseByte(String, int)
          */
@@ -306,7 +306,7 @@ namespace biz.ritter.javapi.lang
 
         /**
          * Returns a {@code Byte} instance for the specified byte value.
-         * <p>
+         * <p/>
          * If it is not necessary to get a new {@code Byte} instance, it is
          * recommended to use this method instead of the constructor, since it
          * maintains a cache of instances which may result in better performance.
@@ -328,7 +328,7 @@ namespace biz.ritter.javapi.lang
         /// <summary>
         /// Implicit convert java.lang.Byte to .net byte type
         /// </summary>
-        /// <param name="d"></param>
+        /// <param name="b"></param>
         /// <returns></returns>
         public static implicit operator byte(java.lang.Byte b)
         {

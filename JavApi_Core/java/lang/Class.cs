@@ -11,7 +11,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  *  
- *  Copyright © 2011,2012 Sebastian Ritter
+ *  Copyright © 2011,2012,2013 Sebastian Ritter
  */
 using System;
 using System.Reflection;
@@ -61,7 +61,6 @@ namespace biz.ritter.javapi.lang
         /// <summary>
         /// Return the constructor
         /// </summary>
-        /// <param name="name"></param>
         /// <param name="paramTypes"></param>
         /// <returns></returns>
         public java.lang.reflect.Constructor getConstructor(Class[] paramTypes)
