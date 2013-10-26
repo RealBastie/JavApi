@@ -1,0 +1,47 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="JavApi_Core/java/lang/Runtime.cs">
+    <Files>
+      <File FileName="JavApi_Core/java/lang/SystemJ.cs" Line="274" Column="21" />
+      <File FileName="JavApi_Core/java/lang/Runtime.cs" Line="1" Column="3" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Option id="ShowAllFiles" value="True" />
+          <Node name="JavApi_Core" expanded="True">
+            <Node name="Properties" expanded="True" />
+            <Node name="JavApi_Core" expanded="True">
+              <Node name="java" expanded="True">
+                <Node name="lang" expanded="True" selected="True" />
+                <Node name="sql" expanded="True" />
+              </Node>
+              <Node name="javax" expanded="True">
+                <Node name="imageio" expanded="True">
+                  <Node name="spi" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="Properties" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>openRoundClips</Value>
+          <Value>args[0]</Value>
+        </State>
+      </Pad>
+      <Pad Id="ConnectionManagerPad">
+        <State selected="True" />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
