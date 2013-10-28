@@ -18,7 +18,7 @@ namespace biz.ritter.javapi.lang.refj
     /**
      * Implements a soft reference, which is the least-weak of the three types of
      * references. Once the garbage collector has decided that an object {@code obj}
-     * is <a href="package.html#definitions>softly-reachable</a>, the following
+     * is <a href="package.html#definitions">softly-reachable</a>, the following
      * may happen, either immediately or at a later point:
      *
      * <ul>

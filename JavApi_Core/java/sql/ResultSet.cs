@@ -19,14 +19,14 @@ namespace biz.ritter.javapi.sql
     /**
      * An interface for an object which represents a database table entry, returned
      * as the result of the query to the database.
-     * <p>
+     * <p/>
      * {@code ResultSet}s have a cursor which points to the current data table row.
      * When the {@code ResultSet} is created, the cursor's location is one position
      * ahead of the first row. To move the cursor to the first and consecutive rows,
      * use the {@code next} method. The {@code next} method returns {@code true} as
      * long as there are more rows in the {@code ResultSet}, otherwise it returns
      * {@code false}.
-     * <p>
+     * <p/>
      * The default type of {@code ResultSet} can not be updated and its cursor can
      * only advance forward through the rows of data. This means that it is only
      * possible to read through it once. However, other kinds of {@code ResultSet}
@@ -41,7 +41,7 @@ namespace biz.ritter.javapi.sql
      * <dd>{@code ResultSet theResultSet =
      * theStatement.executeQuery("SELECT price, quantity FROM STOCKTABLE");}</dd>
      * <dd>{@code // theResultSet is both scrollable and updatable}</dd> </ul>
-     * <p>
+     * <p/>
      * The {@code ResultSet} interface provides a series of methods for retrieving
      * data from columns in the current row, such as {@code getDate} and {@code
      * getFloat}. The columns are retrieved either by their index number (starting
@@ -53,12 +53,12 @@ namespace biz.ritter.javapi.sql
      * is better to use column indexes. Ideally the columns should be read
      * left-to-right and read once only, since not all databases are optimized to
      * handle other techniques of reading the data.
-     * <p>
+     * <p/>
      * When reading data via the appropriate getter methods, the JDBC driver maps
      * the SQL data retrieved from the database to the Java type implied by the
      * method invoked by the application. The JDBC specification has a table for the
      * mappings from SQL types to Java types.
-     * <p>
+     * <p/>
      * There are also methods for writing data into the {@code ResultSet}, such as
      * {@code updateInt} and {@code updateString}. The update methods can be used
      * either to modify the data of an existing row or to insert new data rows into
@@ -68,7 +68,7 @@ namespace biz.ritter.javapi.sql
      * method. For insertion of new rows, the cursor is first moved to a special row
      * called the <i>Insert Row</i>, data is added using the update methods,
      * followed by calling the {@code ResultSet.insertRow} method.
-     * <p>
+     * <p/>
      * A {@code ResultSet} is closed if the statement which generated it closes, the
      * statement is executed again, or the same statement's next {@code ResultSet} 
      * is retrieved (if the statement returned of multiple results).
@@ -276,7 +276,7 @@ namespace biz.ritter.javapi.sql
         /**
          * Gets the value of a column specified by column index as a binary
          * stream.
-         * <p>
+         * <p/>
          * This method can be used to read {@code LONGVARBINARY} values. All of the
          * data in the {@code InputStream} should be read before getting data from
          * any other column. A further call to a getter method will implicitly close
@@ -293,7 +293,7 @@ namespace biz.ritter.javapi.sql
 
         /**
          * Gets the value of a column specified by column name as a binary stream.
-         * <p>
+         * <p/>
          * This method can be used to read {@code LONGVARBINARY} values. All of the
          * data in the {@code InputStream} should be read before getting data from
          * any other column. A further call to a getter method will implicitly close
@@ -676,7 +676,7 @@ namespace biz.ritter.javapi.sql
          * Gets the value of a specified column as a Java {@code Object}. The type
          * of the returned object will be the default according to the column's SQL
          * type, following the JDBC specification for built-in types.
-         * <p>
+         * <p/>
          * For SQL User Defined Types, if a column value is Structured or Distinct,
          * this method behaves the same as a call to: {@code
          * getObject(columnIndex,this.getStatement().getConnection().getTypeMap())}
@@ -693,7 +693,7 @@ namespace biz.ritter.javapi.sql
         /**
          * Gets the value of a column specified by column index as a Java {@code
          * Object}.
-         * <p>
+         * <p/>
          * The type of the Java object will be determined by the supplied Map to
          * perform the mapping of SQL {@code Struct} or Distinct types into Java
          * objects.
@@ -715,7 +715,7 @@ namespace biz.ritter.javapi.sql
          * Gets the value of a specified column as a Java {@code Object}. The type
          * of the returned object will be the default according to the column's SQL
          * type, following the JDBC specification for built-in types.
-         * <p>
+         * <p/>
          * For SQL User Defined Types, if a column value is structured or distinct,
          * this method behaves the same as a call to: {@code
          * getObject(columnIndex,this.getStatement().getConnection().getTypeMap())}
@@ -732,7 +732,7 @@ namespace biz.ritter.javapi.sql
         /**
          * Gets the value of a column specified by column name as a Java {@code
          * Object}.
-         * <p>
+         * <p/>
          * The type of the Java object will be determined by the supplied Map to
          * perform the mapping of SQL Struct or Distinct types into Java objects.
          *
@@ -1033,12 +1033,12 @@ namespace biz.ritter.javapi.sql
          * Gets the first warning generated by calls on this {@code ResultSet}.
          * Subsequent warnings on this {@code ResultSet} are chained to the first
          * one.
-         * <p>
+         * <p/>
          * The warnings are cleared when a new Row is read from the {@code
          * ResultSet}. The warnings returned by this method are only the warnings
          * generated by {@code ResultSet} method calls - warnings generated by
          * Statement methods are held by the Statement.
-         * <p>
+         * <p/>
          * An {@code SQLException} is generated if this method is called on a closed
          * {@code ResultSet}.
          * 
@@ -1139,7 +1139,7 @@ namespace biz.ritter.javapi.sql
 
         /**
          * Shifts the cursor position down one row in this {@code ResultSet} object.
-         * <p>
+         * <p/>
          * Any input streams associated with the current row are closed and any
          * warnings are cleared.
          *
@@ -1165,7 +1165,7 @@ namespace biz.ritter.javapi.sql
         /**
          * Refreshes the current row with its most up to date value in the database.
          * Must not be called when the cursor is on the Insert Row.
-         * <p>
+         * <p/>
          * If any columns in the current row have been updated but the {@code
          * updateRow} has not been called, then the updates are lost when this
          * method is called.

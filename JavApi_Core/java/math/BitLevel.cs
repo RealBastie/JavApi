@@ -124,7 +124,7 @@ namespace biz.ritter.javapi.math
         }
 
         /**
-         * Performs {@code val <<= count}.
+         * Performs {@code val &lt;&lt;= count}.
          */
         // val should have enough place (and one digit more)
         internal static void inplaceShiftLeft(BigInteger val, int count) {

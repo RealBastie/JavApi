@@ -210,8 +210,8 @@ namespace biz.ritter.javapi.lang
          *         {@code radix}.
          * @throws NumberFormatException
          *             if {@code string} is {@code null} or has a length of zero,
-         *             {@code radix < Character.MIN_RADIX},
-         *             {@code radix > Character.MAX_RADIX}, or if {@code string}
+         *             {@code radix &lt; Character.MIN_RADIX},
+         *             {@code radix &gt; Character.MAX_RADIX}, or if {@code string}
          *             can not be parsed as a short value.
          */
         public static short parseShort(String str, int radix)

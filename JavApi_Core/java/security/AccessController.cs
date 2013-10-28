@@ -33,7 +33,7 @@ namespace biz.ritter.javapi.security
          * 
          * @param action
          *            the action being performed
-         * @param <T>
+         * @param T
          *            the return type for the privileged action
          * @return the result of evaluating the action
          * 

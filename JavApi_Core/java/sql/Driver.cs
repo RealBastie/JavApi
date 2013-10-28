@@ -18,13 +18,13 @@ namespace biz.ritter.javapi.sql
 {
     /**
      * An interface to a JDBC driver.
-     * <p>
+     * <p/>
      * The JDBC driver uses URLs to specify the location of specific data. URL
      * format typically takes the form " {@code xxxx:yyyy:SpecificData}", where "
      * {@code xxxx:yyyy}" is referred to as the <i>subprotocol</i> and is normally
      * the same for all of a particular driver. " {@code SpecificData}" is a string
      * which identifies the particular data source that the driver should use.
-     * <p>
+     * <p/>
      * A driver needs to be registered with a {@link DriverManager}. It is
      * registered and instantiated by calling {@code Class.forName("DriverURL")}
      * with the URL string as argument.
@@ -83,7 +83,7 @@ namespace biz.ritter.javapi.sql
 
         /**
          * Gets information about possible properties for this driver.
-         * <p>
+         * <p/>
          * This method is intended to provide a listing of possible properties that
          * the client of the driver must supply in order to establish a connection
          * to a database. Note that the returned array of properties may change
@@ -111,7 +111,7 @@ namespace biz.ritter.javapi.sql
          * Reports whether this driver is a genuine JDBC CompliantTM driver. The
          * driver may only return {@code true} if it passes all the JDBC compliance
          * tests.
-         * <p>
+         * <p/>
          * A driver may not be fully compliant if the underlying database has
          * limited functionality.
          *

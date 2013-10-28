@@ -39,7 +39,7 @@ namespace biz.ritter.javapi.math
          * @param a the first array
          * @param b the second array
          * @param size the size of arrays
-         * @return 1 if a > b, -1 if a < b, 0 if a == b
+         * @return 1 if a &gt; b, -1 if a &lt; b, 0 if a == b
          */
         internal static int compareArrays(int[] a, int[] b, int size) {
             int i;

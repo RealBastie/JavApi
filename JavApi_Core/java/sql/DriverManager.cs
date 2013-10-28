@@ -20,7 +20,7 @@ namespace biz.ritter.javapi.sql
 
     /**
      * Provides facilities for managing JDBC drivers.
-     * <p>
+     * <p/>
      * The {@code DriverManager} class loads JDBC drivers during its initialization,
      * from the list of drivers referenced by the system property {@code
      * "jdbc.drivers"}.
@@ -105,7 +105,7 @@ namespace biz.ritter.javapi.sql
          * This will only succeed when the caller's class loader loaded the driver
          * that is to be removed. If the driver was loaded by a different class
          * loader, the removal of the driver fails silently.
-         * <p>
+         * <p/>
          * If the removal succeeds, the {@code DriverManager} will not use this
          * driver in the future when asked to get a {@code Connection}.
          *
@@ -366,7 +366,7 @@ namespace biz.ritter.javapi.sql
 
         /**
          * Registers a given JDBC driver with the {@code DriverManager}.
-         * <p>
+         * <p/>
          * A newly loaded JDBC driver class should register itself with the
          * {@code DriverManager} by calling this method.
          *

@@ -25,7 +25,7 @@ namespace biz.ritter.javapi.util
      */
     public interface Set<E> : Collection<E> {
     
-        /**
+        /*
          * Searches this set for all objects in the specified collection.
          * 
          * @param collection
@@ -35,7 +35,7 @@ namespace biz.ritter.javapi.util
          *
         bool containsAll(Collection<E> collection);
         */
-        /**
+        /*
          * Compares the specified object to this set, and returns true if they
          * represent the <em>same</em> object using a class specific comparison.
          * Equality for a set means that both sets have the same size and the same
@@ -49,7 +49,7 @@ namespace biz.ritter.javapi.util
          *
         bool equals(Object obj);
 
-        /**
+        /*
          * Returns the hash code for this set. Two set which are equal must return
          * the same value.
          * 
@@ -59,7 +59,7 @@ namespace biz.ritter.javapi.util
          *
         int hashCode();
 
-        /**
+        /*
          * Adds the specified object to this set. The set is not modified if it
          * already contains the object.
          * 
@@ -75,7 +75,7 @@ namespace biz.ritter.javapi.util
          *
         bool add(E obj);
 
-        /**
+        /*
          * Adds the objects in the specified collection which do not exist yet in
          * this set.
          * 
@@ -91,7 +91,7 @@ namespace biz.ritter.javapi.util
          *
         bool addAll(Collection<E> collection);
 
-        /**
+        /*
          * Removes all elements from this set, leaving it empty.
          * 
          * @throws UnsupportedOperationException
@@ -101,7 +101,7 @@ namespace biz.ritter.javapi.util
          *
         void clear();
 
-        /**
+        /*
          * Searches this set for the specified object.
          * 
          * @param object
@@ -111,7 +111,7 @@ namespace biz.ritter.javapi.util
          *
         bool contains(Object obj);
 
-        /**
+        /*
          * Returns true if this set has no elements.
          * 
          * @return {@code true} if this set has no elements, {@code false}
@@ -120,7 +120,7 @@ namespace biz.ritter.javapi.util
          *
         bool isEmpty();
 
-        /**
+        /*
          * Returns an iterator on the elements of this set. The elements are
          * unordered.
          * 
@@ -129,7 +129,7 @@ namespace biz.ritter.javapi.util
          *
         Iterator<E> iterator();
 
-        /**
+        /*
          * Removes the specified object from this set.
          * 
          * @param object
@@ -140,21 +140,21 @@ namespace biz.ritter.javapi.util
          *
         bool remove(Object obj);
 
-        /**
+        /*
          * Returns the number of elements in this set.
          * 
          * @return the number of elements in this set.
          *
         int size();
 
-        /**
+        /*
          * Returns an array containing all elements contained in this set.
          * 
          * @return an array of the elements from this set.
          *
         Object[] toArray();
 
-        /**
+        /*
          * Returns an array containing all elements contained in this set. If the
          * specified array is large enough to hold the elements, the specified array
          * is used, otherwise an array of the same type is created. If the specified
@@ -172,7 +172,7 @@ namespace biz.ritter.javapi.util
         T[] toArray<T>(T[] array);
          */
 
-        /**
+        /*
          * Removes all objects in the specified collection from this set.
          * 
          * @param collection
@@ -184,7 +184,7 @@ namespace biz.ritter.javapi.util
         bool removeAll(Collection<E> collection);
         */
          
-        /**
+        /*
          * Removes all objects from this set that are not contained in the specified
          * collection.
          * 

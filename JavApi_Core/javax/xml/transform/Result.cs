@@ -55,7 +55,7 @@ namespace biz.ritter.javapix.xml.transform
          * The name of the processing instruction that is sent if the
          * result tree disables output escaping.
          *
-         * <p>Normally, result tree serialization escapes & and &lt; (and
+         * <p>Normally, result tree serialization escapes &amp; and &lt; (and
          * possibly other characters) when outputting text nodes.
          * This ensures that the output is well-formed XML. However,
          * it is sometimes convenient to be able to produce output that is

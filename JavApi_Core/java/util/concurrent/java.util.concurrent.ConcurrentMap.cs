@@ -13,7 +13,7 @@ namespace biz.ritter.javapi.util.concurrent
      * A {@link java.util.Map} providing additional atomic
      * <tt>putIfAbsent</tt>, <tt>remove</tt>, and <tt>replace</tt> methods.
      *
-     * <p>Memory consistency effects: As with other concurrent
+     * <p/>Memory consistency effects: As with other concurrent
      * collections, actions in a thread prior to placing an object into a
      * {@code ConcurrentMap} as a key or value
      * <a href="package-summary.html#MemoryVisibility"><i>happen-before</i></a>

@@ -87,7 +87,7 @@ namespace biz.ritter.javapi.lang
         /// <summary>
         /// Create new AbstractStringBuilder
         /// </summary>
-        /// <param name="cs"></param>
+        /// <param name="s"></param>
         protected internal AbstractStringBuilder(String s) : this (s.getWrapperInstance())
         {
         }
@@ -544,7 +544,7 @@ namespace biz.ritter.javapi.lang
          * @param length
          *            the new length of this StringBuffer.
          * @exception IndexOutOfBoundsException
-         *                if {@code length < 0}.
+         *                if {@code length &lt; 0}.
          * @see #length
          */
         public virtual void setLength(int length) {

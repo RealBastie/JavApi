@@ -18,10 +18,10 @@ namespace biz.ritter.javapi.sql
 {
     /**
      * An interface for a precompiled SQL Statement.
-     * <p>
+     * <p/>
      * An SQL Statement is put into a {@code PreparedStatement} and is precompiled
      * so that it can be executed efficiently multiple times.
-     * <p>
+     * <p/>
      * Setter methods are supplied in the {@code PreparedStatement} interface for
      * the setting of {@code IN} parameters for the statement. The setter method
      * used for each {@code IN} parameter must match the parameter's type.
@@ -39,7 +39,7 @@ namespace biz.ritter.javapi.sql
 
         /**
          * Clear the current parameter values.
-         * <p>
+         * <p/>
          * Typically, parameter values are retained for multiple executions of the
          * {@code Statement}. Setting a parameter value replaces the previous value. This
          * method clears the values for all parameters, releasing all resources used
@@ -52,7 +52,7 @@ namespace biz.ritter.javapi.sql
 
         /**
          * Executes the SQL statement in this {@code PreparedStatement}.
-         * <p>
+         * <p/>
          * A {@code PreparedStatement} may return multiple results. The execute
          * method executes the {@code PreparedStatement} and returns a flag 
          * indicating the kind of result produced by the action. The methods 
@@ -95,7 +95,7 @@ namespace biz.ritter.javapi.sql
         /**
          * Returns a {@code ResultSetMetaData} describing the {@code
          * ResultSet} that would be produced by execution of the {@code PreparedStatement}.
-         * <p>
+         * <p/>
          * It is possible to know the metadata for the {@code ResultSet} without
          * executing the {@code PreparedStatement}, because the {@code
          * PreparedStatement} is precompiled. As a result the metadata can be
@@ -139,7 +139,7 @@ namespace biz.ritter.javapi.sql
         /**
          * Sets the value of a specified parameter to the content of a supplied
          * {@code InputStream}, which has a specified number of bytes.
-         * <p>
+         * <p/>
          * This is a good method for setting an SQL {@code LONGVARCHAR} parameter
          * where the length of the data is large. Data is read from the {@code
          * InputStream} until end-of-file is reached or the specified number of
@@ -180,7 +180,7 @@ namespace biz.ritter.javapi.sql
         /**
          * Sets the value of a specified parameter to the content of a supplied
          * binary {@code InputStream}, which has a specified number of bytes.
-         * <p>
+         * <p/>
          * Use this method when a large amount of data needs to be set into a
          * {@code LONGVARBINARY} parameter.
          *
@@ -264,7 +264,7 @@ namespace biz.ritter.javapi.sql
         /**
          * Sets the value of a specified parameter to the character content of a
          * {@code Reader} object, with the specified length of character data.
-         * <p>
+         * <p/>
          * Data is read from the {@code
          * Reader} until end-of-file is reached or the specified number of
          * characters are copied.
@@ -416,7 +416,7 @@ namespace biz.ritter.javapi.sql
          * of {@code setNull} should be used for <i>User Defined Types</i> (UDTs)
          * and also REF types. UDTs can be {@code STRUCT}, {@code DISTINCT}, {@code
          * JAVA_OBJECT} and named array types.
-         * <p>
+         * <p/>
          * Applications must provide the SQL type code and also a fully qualified
          * SQL type name when supplying a {@code NULL} UDT or REF. For a UDT, the
          * type name is the type name of the parameter itself, but for a REF
@@ -440,7 +440,7 @@ namespace biz.ritter.javapi.sql
 
         /**
          * Sets the value of a specified parameter using a supplied object.
-         * <p>
+         * <p/>
          * There is a standard mapping from Java types to SQL types, defined in the
          * JDBC specification. The passed object is then transformed into the
          * appropriate SQL type, and then transferred to the database. {@code
@@ -466,7 +466,7 @@ namespace biz.ritter.javapi.sql
 
         /**
          * Sets the value of a specified parameter using a supplied object.
-         * <p>
+         * <p/>
          * The object is converted to the given {@code targetSqlType} before it is
          * sent to the database. If the object has a custom mapping (its class
          * implements the interface {@code SQLData}), the JDBC driver will call the method
@@ -491,7 +491,7 @@ namespace biz.ritter.javapi.sql
 
         /**
          * Sets the value of a specified parameter using a supplied object.
-         * <p>
+         * <p/>
          * The object is converted to the given {@code targetSqlType} before it is
          * sent to the database. If the object has a custom mapping (its class
          * implements the interface {@code SQLData}), the JDBC driver will call the method
@@ -520,7 +520,7 @@ namespace biz.ritter.javapi.sql
 
         /**
          * Sets the value of a specified parameter to a supplied {@code
-         * REF(<structured-type>)} value. This is stored as an SQL {@code REF}.
+         * REF(&lt;structured-type&gt;)} value. This is stored as an SQL {@code REF}.
          * 
          * @param parameterIndex
          *            the parameter number index, where the first parameter has
@@ -583,7 +583,7 @@ namespace biz.ritter.javapi.sql
         /**
          * Sets the value of a specified parameter to a supplied {@code
          * java.sql.Time} value, using a supplied {@code Calendar}.
-         * <p>
+         * <p/>
          * The driver uses the supplied {@code Calendar} to create the SQL {@code
          * TIME} value, which allows it to use a custom timezone - otherwise the
          * driver uses the default timezone of the Java virtual machine.
@@ -624,7 +624,7 @@ namespace biz.ritter.javapi.sql
         /**
          * Sets the value of a specified parameter to a supplied {@code
          * java.sql.Timestamp} value, using the supplied {@code Calendar}.
-         * <p>
+         * <p/>
          * The driver uses the supplied {@code Calendar} to create the SQL {@code
          * TIMESTAMP} value, which allows it to use a custom timezone - otherwise
          * the driver uses the default timezone of the Java virtual machine.

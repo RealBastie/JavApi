@@ -20,14 +20,14 @@ namespace biz.ritter.javapi.sql
     /**
      * This interface represents an SQL Ref - a data object containing a cursor
      * or pointer to a result table.
-     * <p>
+     * <p/>
      * The data structure identified by an instance of Ref is held in the 
      * database, so the data is not necessarily read and converted
      * into a Java object until {@code getObject} is called. However, if 
      * the database supports the {@code Ref} type, it is not typically 
      * necessary to get the underlying object before using it in a method call -
      * the {@code Ref} object can be used in place of the data structure.
-     * <p>
+     * <p/>
      * A {@code Ref} object is stored into the database using the
      * {@link PreparedStatement#setRef(int, Ref)} method.
      */

@@ -31,7 +31,7 @@ namespace biz.ritter.javapix.xml.datatype
      * which consists of six fields (years, months, days, hours,
      * minutes, and seconds) plus a sign (+/-) field.</p>
      * 
-     * <p>The first five fields have non-negative (>=0) integers or null
+     * <p>The first five fields have non-negative (&gt;=0) integers or null
      * (which represents that the field is not set),
      * and the seconds field has a non-negative decimal or null.
      * A negative sign indicates a negative duration.</p> 
@@ -44,10 +44,10 @@ namespace biz.ritter.javapix.xml.datatype
      * <p>Duration objects only have partial order, where two values A and B
      * maybe either:</p>
      * <ol>
-     *  <li>A&lt;B (A is shorter than B)
-     *  <li>A&gt;B (A is longer than B)
-     *  <li>A==B   (A and B are of the same duration)
-     *  <li>A&lt;>B (Comparison between A and B is indeterminate)
+     *  <li>A&lt;B (A is shorter than B)</li>
+     *  <li>A&gt;B (A is longer than B)</li>
+     *  <li>A==B   (A and B are of the same duration)</li>
+     *  <li>A&lt;>B (Comparison between A and B is indeterminate)</li>
      * </ol>
      *
      * <p>For example, 30 days cannot be meaningfully compared to one month.
@@ -73,7 +73,7 @@ namespace biz.ritter.javapix.xml.datatype
      * by numbers such as 0.3 or 0.333.</p>
      * 
      * <h2>Range of allowed values</h2>
-     * <p>
+     * <p/>
      * Because some operations of <code>Duration</code> rely on {@link Calendar}
      * even though {@link Duration} can hold very large or very small values,
      * some of the methods may not work correctly on such <code>Duration</code>s.
@@ -318,7 +318,7 @@ namespace biz.ritter.javapix.xml.datatype
          * <code>new Duration("-PT10.00099S").getTimeInMills(x) == -10000</code>.
          * </pre>
          * 
-         * <p>
+         * <p/>
          * Note that this method uses the {@link #addTo(Calendar)} method,
          * which may work incorrectly with <code>Duration</code> objects with
          * very large values in its fields. See the {@link #addTo(Calendar)}
@@ -356,7 +356,7 @@ namespace biz.ritter.javapix.xml.datatype
          * <code>new Duration("-PT10.00099S").getTimeInMills(x) == -10000</code>.
          * </pre>
          * 
-         * <p>
+         * <p/>
          * Note that this method uses the {@link #addTo(Date)} method,
          * which may work incorrectly with <code>Duration</code> objects with
          * very large values in its fields. See the {@link #addTo(Date)}
@@ -450,13 +450,13 @@ namespace biz.ritter.javapix.xml.datatype
          * <code>(-X)+Y=Y-X</code>, <code>X+(-Y)=X-Y</code>,
          * <code>(-X)+(-Y)=-(X+Y)</code>)
          * 
-         * <p>
+         * <p/>
          * Addition of two positive <code>Duration</code>s are simply defined as  
          * field by field addition where missing fields are treated as 0.
-         * <p>
+         * <p/>
          * A field of the resulting <code>Duration</code> will be unset if and
          * only if respective fields of two input <code>Duration</code>s are unset. 
-         * <p>
+         * <p/>
          * Note that <code>lhs.add(rhs)</code> will be always successful if
          * <code>lhs.signum()*rhs.signum()!=-1</code> or both of them are
          * normalized.</p>
@@ -503,7 +503,7 @@ namespace biz.ritter.javapix.xml.datatype
          * 234 is added to MILLISECONDS, and the rest will be unused. 
          * </p>
          * 
-         * <p>
+         * <p/>
          * Note that because {@link Calendar#add(int, int)} is using
          * <tt>int</tt>, <code>Duration</code> with values beyond the
          * range of <tt>int</tt> in its fields
@@ -522,16 +522,16 @@ namespace biz.ritter.javapix.xml.datatype
         /**
          * Adds this duration to a {@link Date} object.
          * 
-         * <p>
+         * <p/>
          * The given date is first converted into
          * a {@link java.util.GregorianCalendar}, then the duration
          * is added exactly like the {@link #addTo(Calendar)} method.
          * 
-         * <p>
+         * <p/>
          * The updated time instant is then converted back into a
          * {@link Date} object and used to update the given {@link Date} object.
          * 
-         * <p>
+         * <p/>
          * This somewhat redundant computation is necessary to unambiguously
          * determine the duration of months and years.
          * 
@@ -638,7 +638,7 @@ namespace biz.ritter.javapix.xml.datatype
          * Computes a new duration whose value is <code>factor</code> times
          * longer than the value of this duration.
          * 
-         * <p>
+         * <p/>
          * For example,
          * <pre>
          * "P1M" (1 month) * "12" = "P12M" (12 months)
@@ -646,7 +646,7 @@ namespace biz.ritter.javapix.xml.datatype
          * "P1M" (1 month) * "1.5" = IllegalStateException
          * </pre>
          *  
-         * <p>
+         * <p/>
          * Since the <code>Duration</code> class is immutable, this method
          * doesn't change the value of this object. It simply computes
          * a new Duration object and returns it.
@@ -664,7 +664,7 @@ namespace biz.ritter.javapix.xml.datatype
          * {@link IllegalStateException} to be thrown. 
          * For example if you multiple one month by 0.5.</p>
          * 
-         * <p>
+         * <p/>
          * To avoid {@link IllegalStateException}, use
          * the {@link #normalizeWith(Calendar)} method to remove the years
          * and months fields.
@@ -687,7 +687,7 @@ namespace biz.ritter.javapix.xml.datatype
          * Returns a new <code>Duration</code> object whose
          * value is <code>-this</code>.
          * 
-         * <p>
+         * <p/>
          * Since the <code>Duration</code> class is immutable, this method
          * doesn't change the value of this object. It simply computes
          * a new Duration object and returns it.

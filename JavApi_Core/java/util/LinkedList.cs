@@ -732,7 +732,7 @@ namespace biz.ritter.javapi.util
             return contents;
         }
 
-        /** --Bastie: why not use the base clase method? --
+        /* --Bastie: why not use the base clase method? --
          * Returns an array containing all elements contained in this
          * {@code LinkedList}. If the specified array is large enough to hold the
          * elements, the specified array is used, otherwise an array of the same

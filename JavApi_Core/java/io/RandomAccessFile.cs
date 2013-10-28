@@ -11,7 +11,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  *  
- *  Copyright © 2011 Sebastian Ritter
+ *  Copyright © 2011,2013 Sebastian Ritter
  */
 using System;
 using System.IO;
@@ -278,7 +278,7 @@ namespace biz.ritter.javapi.io
      * represented by zero or more characters followed by {@code '\n'}, {@code
      * '\r'}, {@code "\r\n"} or the end of file marker. The string does not
      * include the line terminating sequence.
-     * <p>
+     * <p/>
      * Blocks until a line terminating sequence has been read, the end of the
      * file is reached or an exception is thrown.
      *

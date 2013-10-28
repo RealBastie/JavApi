@@ -36,7 +36,7 @@ namespace biz.ritter.javapi.sql
      * <dl>
      * { call &lt;procedurename&gt; [( [parameter1,parameter2,...] )] }
      * </dl>
-     * </code></dd>
+     * </dd>
      * {@code IN} parameters are set before calling the procedure,
      * using the setter methods which are inherited from {@code PreparedStatement}.
      * For {@code OUT} parameters, their type must be registered before executing
@@ -511,7 +511,7 @@ namespace biz.ritter.javapi.sql
                ;// throws SQLException;
 
         /**
-         * Gets the value of a specified SQL {@code REF(<structured type>)}
+         * Gets the value of a specified SQL {@code REF(&lt;structured type&gt;)}
          * parameter as a {@code java.sql.Ref}.
          * 
          * @param parameterIndex
@@ -525,7 +525,7 @@ namespace biz.ritter.javapi.sql
         Ref getRef(int parameterIndex);// throws SQLException;
 
         /**
-         * Gets the value of a specified SQL {@code REF(<structured type>)}
+         * Gets the value of a specified SQL {@code REF(&lt;structured type&gt;)}
          * parameter as a {@code java.sql.Ref}.
          * 
          * @param parameterName

@@ -11,7 +11,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  *  
- *  Copyright © 2011 Sebastian Ritter
+ *  Copyright © 2011,2013 Sebastian Ritter
  */
 using System;
 using java = biz.ritter.javapi;
@@ -28,7 +28,7 @@ namespace biz.ritter.javapi.lang.reflect
         /// <param name="array">array</param>
         /// <returns>size of first dimension</returns>
         /// <exception cref="java.lang.IllegalArgumentException">Throw an java.lang.IllegalArgumentException if given object is not an array.</exception> 
-        /// <exception cref="java.lang.NullPointer">Throw an java.lang.NullPointerException if given object is not an array.</exception> 
+        /// <exception cref="java.lang.NullPointerException">Throw an java.lang.NullPointerException if given object is not an array.</exception> 
         public static int getLength(Object array)
         {
             return cast(array).GetLength(0);
@@ -41,7 +41,7 @@ namespace biz.ritter.javapi.lang.reflect
         /// <param name="offset">zero based index</param>
         /// <returns>Object on index</returns>
         /// <exception cref="java.lang.IllegalArgumentException">Throw an java.lang.IllegalArgumentException if given object is not an array.</exception> 
-        /// <exception cref="java.lang.NullPointer">Throw an java.lang.NullPointerException if given object is not an array.</exception> 
+        /// <exception cref="java.lang.NullPointerException">Throw an java.lang.NullPointerException if given object is not an array.</exception> 
         public static Object get(Object array, int offset)
         {
             return cast(array).GetValue(offset);
@@ -54,7 +54,7 @@ namespace biz.ritter.javapi.lang.reflect
         /// <param name="offset">zero based index</param>
         /// <returns>Object on index</returns>
         /// <exception cref="java.lang.IllegalArgumentException">Throw an java.lang.IllegalArgumentException if given object is not an array.</exception> 
-        /// <exception cref="java.lang.NullPointer">Throw an java.lang.NullPointerException if given object is not an array.</exception> 
+        /// <exception cref="java.lang.NullPointerException">Throw an java.lang.NullPointerException if given object is not an array.</exception> 
         /// <exception cref="java.lang.ArrayIndexOutOfBoundsException">Throw an java.lang.ArrayIndexOutOfBoundsException if given index is lesser zero, equals length of array or greater length of array.</exception> 
         public static void set(Object array, int offset, Object newValue)
         {
@@ -88,7 +88,7 @@ namespace biz.ritter.javapi.lang.reflect
         /// <param name="array">the object</param>
         /// <returns>A System.Array instance of given object</returns>
         /// <exception cref="java.lang.IllegalArgumentException">Throw an java.lang.IllegalArgumentException if given object is not an array.</exception> 
-        /// <exception cref="java.lang.NullPointer">Throw an java.lang.NullPointerException if given object is not an array.</exception> 
+        /// <exception cref="java.lang.NullPointerException">Throw an java.lang.NullPointerException if given object is not an array.</exception> 
         internal static System.Array cast(Object array)
         {
             if (null == array) throw new java.lang.NullPointerException();

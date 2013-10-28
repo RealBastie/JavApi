@@ -108,7 +108,7 @@ namespace biz.ritter.javapi.math
             }
         }
     
-        /** @return sign = 1, magnitude = val.magnitude & that.magnitude*/
+		/** @return sign = 1, magnitude = val.magnitude &amp; that.magnitude*/
         internal static BigInteger andPositive(BigInteger val, BigInteger that) {
             // PRE: both arguments are positive
             int resLength = java.lang.Math.min(val.numberLength, that.numberLength);
@@ -128,7 +128,7 @@ namespace biz.ritter.javapi.math
             return result;
         }
 
-        /** @return sign = positive.magnitude & magnitude = -negative.magnitude */
+		/** @return sign = positive.magnitude &amp; magnitude = -negative.magnitude */
         internal static BigInteger andDiffSigns(BigInteger positive, BigInteger negative) {
             // PRE: positive is positive and negative is negative
             int iPos = positive.getFirstNonzeroDigit();
@@ -165,7 +165,7 @@ namespace biz.ritter.javapi.math
             return result;
         }
     
-        /** @return sign = -1, magnitude = -(-longer.magnitude & -shorter.magnitude)*/
+		/** @return sign = -1, magnitude = -(-longer.magnitude &amp; -shorter.magnitude)*/
         internal static BigInteger andNegative(BigInteger longer, BigInteger shorter) {
             // PRE: longer and shorter are negative
             // PRE: longer has at least as many digits as shorter
@@ -253,7 +253,7 @@ namespace biz.ritter.javapi.math
             }
         }
     
-        /** @return sign = 1, magnitude = val.magnitude & ~that.magnitude*/
+		/** @return sign = 1, magnitude = val.magnitude &amp; ~that.magnitude*/
         internal static BigInteger andNotPositive(BigInteger val, BigInteger that) {
             // PRE: both arguments are positive
             int []resDigits = new int[val.numberLength];
@@ -272,7 +272,7 @@ namespace biz.ritter.javapi.math
             return result;
         }
     
-        /** @return sign = 1, magnitude = positive.magnitude & ~(-negative.magnitude)*/
+		/** @return sign = 1, magnitude = positive.magnitude &amp; ~(-negative.magnitude)*/
         internal static BigInteger andNotPositiveNegative(BigInteger positive, BigInteger negative) {
             // PRE: positive > 0 && negative < 0
             int iNeg = negative.getFirstNonzeroDigit();
@@ -305,7 +305,7 @@ namespace biz.ritter.javapi.math
             return result;
         }
     
-        /** @return sign = -1, magnitude = -(-negative.magnitude & ~positive.magnitude)*/
+		/** @return sign = -1, magnitude = -(-negative.magnitude &amp; ~positive.magnitude)*/
         internal static BigInteger andNotNegativePositive(BigInteger negative, BigInteger positive) {
             // PRE: negative < 0 && positive > 0
             int resLength;
@@ -380,7 +380,7 @@ namespace biz.ritter.javapi.math
             return result1;
                 }
     
-        /** @return sign = 1, magnitude = -val.magnitude & ~(-that.magnitude)*/
+		/** @return sign = 1, magnitude = -val.magnitude &amp; ~(-that.magnitude)*/
         internal static BigInteger andNotNegative(BigInteger val, BigInteger that) {
             // PRE: val < 0 && that < 0
             int iVal = val.getFirstNonzeroDigit();

@@ -19,10 +19,10 @@ namespace biz.ritter.javapi.sql
 {
     /**
      * A Java interface mapping for the SQL CLOB type.
-     * <p>
+     * <p/>
      * An SQL {@code CLOB} type stores a large array of characters as the value in a
      * column of a database.
-     * <p>
+     * <p/>
      * The {@code java.sql.Clob} interface provides methods for setting and
      * retrieving data in the {@code Clob}, for querying {@code Clob} data length,
      * for searching for data within the {@code Clob}.

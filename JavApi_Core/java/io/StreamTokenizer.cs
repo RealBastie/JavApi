@@ -308,7 +308,7 @@ namespace biz.ritter.javapi.io
                         : tokenTypes[currentChar];
             }
 
-            /**
+            /*
              * Check for digits before checking for words since digits can be
              * contained within words.
              */

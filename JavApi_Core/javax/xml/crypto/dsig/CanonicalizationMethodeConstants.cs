@@ -34,7 +34,7 @@ namespace biz.ritter.javapix.xml.crypto.dsig
 		/// <summary>
 		/// The <a href="http://www.w3.org/2001/10/xml-exc-c14n#">Exclusive 
 		/// Canonical XML (without comments)</a> canonicalization method algorithm
-		// URI.
+		/// URI.
 		/// </summary>
 		internal String EXCLUSIVE = "http://www.w3.org/2001/10/xml-exc-c14n#";
 		

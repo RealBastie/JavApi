@@ -20,7 +20,7 @@ namespace biz.ritter.javapi.sql
      * An {@code Exception} class that is used in conjunction with JDBC operations.
      * It provides information about problems encountered with database access and
      * other problems related to JDBC
-     * <p>
+     * <p/>
      * The {@code SQLException} class provides the following information:
      * <ul>
      * <li>A standard Java exception message, as a {@code String}</li>

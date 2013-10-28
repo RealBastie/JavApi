@@ -13,13 +13,13 @@ namespace biz.ritter.javapi.util.concurrent
      * A {@link ConcurrentMap} supporting {@link NavigableMap} operations,
      * and recursively so for its navigable sub-maps.
      *
-     * <p>This interface is a member of the
+     * <p/>This interface is a member of the
      * <a href="{@docRoot}/../technotes/guides/collections/index.html">
      * Java Collections Framework</a>.
      *
      * @author Doug Lea
-     * @param <K> the type of keys maintained by this map
-     * @param <V> the type of mapped values
+     * @param K the type of keys maintained by this map
+     * @param V the type of mapped values
      * @since 1.6
      */
     public interface ConcurrentNavigableMap<K, V>
@@ -74,7 +74,7 @@ namespace biz.ritter.javapi.util.concurrent
          * The descending map is backed by this map, so changes to the map are
          * reflected in the descending map, and vice-versa.
          *
-         * <p>The returned map has an ordering equivalent to
+         * <p/>The returned map has an ordering equivalent to
          * <tt>{@link Collections#reverseOrder(Comparator) Collections.reverseOrder}(comparator())</tt>.
          * The expression {@code m.descendingMap().descendingMap()} returns a
          * view of {@code m} essentially equivalent to {@code m}.
@@ -94,7 +94,7 @@ namespace biz.ritter.javapi.util.concurrent
          * operations.  It does not support the {@code add} or {@code addAll}
          * operations.
          *
-         * <p>The view's {@code iterator} is a "weakly consistent" iterator
+         * <p/>The view's {@code iterator} is a "weakly consistent" iterator
          * that will never throw {@link ConcurrentModificationException},
          * and guarantees to traverse elements as they existed upon
          * construction of the iterator, and may (but is not guaranteed to)
@@ -115,13 +115,13 @@ namespace biz.ritter.javapi.util.concurrent
          * operations.  It does not support the {@code add} or {@code addAll}
          * operations.
          *
-         * <p>The view's {@code iterator} is a "weakly consistent" iterator
+         * <p/>The view's {@code iterator} is a "weakly consistent" iterator
          * that will never throw {@link ConcurrentModificationException},
          * and guarantees to traverse elements as they existed upon
          * construction of the iterator, and may (but is not guaranteed to)
          * reflect any modifications subsequent to construction.
          *
-         * <p>This method is equivalent to method {@code navigableKeySet}.
+         * <p/>This method is equivalent to method {@code navigableKeySet}.
          *
          * @return a navigable set view of the keys in this map
          */
@@ -138,7 +138,7 @@ namespace biz.ritter.javapi.util.concurrent
          * operations.  It does not support the {@code add} or {@code addAll}
          * operations.
          *
-         * <p>The view's {@code iterator} is a "weakly consistent" iterator
+         * <p/>The view's {@code iterator} is a "weakly consistent" iterator
          * that will never throw {@link ConcurrentModificationException},
          * and guarantees to traverse elements as they existed upon
          * construction of the iterator, and may (but is not guaranteed to)

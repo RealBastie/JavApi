@@ -209,7 +209,7 @@ namespace biz.ritter.javapi.lang
 
         /**
          * Returns a {@code Boolean} instance for the specified boolean value.
-         * <p>
+         * <p/>
          * If it is not necessary to get a new {@code Boolean} instance, it is
          * recommended to use this method instead of the constructor, since it
          * returns its static instances, which results in better performance.
@@ -225,7 +225,7 @@ namespace biz.ritter.javapi.lang
         /// <summary>
         /// Implicit convert java.lang.Boolean to .net bool type
         /// </summary>
-        /// <param name="d"></param>
+        /// <param name="b"></param>
         /// <returns></returns>
         public static implicit operator bool(java.lang.Boolean b)
         {
@@ -234,7 +234,7 @@ namespace biz.ritter.javapi.lang
         /// <summary>
         /// Implicit convert java.lang.Boolean to .net bool type
         /// </summary>
-        /// <param name="d"></param>
+        /// <param name="b"></param>
         /// <returns></returns>
         public static implicit operator java.lang.Boolean(bool b)
         {

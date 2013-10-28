@@ -164,7 +164,7 @@ namespace biz.ritter.javapix.xml.datatype
         {
 
             /**
-             * <p><code>String</code> representation of <ode>Field</code>.</p>
+             * <p><code>String</code> representation of <code>Field</code>.</p>
              */
             private readonly String str;
             /**
