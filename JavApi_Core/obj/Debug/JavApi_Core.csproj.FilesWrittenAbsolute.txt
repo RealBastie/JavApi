@@ -1,2 +1,0 @@
-/Users/bastie/Projects/JavApi/JavApi_Core/obj/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
-/Users/bastie/Projects/JavApi/JavApi_Core/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
