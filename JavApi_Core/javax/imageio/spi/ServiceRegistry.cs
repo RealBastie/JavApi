@@ -23,11 +23,12 @@ namespace biz.ritter.javapix.imageio.spi
 
 public class ServiceRegistry {
 
-    CategoriesMap categories = new CategoriesMap(this);
+    CategoriesMap categories;
 
     public ServiceRegistry(java.util.Iterator<java.lang.Class> categoriesIterator) {
+			this.categories = new CategoriesMap (this);
         if (null == categoriesIterator) {
-            throw new java.lang.IllegalArgumentException(Messages.getString("imageio.5D"));
+				throw new java.lang.IllegalArgumentException("categories iterator should not be NULL");
         }
         while(categoriesIterator.hasNext()) {
             java.lang.Class c =  categoriesIterator.next();
@@ -36,11 +37,11 @@ public class ServiceRegistry {
     }
 
     public static java.util.Iterator<T> lookupProviders<T>(java.lang.Class providerClass, java.lang.ClassLoader loader) {
-        return new LookupProvidersIterator(providerClass, loader);
+        return new LookupProvidersIterator<T>(providerClass, loader);
     }
 
     public static java.util.Iterator<T> lookupProviders<T>(java.lang.Class providerClass) {
-        return lookupProviders(providerClass, Thread.currentThread().getContextClassLoader());
+        return lookupProviders<T>(providerClass, java.lang.Thread.currentThread().getContextClassLoader());
     }
 
     public bool registerServiceProvider<T>(T provider, java.lang.Class category) {
@@ -66,7 +67,7 @@ public class ServiceRegistry {
     }
 
     public java.util.Iterator<T> getServiceProviders<T>(java.lang.Class category, Filter filter, bool useOrdering) {
-        return new FilteredIterator<T>(filter, (java.util.sIterator<T>) categories.getProviders(category, useOrdering));
+        return new FilteredIterator<T>(filter, (java.util.Iterator<T>) categories.getProviders(category, useOrdering));
     }
 
     public java.util.Iterator<T> getServiceProviders<T>(java.lang.Class category, bool useOrdering) {
@@ -74,7 +75,7 @@ public class ServiceRegistry {
     }
 
     public T getServiceProviderByClass<T>(java.lang.Class providerClass) {
-        return categories.getServiceProviderByClass(providerClass);
+        return categories.getServiceProviderByClass<T>(providerClass);
     }
 
     public bool setOrdering<T>(java.lang.Class category, T firstProvider, T secondProvider) {
@@ -100,7 +101,7 @@ public class ServiceRegistry {
 
     public bool contains(Object provider) {
         if (provider == null) {
-            throw new java.lang.IllegalArgumentException(Messages.getString("imageio.5E"));
+				throw new java.lang.IllegalArgumentException("Provider should be != NULL");
         }
         
         return categories.contains(provider);
@@ -114,7 +115,7 @@ public class ServiceRegistry {
         bool filter(Object provider);
     }
 
-    private class CategoriesMap {
+    internal class CategoriesMap {
         java.util.Map<java.lang.Class, ProvidersMap> categories = new java.util.HashMap<java.lang.Class, ProvidersMap>();
 
         ServiceRegistry registry;
@@ -123,7 +124,7 @@ public class ServiceRegistry {
             this.registry = registry;
         }
 
-        bool contains(Object provider) {
+        internal bool contains(Object provider) {
             foreach (java.util.MapNS.Entry<java.lang.Class, ProvidersMap> e in categories.entrySet()) {
                 ProvidersMap providers = e.getValue();
                 if (providers.contains(provider)) {
@@ -134,35 +135,35 @@ public class ServiceRegistry {
             return false;
         }
 
-        bool setOrdering<T>(java.lang.Class category, T firstProvider, T secondProvider) {
+        internal bool setOrdering<T>(java.lang.Class category, T firstProvider, T secondProvider) {
             ProvidersMap providers = categories.get(category);
             
             if (providers == null) {
-                throw new java.lang.IllegalArgumentException(Messages.getString("imageio.92", category));
+					throw new java.lang.IllegalArgumentException("Unknown category:"+category);
             }
             
             return providers.setOrdering(firstProvider, secondProvider);
         }
         
-        bool unsetOrdering<T>(java.lang.Class category, T firstProvider, T secondProvider) {
+        internal bool unsetOrdering<T>(java.lang.Class category, T firstProvider, T secondProvider) {
             ProvidersMap providers = categories.get(category);
             
             if (providers == null) {
-                throw new java.lang.IllegalArgumentException(Messages.getString("imageio.92", category));
+					throw new java.lang.IllegalArgumentException("Unknown category:"+ category);
             }
             
             return providers.unsetOrdering(firstProvider, secondProvider);
         }
         
-        java.util.Iterator<Object> getProviders(java.lang.Class category, bool useOrdering) {
+        internal java.util.Iterator<Object> getProviders(java.lang.Class category, bool useOrdering) {
             ProvidersMap providers = categories.get(category);
             if (null == providers) {
-                throw new java.lang.IllegalArgumentException(Messages.getString("imageio.92", category));
+					throw new java.lang.IllegalArgumentException("Unknown category:"+ category);
             }
             return providers.getProviders(useOrdering);
         }
         
-        T getServiceProviderByClass<T>(java.lang.Class providerClass) {
+        internal T getServiceProviderByClass<T>(java.lang.Class providerClass) {
         	foreach (java.util.MapNS.Entry<java.lang.Class, ProvidersMap> e in categories.entrySet()) {
         		if (e.getKey().isAssignableFrom(providerClass)) {
         			T provider = e.getValue().getServiceProviderByClass(providerClass);
@@ -171,14 +172,14 @@ public class ServiceRegistry {
         			}
         		}
         	}
-        	return null;
+				return default(T);
         }
 
-        java.util.Iterator<java.lang.Class> list() {
+        internal java.util.Iterator<java.lang.Class> list() {
             return categories.keySet().iterator();
         }
 
-        void addCategory(java.lang.Class category) {
+        internal void addCategory(java.lang.Class category) {
             categories.put(category, new ProvidersMap());
         }
 
@@ -190,9 +191,9 @@ public class ServiceRegistry {
          * @param category category to add provider to
          * @return if there were such provider in some category
          */
-        bool addProvider(Object provider, java.lang.Class category) {
+        internal bool addProvider(Object provider, java.lang.Class category) {
             if (provider == null) {
-                throw new java.lang.sIllegalArgumentException(Messages.getString("imageio.5E"));
+					throw new java.lang.IllegalArgumentException("Provider should be != NULL");
             }
 
             bool rt;
@@ -232,27 +233,27 @@ public class ServiceRegistry {
             return rt;
         }
         
-        bool removeProvider(Object provider, java.lang.Class category) {
+        internal bool removeProvider(Object provider, java.lang.Class category) {
             if (provider == null) {
-                throw new IllegalArgumentException(Messages.getString("imageio.5E"));
+					throw new java.lang.IllegalArgumentException("Provider should be != NULL");
             }
             
             if (!category.isAssignableFrom(provider.getClass())) {
-                throw new ClassCastException();
+                throw new java.lang.ClassCastException();
             }
             
             Object obj = categories.get(category);
             
             if (obj == null) {
-                throw new IllegalArgumentException(Messages.getString("imageio.92", category));
+                throw new java.lang.IllegalArgumentException(Messages.getString("imageio.92", category));
             }
             
             return ((ProvidersMap) obj).removeProvider(provider, registry, category);
         }
         
-        void removeProvider(Object provider) {
+        internal void removeProvider(Object provider) {
             if (provider == null) {
-                throw new IllegalArgumentException(Messages.getString("imageio.5E"));
+					throw new java.lang.IllegalArgumentException("Provider should be != NULL");
             }
             
             foreach (Entry<java.lang.Class, ProvidersMap> e in categories.entrySet()) {
@@ -261,17 +262,17 @@ public class ServiceRegistry {
             }
         }
         
-        void removeAll(java.lang.Class category) {
+        internal void removeAll(java.lang.Class category) {
             Object obj = categories.get(category);
             
             if (obj == null) {
-                throw new IllegalArgumentException(Messages.getString("imageio.92", category));
+                throw new java.lang.IllegalArgumentException(Messages.getString("imageio.92", category));
             }
             
             ((ProvidersMap) obj).clear(registry);         
         }
         
-        void removeAll() {
+        internal void removeAll() {
             foreach (java.util.MapNS.Entry<java.lang.Class, ProvidersMap> e in categories.entrySet()) {
                 removeAll(e.getKey());                
             }
@@ -318,7 +319,7 @@ public class ServiceRegistry {
             return true;
         }
         
-        void clear(ServiceRegistry registry) {
+        internal void clear(ServiceRegistry registry) {
             foreach (java.util.MapNS.Entry<java.lang.Class, Object> e in providers.entrySet()) {
                 Object provider = e.getValue();
                 
@@ -335,7 +336,7 @@ public class ServiceRegistry {
             return providers.keySet().iterator();
         }
 
-        java.util.Iterator<Object> getProviders(bool useOrdering) {
+        internal java.util.Iterator<Object> getProviders(bool useOrdering) {
             if (useOrdering) {
                 return new OrderedProviderIterator(nodeMap.values().iterator());              
             }
@@ -343,17 +344,17 @@ public class ServiceRegistry {
             return providers.values().iterator();
         }
         
-		T getServiceProviderByClass<T>(java.lang.Class providerClass) {
+		internal T getServiceProviderByClass<T>(java.lang.Class providerClass) {
         	return (T)providers.get(providerClass);
         }
         
         public bool setOrdering<T>(T firstProvider, T secondProvider) {
             if (firstProvider == secondProvider) {
-                throw new IllegalArgumentException(Messages.getString("imageio.98"));
+                throw new java.lang.IllegalArgumentException(Messages.getString("imageio.98"));
             }
             
             if ((firstProvider == null) || (secondProvider == null)) {
-                throw new IllegalArgumentException(Messages.getString("imageio.5E"));
+					throw new java.lang.IllegalArgumentException("Provider should be != NULL");
             }
            
             ProviderNode firstNode = nodeMap.get(firstProvider);
@@ -374,11 +375,11 @@ public class ServiceRegistry {
         
         public bool unsetOrdering<T>(T firstProvider, T secondProvider) {
             if (firstProvider == secondProvider) {
-                throw new IllegalArgumentException(Messages.getString("imageio.98"));
+                throw new java.lang.IllegalArgumentException(Messages.getString("imageio.98"));
             }
             
             if ((firstProvider == null) || (secondProvider == null)) {
-                throw new IllegalArgumentException(Messages.getString("imageio.5E"));
+					throw new java.lang.IllegalArgumentException("Provider should be != NULL");
             }
             
             ProviderNode firstNode = nodeMap.get(firstProvider);
@@ -424,14 +425,14 @@ public class ServiceRegistry {
         }
 
         public void remove() {
-            throw new UnsupportedOperationException();
+            throw new java.lang.UnsupportedOperationException();
         }
 
         /**
          * Sets nextObj to a next provider matching the criterion given by the filter
          */
         private void findNext() {
-            nextObj = null;
+				nextObj = default(E);
             while (backend.hasNext()) {
                 E o = backend.next();
                 if (filter.filter(o)) {
@@ -529,7 +530,7 @@ public class ServiceRegistry {
             ProviderNode node = firstNodes.pop();
                             
             // find all the outgoing nodes
-				java.util.Iterator it = node.getOutgoingNodes();
+				java.util.Iterator<Object> it = node.getOutgoingNodes();
             while (it.hasNext()) {
                 ProviderNode outNode = (ProviderNode) it.next();
                 
@@ -554,7 +555,7 @@ public class ServiceRegistry {
         }
     }
     
-    class LookupProvidersIterator<T> : java.util.Iterator<T> {
+    internal class LookupProvidersIterator<T> : java.util.Iterator<T> {
 
 			private java.util.Set<String> providerNames = new java.util.HashSet<String>();
 			private java.util.Iterator<String> it = null;
@@ -636,12 +637,12 @@ public class ServiceRegistry {
 
         public Object next() {
             if (!hasNext()) {
-                throw new NoSuchElementException();
+                throw new java.util.NoSuchElementException();
             }
             
             String name = (String)it.next();
             try {
-                return Class.forName(name, true, loader).newInstance();
+                return java.lang.Class.forName(name, true, loader).newInstance();
             } catch (Exception e) {
                 throw new ServiceConfigurationError(e.toString());
             }
@@ -682,4 +683,5 @@ public class ServiceRegistry {
             base(msg, cause){
         }
     }
-	}}
+	}
+}

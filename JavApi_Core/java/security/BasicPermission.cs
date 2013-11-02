@@ -225,7 +225,7 @@ namespace biz.ritter.javapi.security
          * @see BasicPermissionCollection
          */
 
-        public PermissionCollection newPermissionCollection()
+        public override PermissionCollection newPermissionCollection()
         {
             return new BasicPermissionCollection();
         }

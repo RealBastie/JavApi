@@ -11,7 +11,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  *  
- *  Copyright © 2011, 2012 Sebastian Ritter
+ *  Copyright © 2011, 2012, 2013 Sebastian Ritter
  */
 using System;
 using System.Text;
@@ -59,5 +59,13 @@ namespace biz.ritter.javapi.io
         {
             return (int) (this.delegateInstance.Length - this.delegateInstance.Position);
         }
+
+		private java.nio.channels.FileChannel uniqueFileChannel;
+		public java.nio.channels.FileChannel getChannel () {
+			if (null == uniqueFileChannel) {
+				this.uniqueFileChannel = new java.nio.channels.FileChannel (this.delegateInstance);
+			}
+			return this.uniqueFileChannel;
+		}
     }
 }

@@ -17,32 +17,24 @@
 
 // $Id: DocumentBuilder.java 584483 2007-10-14 02:54:48Z mrglavas $
 
-package javax.xml.parsers;
+using System;
+using java = biz.ritter.javapi;
+using javax = biz.ritter.javapix;
+using org.w3c.dom;
+using org.xml.sax;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-
-import javax.xml.validation.Schema;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.DOMImplementation;
-
-import org.xml.sax.EntityResolver;
-import org.xml.sax.ErrorHandler;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-
-/**
+namespace biz.ritter.javapix.xml.parsers
+{
+	/**
  * Defines the API to obtain DOM Document instances from an XML
  * document. Using this class, an application programmer can obtain a
- * {@link Document} from XML.<p>
+ * {@link Document} from XML.<p/>
  *
  * An instance of this class can be obtained from the
  * {@link DocumentBuilderFactory#newDocumentBuilder()} method. Once
  * an instance of this class is obtained, XML can be parsed from a
  * variety of input sources. These input sources are InputStreams,
- * Files, URLs, and SAX InputSources.<p>
+ * Files, URLs, and SAX InputSources.<p/>
  *
  * Note that this class reuses several classes from the SAX API. This
  * does not require that the implementor of the underlying DOM
@@ -54,15 +46,16 @@ import org.xml.sax.SAXException;
  * @version $Revision: 584483 $, $Date: 2007-10-13 22:54:48 -0400 (Sat, 13 Oct 2007) $
  */
 
-public abstract class DocumentBuilder {
-    
-    private static final boolean DEBUG = false;
-    
-    /** Protected constructor */
-    protected DocumentBuilder () {
-    }
+	public abstract class DocumentBuilder
+	{
+		private static readonly bool DEBUG = false;
 
-	/**
+		/** Protected constructor */
+		protected DocumentBuilder ()
+		{
+		}
+
+		/**
 	  * <p>Reset this <code>DocumentBuilder</code> to its original configuration.</p>
 	  * 
 	  * <p><code>DocumentBuilder</code> is reset to the same state as when it was created with
@@ -76,17 +69,18 @@ public abstract class DocumentBuilder {
 	  * 
 	  * @since 1.5
 	  */
-	public void reset() {
+		public void reset ()
+		{
 	
-		// implementors should override this method
-		throw new UnsupportedOperationException(
-			"This DocumentBuilder, \"" + this.getClass().getName() + "\", does not support the reset functionality."
-			+ "  Specification \"" + this.getClass().getPackage().getSpecificationTitle() + "\""
-			+ " version \"" + this.getClass().getPackage().getSpecificationVersion() + "\""
+			// implementors should override this method
+			throw new java.lang.UnsupportedOperationException (
+				"This DocumentBuilder, \"" + this.getClass ().getName () + "\", does not support the reset functionality."
+				+ "  Specification \"" + this.getClass ().getPackage ().getSpecificationTitle () + "\""
+				+ " version \"" + this.getClass ().getPackage ().getSpecificationVersion () + "\""
 			);
-	}
+		}
 
-    /**
+		/**
      * Parse the content of the given <code>InputStream</code> as an XML
      * document and return a new DOM {@link Document} object.
      * An <code>IllegalArgumentException</code> is thrown if the
@@ -100,17 +94,17 @@ public abstract class DocumentBuilder {
      * @see org.xml.sax.DocumentHandler
      */
     
-    public Document parse(InputStream is)
-        throws SAXException, IOException {
-        if (is == null) {
-            throw new IllegalArgumentException("InputStream cannot be null");
-        }
+		public Document parse (java.io.InputStream isJ)
+		{//throws SAXException, IOException {
+			if (isJ == null) {
+				throw new java.lang.IllegalArgumentException ("InputStream cannot be null");
+			}
         
-        InputSource in = new InputSource(is);
-        return parse(in);
-    }
+			InputSource inJ = new InputSource (isJ);
+			return parse (inJ);
+		}
 
-    /**
+		/**
      * Parse the content of the given <code>InputStream</code> as an
      * XML document and return a new DOM {@link Document} object.
      * An <code>IllegalArgumentException</code> is thrown if the
@@ -124,18 +118,18 @@ public abstract class DocumentBuilder {
      * @see org.xml.sax.DocumentHandler
      */
     
-    public Document parse(InputStream is, String systemId)
-        throws SAXException, IOException {
-        if (is == null) {
-            throw new IllegalArgumentException("InputStream cannot be null");
-        }
+		public Document parse (java.io.InputStream isJ, String systemId)
+		{//throws SAXException, IOException {
+			if (isJ == null) {
+				throw new java.lang.IllegalArgumentException ("InputStream cannot be null");
+			}
         
-        InputSource in = new InputSource(is);
-        in.setSystemId(systemId);
-        return parse(in);
-    }
+			InputSource inJ = new InputSource (isJ);
+			inJ.setSystemId (systemId);
+			return parse (inJ);
+		}
 
-    /**
+		/**
      * Parse the content of the given URI as an XML document
      * and return a new DOM {@link Document} object.
      * An <code>IllegalArgumentException</code> is thrown if the
@@ -148,17 +142,17 @@ public abstract class DocumentBuilder {
      * @see org.xml.sax.DocumentHandler
      */
     
-    public Document parse(String uri)
-        throws SAXException, IOException {
-        if (uri == null) {
-            throw new IllegalArgumentException("URI cannot be null");
-        }
+		public Document parse (String uri)
+		{//throws SAXException, IOException {
+			if (uri == null) {
+				throw new java.lang.IllegalArgumentException ("URI cannot be null");
+			}
         
-        InputSource in = new InputSource(uri);
-        return parse(in);
-    }
+			InputSource inJ = new InputSource (uri);
+			return parse (inJ);
+		}
 
-    /**
+		/**
      * Parse the content of the given file as an XML document
      * and return a new DOM {@link Document} object.
      * An <code>IllegalArgumentException</code> is thrown if the
@@ -171,22 +165,23 @@ public abstract class DocumentBuilder {
      * @return A new DOM Document object.
      */
     
-    public Document parse(File f) throws SAXException, IOException {
-        if (f == null) {
-            throw new IllegalArgumentException("File cannot be null");
-        }
+		public Document parse (java.io.File f)
+		{// throws SAXException, IOException {
+			if (f == null) {
+				throw new java.lang.IllegalArgumentException ("File cannot be null");
+			}
         
-        String escapedURI = FilePathToURI.filepath2URI(f.getAbsolutePath());
+			String escapedURI = FilePathToURI.filepath2URI (f.getAbsolutePath ());
         
-        if (DEBUG) {
-            System.out.println("Escaped URI = " + escapedURI);
-        }
+			if (DEBUG) {
+				java.lang.SystemJ.outJ.println ("Escaped URI = " + escapedURI);
+			}
 
-        InputSource in = new InputSource(escapedURI);
-        return parse(in);
-    }
+			InputSource inJ = new InputSource (escapedURI);
+			return parse (inJ);
+		}
 
-    /**
+		/**
      * Parse the content of the given input source as an XML document
      * and return a new DOM {@link Document} object.
      * An <code>IllegalArgumentException</code> is thrown if the
@@ -199,11 +194,9 @@ public abstract class DocumentBuilder {
      * @return A new DOM Document object.
      */
     
-    public abstract Document parse(InputSource is)
-        throws  SAXException, IOException;
-
-    
-    /**
+		public abstract Document parse (InputSource isJ);
+		//throws  SAXException, IOException;
+		/**
      * Indicates whether or not this parser is configured to
      * understand namespaces.
      *
@@ -211,9 +204,9 @@ public abstract class DocumentBuilder {
      *         namespaces; false otherwise.
      */
 
-    public abstract boolean isNamespaceAware();
+		public abstract bool isNamespaceAware ();
 
-    /**
+		/**
      * Indicates whether or not this parser is configured to
      * validate XML documents.
      *
@@ -221,9 +214,9 @@ public abstract class DocumentBuilder {
      *         XML documents; false otherwise.
      */
     
-    public abstract boolean isValidating();
+		public abstract bool isValidating ();
 
-    /**
+		/**
      * Specify the {@link EntityResolver} to be used to resolve
      * entities present in the XML document to be parsed. Setting
      * this to <code>null</code> will result in the underlying
@@ -234,9 +227,9 @@ public abstract class DocumentBuilder {
      *           present in the XML document to be parsed.
      */
 
-    public abstract void setEntityResolver(EntityResolver er);
+		public abstract void setEntityResolver (EntityResolver er);
 
-    /**
+		/**
      * Specify the {@link ErrorHandler} to be used by the parser.
      * Setting this to <code>null</code> will result in the underlying
      * implementation using it's own default implementation and
@@ -245,26 +238,26 @@ public abstract class DocumentBuilder {
      * @param eh The <code>ErrorHandler</code> to be used by the parser.
      */
 
-    public abstract void setErrorHandler(ErrorHandler eh);
+		public abstract void setErrorHandler (ErrorHandler eh);
 
-    /**
+		/**
      * Obtain a new instance of a DOM {@link Document} object
      * to build a DOM tree with.
      *
      * @return A new instance of a DOM Document object.
      */
     
-    public abstract Document newDocument();
+		public abstract Document newDocument ();
 
-    /**
+		/**
      * Obtain an instance of a {@link DOMImplementation} object.
      *
      * @return A new instance of a <code>DOMImplementation</code>.
      */
 
-    public abstract DOMImplementation getDOMImplementation();
-    
-    /** <p>Get a reference to the the {@link Schema} being used by
+		public abstract DOMImplementation getDOMImplementation ();
+
+		/** <p>Get a reference to the the {@link Schema} being used by
      * the XML processor.</p>
      *
      * <p>If no schema is being used, <code>null</code> is returned.</p>
@@ -279,18 +272,18 @@ public abstract class DocumentBuilder {
      * 
      * @since 1.5
      */
-    public Schema getSchema() {
-        throw new UnsupportedOperationException(
-            "This parser does not support specification \""
-            + this.getClass().getPackage().getSpecificationTitle()
-            + "\" version \""
-            + this.getClass().getPackage().getSpecificationVersion()
-            + "\""
-            );
-    }
-    
-    
-    /**
+		public javax.xml.validation.Schema getSchema ()
+		{
+			throw new java.lang.UnsupportedOperationException (
+				"This parser does not support specification \""
+				+ this.getClass ().getPackage ().getSpecificationTitle ()
+				+ "\" version \""
+				+ this.getClass ().getPackage ().getSpecificationVersion ()
+				+ "\""
+			);
+		}
+
+		/**
      * <p>Get the XInclude processing mode for this parser.</p>
      * 
      * @return
@@ -307,13 +300,15 @@ public abstract class DocumentBuilder {
      * 
      * @see DocumentBuilderFactory#setXIncludeAware(boolean)
      */
-    public boolean isXIncludeAware() {
-        throw new UnsupportedOperationException(
-            "This parser does not support specification \""
-            + this.getClass().getPackage().getSpecificationTitle()
-            + "\" version \""
-            + this.getClass().getPackage().getSpecificationVersion()
-            + "\""
-            );
-    }
+		public bool isXIncludeAware ()
+		{
+			throw new java.lang.UnsupportedOperationException (
+				"This parser does not support specification \""
+				+ this.getClass ().getPackage ().getSpecificationTitle ()
+				+ "\" version \""
+				+ this.getClass ().getPackage ().getSpecificationVersion ()
+				+ "\""
+			);
+		}
+	}
 }

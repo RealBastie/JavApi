@@ -17,19 +17,19 @@
 
 // $Id: TransformerException.java 569994 2007-08-27 04:28:57Z mrglavas $
 
-package javax.xml.transform;
+using System;
+using java = biz.ritter.javapi;
 
-import java.lang.reflect.Method;
-import java.lang.reflect.InvocationTargetException;
+namespace biz.ritter.javapix.xml.transform{
 
 /**
  * This class specifies an exceptional condition that occurred
  * during the transformation process.
  */
-public class TransformerException extends Exception {
+public class TransformerException : java.lang.Exception {
     
     // Added serialVersionUID to preserve binary compatibility 
-    private static final long serialVersionUID = 975798773772956428L;
+    private const long serialVersionUID = 975798773772956428L;
 
     /** Field locator specifies where the error occurred */
     SourceLocator locator;
@@ -55,7 +55,7 @@ public class TransformerException extends Exception {
     }
 
     /** Field containedException specifies a wrapped exception.  May be null. */
-    Throwable containedException;
+    java.lang.Throwable containedException;
 
     /**
      * This method retrieves an exception that this exception wraps.
@@ -63,7 +63,7 @@ public class TransformerException extends Exception {
      * @return An Throwable object, or null.
      * @see #getCause
      */
-    public Throwable getException() {
+    public java.lang.Throwable getException() {
         return containedException;
     }
 
@@ -72,7 +72,7 @@ public class TransformerException extends Exception {
      * cause is nonexistent or unknown.  (The cause is the throwable that
      * caused this throwable to get thrown.)
      */
-    public Throwable getCause() {
+    public override java.lang.Throwable getCause() {
 
         return ((containedException == this)
                 ? null
@@ -83,7 +83,7 @@ public class TransformerException extends Exception {
      * Initializes the <i>cause</i> of this throwable to the specified value.
      * (The cause is the throwable that caused this throwable to get thrown.)
      *
-     * <p>This method can be called at most once.  It is generally called from
+     * <p/>This method can be called at most once.  It is generally called from
      * within the constructor, or immediately after creating the
      * throwable.  If this throwable was created
      * with {@link #TransformerException(Throwable)} or
@@ -103,20 +103,21 @@ public class TransformerException extends Exception {
      *         {@link #TransformerException(String,Throwable)}, or this method has already
      *         been called on this throwable.
      */
-    public synchronized Throwable initCause(Throwable cause) {
+    public override java.lang.Throwable initCause(java.lang.Throwable cause) {
+			lock (this) {
+				if (this.containedException != null) {
+					throw new java.lang.IllegalStateException ("Can't overwrite cause");
+				}
 
-        if (this.containedException != null) {
-            throw new IllegalStateException("Can't overwrite cause");
-        }
+				if (cause == this) {
+					throw new java.lang.IllegalArgumentException (
+						"Self-causation not permitted");
+				}
 
-        if (cause == this) {
-            throw new IllegalArgumentException(
-                "Self-causation not permitted");
-        }
+				this.containedException = cause;
 
-        this.containedException = cause;
-
-        return this;
+				return this;
+			}
     }
 
     /**
@@ -124,9 +125,9 @@ public class TransformerException extends Exception {
      *
      * @param message The error or warning message.
      */
-    public TransformerException(String message) {
+    public TransformerException(String message) :
 
-        super(message);
+        base(message){
 
         this.containedException = null;
         this.locator            = null;
@@ -137,9 +138,9 @@ public class TransformerException extends Exception {
      *
      * @param e The exception to be wrapped.
      */
-    public TransformerException(Throwable e) {
+    public TransformerException(java.lang.Throwable e) :
 
-        super(e.toString());
+        base(e.toString()){
 
         this.containedException = e;
         this.locator            = null;
@@ -155,11 +156,11 @@ public class TransformerException extends Exception {
      *                use the message from the embedded exception.
      * @param e Any exception
      */
-    public TransformerException(String message, Throwable e) {
+    public TransformerException(String message, java.lang.Throwable e) :
 
-        super(((message == null) || (message.length() == 0))
+        base(((message == null) || (message.length() == 0))
               ? e.toString()
-              : message);
+              : message){
 
         this.containedException = e;
         this.locator            = null;
@@ -175,9 +176,9 @@ public class TransformerException extends Exception {
      * @param message The error or warning message.
      * @param locator The locator object for the error or warning.
      */
-    public TransformerException(String message, SourceLocator locator) {
+    public TransformerException(String message, SourceLocator locator) :
 
-        super(message);
+        base(message){
 
         this.containedException = null;
         this.locator            = locator;
@@ -192,9 +193,9 @@ public class TransformerException extends Exception {
      * @param e Any exception
      */
     public TransformerException(String message, SourceLocator locator,
-                                Throwable e) {
+                                java.lang.Throwable e) :
 
-        super(message);
+        base(message){
 
         this.containedException = e;
         this.locator            = locator;
@@ -209,8 +210,8 @@ public class TransformerException extends Exception {
      */
     public String getMessageAndLocation() {
 
-        StringBuffer sbuffer = new StringBuffer();
-        String       message = super.getMessage();
+        java.lang.StringBuffer sbuffer = new java.lang.StringBuffer();
+        String       message = base.getMessage();
 
         if (null != message) {
             sbuffer.append(message);
@@ -249,7 +250,7 @@ public class TransformerException extends Exception {
     public String getLocationAsString() {
 
         if (null != locator) {
-            StringBuffer sbuffer  = new StringBuffer();
+            java.lang.StringBuffer sbuffer  = new java.lang.StringBuffer();
             String       systemID = locator.getSystemId();
             int          line     = locator.getLineNumber();
             int          column   = locator.getColumnNumber();
@@ -280,8 +281,8 @@ public class TransformerException extends Exception {
      * originated.  This will trace all nested exception
      * objects, as well as this object.
      */
-    public void printStackTrace() {
-        printStackTrace(new java.io.PrintWriter(System.err, true));
+    public override void printStackTrace() {
+        printStackTrace(new java.io.PrintWriter(java.lang.SystemJ.err, true));
     }
 
     /**
@@ -300,10 +301,10 @@ public class TransformerException extends Exception {
      * objects, as well as this object.
      * @param s The writer where the dump will be sent to.
      */
-    public void printStackTrace(java.io.PrintWriter s) {
+    public override void printStackTrace(java.io.PrintWriter s) {
 
         if (s == null) {
-            s = new java.io.PrintWriter(System.err, true);
+            s = new java.io.PrintWriter(java.lang.SystemJ.err, true);
         }
 
         try {
@@ -313,68 +314,13 @@ public class TransformerException extends Exception {
                 s.println(locInfo);
             }
 
-            super.printStackTrace(s);
-        } catch (Throwable e) {}
+            base.printStackTrace(s);
+        } catch (java.lang.Throwable e) {}
 
-        boolean isJdk14OrHigher = false;
-        try {
-        	Throwable.class.getMethod("getCause",(Class[]) null);
-        	isJdk14OrHigher = true;
-        } catch (NoSuchMethodException nsme) {
-        	// do nothing
-        }
+			// BASTIE: isJDK140Higher always true :)
 
-        // The printStackTrace method of the Throwable class in jdk 1.4 
-        // and higher will include the cause when printing the backtrace.
-        // The following code is only required when using jdk 1.3 or lower                 
-        if (!isJdk14OrHigher) {
-            Throwable exception = getException();
-
-            for (int i = 0; (i < 10) && (null != exception); i++) {
-                s.println("---------");
-
-                try {
-                    if (exception instanceof TransformerException) {
-                        String locInfo =
-                            ((TransformerException) exception)
-                            .getLocationAsString();
-
-                        if (null != locInfo) {
-                            s.println(locInfo);
-                        }
-                    }
-
-                    exception.printStackTrace(s);
-                } catch (Throwable e) {
-                    s.println("Could not print stack trace...");
-                }
-
-                try {
-                    Method meth =
-                        ((Object) exception).getClass().getMethod("getException",
-                        (Class[]) null);
-
-                    if (null != meth) {
-                        Throwable prev = exception;
-
-                        exception = (Throwable) meth.invoke(exception, (Object[]) null);
-
-                        if (prev == exception) {
-                            break;
-                        }
-                    } else {
-                        exception = null;
-                    }
-                } catch (InvocationTargetException ite) {
-                    exception = null;
-                } catch (IllegalAccessException iae) {
-                    exception = null;
-                } catch (NoSuchMethodException nsme) {
-                    exception = null;
-                }
-            }
-        }
         // insure output is written
         s.flush();
     }
+}
 }

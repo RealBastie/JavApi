@@ -8,7 +8,7 @@ using System;
 
 namespace org.xml.sax
 {
-/**
+	/**
  * Receive notification of the logical content of a document.
  *
  * <blockquote>
@@ -56,10 +56,9 @@ namespace org.xml.sax
  * @see org.xml.sax.DTDHandler
  * @see org.xml.sax.ErrorHandler
  */
-public interface ContentHandler
-{
-
-    /**
+	public interface ContentHandler
+	{
+		/**
      * Receive an object for locating the origin of SAX document events.
      *
      * <p>SAX parsers are strongly encouraged (though not absolutely
@@ -86,10 +85,9 @@ public interface ContentHandler
      *                any SAX document event
      * @see org.xml.sax.Locator
      */
-    void setDocumentLocator (Locator locator);
+		void setDocumentLocator (Locator locator);
 
-
-    /**
+		/**
      * Receive notification of the beginning of a document.
      *
      * <p>The SAX parser will invoke this method only once, before any
@@ -100,10 +98,9 @@ public interface ContentHandler
      *            wrapping another exception
      * @see #endDocument
      */
-    void startDocument ();//throws SAXException;
-
-
-    /**
+		void startDocument ();
+		//throws SAXException;
+		/**
      * Receive notification of the end of a document.
      *
      * <p><strong>There is an apparent contradiction between the
@@ -124,10 +121,9 @@ public interface ContentHandler
      *            wrapping another exception
      * @see #startDocument
      */
-    void endDocument();//throws SAXException;
-
-
-    /**
+		void endDocument ();
+		//throws SAXException;
+		/**
      * Begin the scope of a prefix-URI Namespace mapping.
      *
      * <p>The information from this event is not necessary for
@@ -165,10 +161,9 @@ public interface ContentHandler
      * @see #endPrefixMapping
      * @see #startElement
      */
-    void startPrefixMapping (String prefix, String uri);//throws SAXException;
-
-
-    /**
+		void startPrefixMapping (String prefix, String uri);
+		//throws SAXException;
+		/**
      * End the scope of a prefix-URI mapping.
      *
      * <p>See {@link #startPrefixMapping startPrefixMapping} for 
@@ -184,10 +179,9 @@ public interface ContentHandler
      * @see #startPrefixMapping
      * @see #endElement
      */
-    void endPrefixMapping (String prefix);//	throws SAXException;
-
-
-    /**
+		void endPrefixMapping (String prefix);
+		//	throws SAXException;
+		/**
      * Receive notification of the beginning of an element.
      *
      * <p>The Parser will invoke this method at the beginning of every
@@ -251,11 +245,10 @@ public interface ContentHandler
      * @see org.xml.sax.Attributes
      * @see org.xml.sax.helpers.AttributesImpl
      */
-    void startElement (String uri, String localName,
-			      String qName, Attributes atts);//throws SAXException;
-
-
-    /**
+		void startElement (String uri, String localName,
+		                     String qName, Attributes atts);
+		//throws SAXException;
+		/**
      * Receive notification of the end of an element.
      *
      * <p>The SAX parser will invoke this method at the end of every
@@ -276,11 +269,10 @@ public interface ContentHandler
      * @throws org.xml.sax.SAXException any SAX exception, possibly
      *            wrapping another exception
      */
-    void endElement (String uri, String localName,
-			    String qName);//	throws SAXException;
-
-
-    /**
+		void endElement (String uri, String localName,
+		                   String qName);
+		//	throws SAXException;
+		/**
      * Receive notification of character data.
      *
      * <p>The Parser will call this method to report each chunk of
@@ -323,10 +315,9 @@ public interface ContentHandler
      * @see #ignorableWhitespace 
      * @see org.xml.sax.Locator
      */
-    void characters (char[] ch, int start, int length);//	throws SAXException;
-
-
-    /**
+		void characters (char[] ch, int start, int length);
+		//	throws SAXException;
+		/**
      * Receive notification of ignorable whitespace in element content.
      *
      * <p>Validating Parsers must use this method to report each chunk
@@ -351,10 +342,9 @@ public interface ContentHandler
      *            wrapping another exception
      * @see #characters
      */
-    void ignorableWhitespace (char[] ch, int start, int length);//	throws SAXException;
-
-
-    /**
+		void ignorableWhitespace (char[] ch, int start, int length);
+		//	throws SAXException;
+		/**
      * Receive notification of a processing instruction.
      *
      * <p>The Parser will invoke this method once for each processing
@@ -376,10 +366,9 @@ public interface ContentHandler
      * @throws org.xml.sax.SAXException any SAX exception, possibly
      *            wrapping another exception
      */
-    void processingInstruction (String target, String data);//	throws SAXException;
-
-
-    /**
+		void processingInstruction (String target, String data);
+		//	throws SAXException;
+		/**
      * Receive notification of a skipped entity.
      * This is not called for entity references within markup constructs
      * such as element start tags or markup declarations.  (The XML
@@ -404,8 +393,8 @@ public interface ContentHandler
      * @throws org.xml.sax.SAXException any SAX exception, possibly
      *            wrapping another exception
      */
-    void skippedEntity (String name);//	throws SAXException;
-}
-
-// end of ContentHandler.java
+		void skippedEntity (String name);
+		//	throws SAXException;
+	}
+	// end of ContentHandler.java
 }

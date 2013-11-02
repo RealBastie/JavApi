@@ -56,7 +56,7 @@ namespace org.apache.harmony.awt
          *
          * @param listener - listener to be added.
          */
-        public void addUserListener(T listener)
+        public virtual void addUserListener(T listener)
         {
             if (listener == null)
             {

@@ -103,7 +103,7 @@ namespace biz.ritter.javapi.math
          * @param precision
          *            the precision for the new {@code MathContext}.
          * @throws IllegalArgumentException
-         *             if {@code precision < 0}.
+         *             if {@code precision &lt; 0}.
          */
         public MathContext(int precision) :this(precision, RoundingMode.HALF_UP){
         }
@@ -119,7 +119,7 @@ namespace biz.ritter.javapi.math
          * @param roundingMode
          *            the rounding mode for the new {@code MathContext}.
          * @throws IllegalArgumentException
-         *             if {@code precision < 0}.
+         *             if {@code precision &lt; 0}.
          * @throws NullPointerException
          *             if {@code roundingMode} is {@code null}.
          */
@@ -148,7 +148,7 @@ namespace biz.ritter.javapi.math
          *            new {@code MathContext}.
          * @throws IllegalArgumentException
          *             if the string is not in the correct format or if the
-         *             precision specified is < 0.
+         *             precision specified is &lt; 0.
          */
         public MathContext(String val) {
             char[] charVal = val.toCharArray();
@@ -230,7 +230,7 @@ namespace biz.ritter.javapi.math
         /**
          * Returns the rounding mode. The rounding mode is the strategy to be used
          * to round results.
-         * <p>
+         * <p/>
          * The rounding mode is one of
          * {@link RoundingMode#UP},
          * {@link RoundingMode#DOWN},

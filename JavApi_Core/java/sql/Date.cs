@@ -53,6 +53,7 @@ namespace biz.ritter.javapi.sql
          * @param theDay
          *            the day in the month. Must be in the range {@code [1,31]}.
          */
+		[Obsolete]
         public Date(int theYear, int theMonth, int theDay) :
             base(theYear, theMonth, theDay)
         {
@@ -81,7 +82,7 @@ namespace biz.ritter.javapi.sql
          * @throws IllegalArgumentException
          *             if this method is called.
          */
-
+		[Obsolete]
         public override int getHours()
         {
             throw new java.lang.IllegalArgumentException();
@@ -94,7 +95,7 @@ namespace biz.ritter.javapi.sql
          * @throws IllegalArgumentException
          *             if this method is called.
          */
-
+		[Obsolete]
         public override int getMinutes()
         {
             throw new java.lang.IllegalArgumentException();
@@ -107,7 +108,7 @@ namespace biz.ritter.javapi.sql
          * @throws IllegalArgumentException
          *             if this method is called.
          */
-
+		[Obsolete]
         public override int getSeconds()
         {
             throw new java.lang.IllegalArgumentException();

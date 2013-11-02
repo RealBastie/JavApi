@@ -17,8 +17,10 @@
  */
 
 // $Id: ParserConfigurationException.java 569981 2007-08-27 03:59:07Z mrglavas $
+using System;
+using java = biz.ritter.javapi;
 
-package javax.xml.parsers;
+namespace biz.ritter.javapix.xml.parsers{
 
 /**
  * Indicates a serious configuration error.
@@ -27,15 +29,15 @@ package javax.xml.parsers;
  * @version $Revision: 569981 $, $Date: 2007-08-26 23:59:07 -0400 (Sun, 26 Aug 2007) $
  */
 
-public class ParserConfigurationException extends Exception {
+public class ParserConfigurationException : java.lang.Exception {
 
     /**
      * Create a new <code>ParserConfigurationException</code> with no
      * detail message.
      */
 
-    public ParserConfigurationException() {
-        super();
+    public ParserConfigurationException() :base(){
+        
     }
 
     /**
@@ -45,9 +47,9 @@ public class ParserConfigurationException extends Exception {
      * @param msg The error message for the exception.
      */
     
-    public ParserConfigurationException(String msg) {
-        super(msg);
+    public ParserConfigurationException(String msg) : base(msg){
+        
     }
 
 }
-
+}

@@ -356,7 +356,6 @@ namespace biz.ritter.javapi.lang
         /// 
         /// </summary>
         /// <exception cref="java.io.UnsupportedEncodingException">If the named charset is not supported</exception>
-        /// <param name="str"></param>
         /// <param name="charsetName"></param>
         /// <returns></returns>
         public byte[] getBytes(String charsetName)

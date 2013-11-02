@@ -21,17 +21,34 @@ namespace biz.ritter.javapi.nio.channels
 
 	public class FileLock
 	{
-		public FileLock ()
+
+		private readonly FileChannel fileChannel;
+		private long positionJ;
+		private long sizeJ;
+		private bool shared;
+		protected internal FileLock (FileChannel sourceChannel, long pos, long length, bool isShared)
 		{
+			if (pos < 0 || length < 0)
+				throw new java.lang.IllegalArgumentException ("Lock pos=" + pos + ", length=" + length + " need to be greater than null.");
+			this.fileChannel = sourceChannel;
+			this.positionJ = pos;
+			this.sizeJ = length;
+			this.shared = isShared;
 		}
 
 		public FileChannel channel () {
-			// TODO implement it
-			throw new java.lang.UnsupportedOperationException ("Not yet implemented");
+			return this.fileChannel;
 		}
+
 		public void release () {
-			// TODO implement it
-			throw new java.lang.UnsupportedOperationException ("Not yet implemented");
+			this.fileChannel.releaseFileLock (position (), size ());
+		}
+
+		public long position () {
+			return positionJ;
+		}
+		public long size () {
+			return sizeJ;
 		}
 	}
 }

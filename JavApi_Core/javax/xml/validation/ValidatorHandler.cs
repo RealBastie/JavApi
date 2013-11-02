@@ -15,31 +15,28 @@
  * limitations under the License.
  */
 // $Id: ValidatorHandler.java 446598 2006-09-15 12:55:40Z jeremias $
+using System;
+using java = biz.ritter.javapi;
+using org.xml.sax;
 
-package javax.xml.validation;
-
-import org.w3c.dom.ls.LSResourceResolver;
-import org.xml.sax.ContentHandler;
-import org.xml.sax.ErrorHandler;
-import org.xml.sax.SAXNotRecognizedException;
-import org.xml.sax.SAXNotSupportedException;
-
-/**
+namespace biz.ritter.javapix.xml.validation
+{
+	/**
  * Streaming validator that works on SAX stream.
  * 
- * <p>
+ * <p/>
  * A {@link ValidatorHandler} object is a thread-unsafe, non-reentrant object.
  * In other words, it is the application's responsibility to make
  * sure that one {@link ValidatorHandler} object is not used from
  * more than one thread at any given time.
  * 
- * <p>
+ * <p/>
  * {@link ValidatorHandler} checks if the SAX events follow 
  * the set of constraints described in the associated {@link Schema},
  * and additionally it may modify the SAX events (for example
  * by adding default values, etc.)
  * 
- * <p>
+ * <p/>
  * {@link ValidatorHandler} extends from {@link ContentHandler},
  * but it refines the underlying {@link ContentHandler} in
  * the following way:
@@ -48,7 +45,7 @@ import org.xml.sax.SAXNotSupportedException;
  *      for <code>uri</code>, <code>localName</code>, and <code>qname</code>,
  *      even though SAX allows some of them to be null.
  *      Similarly, the user-specified {@link ContentHandler} will receive non-null
- *      Strings for all three parameters.
+ *      Strings for all three parameters.</li>
  * 
  *  <li>Applications must ensure that {@link ValidatorHandler}'s
  *      {@link ContentHandler#startPrefixMapping(String,String)} and
@@ -57,24 +54,24 @@ import org.xml.sax.SAXNotSupportedException;
  *      will receive startPrefixMapping/endPrefixMapping events.
  *      If the {@link ValidatorHandler} introduces additional namespace
  *      bindings, the user-specified {@link ContentHandler} will receive
- *      additional startPrefixMapping/endPrefixMapping events.
+ *      additional startPrefixMapping/endPrefixMapping events.</li>
  * 
  *  <li>{@link org.xml.sax.Attributes} for the
  *      {@link ContentHandler#startElement(String,String,String,Attributes)} method
- *      may or may not include xmlns* attributes.
+ *      may or may not include xmlns* attributes.</li>
  * </ol>
  * 
- * <p>
+ * <p/>
  * A {@link ValidatorHandler} is automatically reset every time
  * the startDocument method is invoked.
  * 
  * <h2>Recognized Properties and Features</h2>
- * <p>
+ * <p/>
  * This spec defines the following feature that must be recognized
  * by all {@link ValidatorHandler} implementations.
  * 
  * <h3><code>http://xml.org/sax/features/namespace-prefixes</code></h3>
- * <p>
+ * <p/>
  * This feature controls how a {@link ValidatorHandler} introduces
  * namespace bindings that were not present in the original SAX event
  * stream.
@@ -86,14 +83,14 @@ import org.xml.sax.SAXNotSupportedException;
  * callback. Otherwise, <code>xmlns*</code> attributes must not be
  * added to {@link org.xml.sax.Attributes} that's passed to the
  * user-specified {@link ContentHandler}.
- * <p> 
+ * <p/> 
  * (Note that regardless of this switch, namespace bindings are
  * always notified to applications through 
  * {@link ContentHandler#startPrefixMapping(String,String)} and
  * {@link ContentHandler#endPrefixMapping(String)} methods of the
  * {@link ContentHandler} specified by the user.)
  * 
- * <p>
+ * <p/>
  * Note that this feature does <em>NOT</em> affect the way
  * a {@link ValidatorHandler} receives SAX events. It merely
  * changes the way it augments SAX events.
@@ -104,37 +101,38 @@ import org.xml.sax.SAXNotSupportedException;
  * @version $Revision: 446598 $, $Date: 2006-09-15 08:55:40 -0400 (Fri, 15 Sep 2006) $
  * @since 1.5
  */
-public abstract class ValidatorHandler implements ContentHandler {
-    
-    /**
+	public abstract class ValidatorHandler : ContentHandler
+	{
+		/**
      * Constructor for derived classes.
      * 
-     * <p>
+     * <p/>
      * The constructor does nothing.
      * 
-     * <p>
+     * <p/>
      * Derived classes must create {@link ValidatorHandler} objects that have
      * <tt>null</tt> {@link ErrorHandler} and
      * <tt>null</tt> {@link LSResourceResolver}.
      */
-    protected ValidatorHandler() {
-    }
-    
-    /**
+		protected ValidatorHandler ()
+		{
+		}
+
+		/**
      * Sets the {@link ContentHandler} which receives
      * the augmented validation result.
      *
-     * <p>
+     * <p/>
      * When a {@link ContentHandler} is specified, a
      * {@link ValidatorHandler} will work as a filter
      * and basically copy the incoming events to the
      * specified {@link ContentHandler}.
      * 
-     * <p>
+     * <p/>
      * In doing so, a {@link ValidatorHandler} may modify
      * the events, for example by adding defaulted attributes.
      * 
-     * <p>
+     * <p/>
      * A {@link ValidatorHandler} may buffer events to certain
      * extent, but to allow {@link ValidatorHandler} to be used
      * by a parser, the following requirement has to be met.
@@ -148,29 +146,29 @@ public abstract class ValidatorHandler implements ContentHandler {
      *      are invoked on a {@link ValidatorHandler},
      *      the same method on the user-specified {@link ContentHandler}
      *      must be invoked for the same event before the callback
-     *      returns.
+     *      returns.</li>
      *  <li>{@link ValidatorHandler} may not introduce new elements that
-     *      were not present in the input.
+     *      were not present in the input.</li>
      * 
      *  <li>{@link ValidatorHandler} may not remove attributes that were
-     *      present in the input.
+     *      present in the input.</li>
      * </ol> 
      * 
-     * <p>
+     * <p/>
      * When a callback method on the specified {@link ContentHandler}
      * throws an exception, the same exception object must be thrown
      * from the {@link ValidatorHandler}. The {@link ErrorHandler}
      * should not be notified of such an exception.
      * 
-     * <p>
+     * <p/>
      * This method can be called even during a middle of a validation.
      *
      * @param receiver
      *      A {@link ContentHandler} or a null value. 
      */
-    public abstract void setContentHandler(ContentHandler receiver);
-    
-    /**
+		public abstract void setContentHandler (ContentHandler receiver);
+
+		/**
      * Gets the {@link ContentHandler} which receives the
      * augmented validation result.
      * 
@@ -182,35 +180,35 @@ public abstract class ValidatorHandler implements ContentHandler {
      * 
      * @see #setContentHandler(ContentHandler)
      */
-    public abstract ContentHandler getContentHandler();
-    
-    /**
+		public abstract ContentHandler getContentHandler ();
+
+		/**
      * Sets the {@link ErrorHandler} to receive errors encountered
      * during the validation.
      * 
-     * <p>
+     * <p/>
      * Error handler can be used to customize the error handling process
      * during a validation. When an {@link ErrorHandler} is set,
      * errors found during the validation will be first sent
      * to the {@link ErrorHandler}.
      * 
-     * <p>
+     * <p/>
      * The error handler can abort further validation immediately
      * by throwing {@link org.xml.sax.SAXException} from the handler. Or for example
      * it can print an error to the screen and try to continue the
      * validation by returning normally from the {@link ErrorHandler} 
      * 
-     * <p>
+     * <p/>
      * If any {@link Throwable} is thrown from an {@link ErrorHandler},
      * the same {@link Throwable} object will be thrown toward the
      * root of the call stack.
      * 
-     * <p>
+     * <p/>
      * {@link ValidatorHandler} is not allowed to
      * throw {@link org.xml.sax.SAXException} without first reporting it to
      * {@link ErrorHandler}.
      * 
-     * <p>
+     * <p/>
      * When the {@link ErrorHandler} is null, the implementation will
      * behave as if the following {@link ErrorHandler} is set:
      * <pre>
@@ -227,16 +225,16 @@ public abstract class ValidatorHandler implements ContentHandler {
      * }
      * </pre>
      * 
-     * <p>
+     * <p/>
      * When a new {@link ValidatorHandler} object is created, initially
      * this field is set to null.
      * 
      * @param   errorHandler
      *      A new error handler to be set. This parameter can be null.
      */
-    public abstract void setErrorHandler(ErrorHandler errorHandler);
-    
-    /**
+		public abstract void setErrorHandler (ErrorHandler errorHandler);
+
+		/**
      * Gets the current {@link ErrorHandler} set to this {@link ValidatorHandler}.
      * 
      * @return
@@ -247,19 +245,19 @@ public abstract class ValidatorHandler implements ContentHandler {
      * 
      * @see #setErrorHandler(ErrorHandler)
      */
-    public abstract ErrorHandler getErrorHandler();
-    
-    /**
+		public abstract ErrorHandler getErrorHandler ();
+
+		/**
      * Sets the {@link LSResourceResolver} to customize
      * resource resolution while in a validation episode.
      * 
-     * <p>
+     * <p/>
      * {@link ValidatorHandler} uses a {@link LSResourceResolver}
      * when it needs to locate external resources while a validation,
      * although exactly what constitutes "locating external resources" is
      * up to each schema language.
      * 
-     * <p>
+     * <p/>
      * When the {@link LSResourceResolver} is null, the implementation will
      * behave as if the following {@link LSResourceResolver} is set:
      * <pre>
@@ -272,23 +270,23 @@ public abstract class ValidatorHandler implements ContentHandler {
      * }
      * </pre>
      * 
-     * <p>
+     * <p/>
      * If a {@link LSResourceResolver} throws a {@link RuntimeException}
      *  (or instances of its derived classes),
      * then the {@link ValidatorHandler} will abort the parsing and  
      * the caller of the <code>validate</code> method will receive
      * the same {@link RuntimeException}. 
      * 
-     * <p>
+     * <p/>
      * When a new {@link ValidatorHandler} object is created, initially
      * this field is set to null.
      * 
      * @param   resourceResolver
      *      A new resource resolver to be set. This parameter can be null.
      */
-    public abstract void setResourceResolver(LSResourceResolver resourceResolver);
-    
-    /**
+		public abstract void setResourceResolver (org.w3c.dom.ls.LSResourceResolver resourceResolver);
+
+		/**
      * Gets the current {@link LSResourceResolver} set to this {@link ValidatorHandler}.
      * 
      * @return
@@ -299,17 +297,17 @@ public abstract class ValidatorHandler implements ContentHandler {
      * 
      * @see #setErrorHandler(ErrorHandler)
      */
-    public abstract LSResourceResolver getResourceResolver();
-    
-    /**
+		public abstract org.w3c.dom.ls.LSResourceResolver getResourceResolver ();
+
+		/**
      * Obtains the {@link TypeInfoProvider} implementation of this
      * {@link ValidatorHandler}.
      * 
-     * <p>
+     * <p/>
      * The obtained {@link TypeInfoProvider} can be queried during a parse
      * to access the type information determined by the validator.
      * 
-     * <p>
+     * <p/>
      * Some schema languages do not define the notion of type,
      * for those languages, this method may not be supported.
      * However, to be compliant with this specification, implementations
@@ -320,13 +318,12 @@ public abstract class ValidatorHandler implements ContentHandler {
      *      the notion of {@link org.w3c.dom.TypeInfo}.
      *      Otherwise a non-null valid {@link TypeInfoProvider}.
      */
-    public abstract TypeInfoProvider getTypeInfoProvider();
-    
-    
-    /**
+		public abstract TypeInfoProvider getTypeInfoProvider ();
+
+		/**
      * Look up the value of a feature flag.
      *
-     * <p>The feature name is any fully-qualified URI.  It is
+     * <p/>The feature name is any fully-qualified URI.  It is
      * possible for a {@link ValidatorHandler} to recognize a feature name but
      * temporarily be unable to return its value.
      * Some feature values may be available only in specific
@@ -346,13 +343,14 @@ public abstract class ValidatorHandler implements ContentHandler {
      *          When the name parameter is null.
      * @see #setFeature(String, boolean)
      */
-    public boolean getFeature(String name) throws SAXNotRecognizedException, SAXNotSupportedException {
-        if(name==null)
-            throw new NullPointerException();
-        throw new SAXNotRecognizedException(name);
-    }
-    
-    /**
+		public bool getFeature (String name)
+		{// throws SAXNotRecognizedException, SAXNotSupportedException {
+			if (name == null)
+				throw new java.lang.NullPointerException ();
+			throw new SAXNotRecognizedException (name);
+		}
+
+		/**
      * Set the value of a feature flag.
      *
      * <p>
@@ -380,13 +378,14 @@ public abstract class ValidatorHandler implements ContentHandler {
      * 
      * @see #getFeature(String)
      */
-    public void setFeature(String name, boolean value) throws SAXNotRecognizedException, SAXNotSupportedException {
-        if(name==null)
-            throw new NullPointerException();
-        throw new SAXNotRecognizedException(name);
-    }
-    
-    /**
+		public void setFeature (String name, bool value)
+		{// throws SAXNotRecognizedException, SAXNotSupportedException {
+			if (name == null)
+				throw new java.lang.NullPointerException ();
+			throw new SAXNotRecognizedException (name);
+		}
+
+		/**
      * Set the value of a property.
      *
      * <p>The property name is any fully-qualified URI.  It is
@@ -410,13 +409,14 @@ public abstract class ValidatorHandler implements ContentHandler {
      * @throws NullPointerException
      *          When the name parameter is null.
      */
-    public void setProperty(String name, Object object) throws SAXNotRecognizedException, SAXNotSupportedException {
-        if(name==null)
-            throw new NullPointerException();
-        throw new SAXNotRecognizedException(name);
-    }
-    
-    /**
+		public void setProperty (String name, Object objectJ)
+		{// throws SAXNotRecognizedException, SAXNotSupportedException {
+			if (name == null)
+				throw new java.lang.NullPointerException ();
+			throw new SAXNotRecognizedException (name);
+		}
+
+		/**
      * Look up the value of a property.
      *
      * <p>The property name is any fully-qualified URI.  It is
@@ -442,9 +442,38 @@ public abstract class ValidatorHandler implements ContentHandler {
      *          When the name parameter is null.
      * @see #setProperty(String, Object)
      */
-    public Object getProperty(String name) throws SAXNotRecognizedException, SAXNotSupportedException {
-        if(name==null)
-            throw new NullPointerException();
-        throw new SAXNotRecognizedException(name);
-    }
+		public Object getProperty (String name)
+		{//throws SAXNotRecognizedException, SAXNotSupportedException {
+			if (name == null)
+				throw new java.lang.NullPointerException ();
+			throw new SAXNotRecognizedException (name);
+		}
+
+		#region org.xml.sax.ContentHandler
+
+		public abstract void setDocumentLocator (Locator locator);
+
+		public abstract void startDocument ();
+
+		public abstract void endDocument ();
+
+		public abstract void startPrefixMapping (String prefix, String uri);
+
+		public abstract void endPrefixMapping (String prefix);
+
+		public abstract void startElement (String uri, String localName, String qName, Attributes atts);
+
+		public abstract void endElement (String uri, String localName, String qName);
+
+		public abstract void characters (char[] ch, int start, int length);
+
+		public abstract void ignorableWhitespace (char[] ch, int start, int length);
+
+		public abstract void processingInstruction (String target, String data);
+
+		public abstract void skippedEntity (String name);
+
+		#endregion
+
+	}
 }

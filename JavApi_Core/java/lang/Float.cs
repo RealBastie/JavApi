@@ -163,6 +163,10 @@ namespace biz.ritter.javapi.lang
             return BitConverter.ToString(BitConverter.GetBytes(f));
         }
 
+		public static float parseFloat (String f) {
+			return valueOf (f).floatValue();
+		}
+
         /// <summary>
         /// Implicit convert java.lang.Float to .net float type
         /// </summary>

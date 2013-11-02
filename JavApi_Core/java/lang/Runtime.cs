@@ -86,7 +86,6 @@ namespace biz.ritter.javapi.lang
         /// <summary>
         /// Stop the current process.
         /// </summary>
-        /// <see cref="#addShutdownHook"/>
         /// <param name="rc">return code for parent process</param>
         public void exit(int rc)
         {

@@ -37,7 +37,7 @@ namespace biz.ritter.javapix.xml.crypto.dsig.dom
  * @author Sean Mullan
  * @author JSR 105 Expert Group
  */
-public class DOMSignContext : javax.xml.crypto.dom.DOMCryptoContext, XMLSignContext {
+public class DOMSignContext : biz.ritter.javapix.xml.crypto.dom.DOMCryptoContext, XMLSignContext {
 
     private org.w3c.dom.Node parent;
     private org.w3c.dom.Node nextSibling;

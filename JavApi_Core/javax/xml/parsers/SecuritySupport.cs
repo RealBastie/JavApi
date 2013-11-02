@@ -17,89 +17,61 @@
 
 // $Id: SecuritySupport.java 670282 2008-06-22 01:00:42Z mrglavas $
 
-package javax.xml.parsers;
+using System;
+using java = biz.ritter.javapi;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.security.AccessController;
-import java.security.PrivilegedAction;
-import java.security.PrivilegedActionException;
-import java.security.PrivilegedExceptionAction;
-
-/**
+namespace biz.ritter.javapix.xml.parsers
+{
+	/**
  * This class is duplicated for each JAXP subpackage so keep it in sync.
  * It is package private and therefore is not exposed as part of the JAXP
  * API.
  *
  * Security related methods that only work on J2SE 1.2 and newer.
  */
-final class SecuritySupport  {
-    
-    private SecuritySupport() {}
-    
-    static ClassLoader getContextClassLoader() {
-	return (ClassLoader)
-		AccessController.doPrivileged(new PrivilegedAction() {
-	    public Object run() {
-		ClassLoader cl = null;
-		try {
-		    cl = Thread.currentThread().getContextClassLoader();
-		} catch (SecurityException ex) { }
-		return cl;
-	    }
-	});
-    }
+	internal sealed class SecuritySupport
+	{
+		private SecuritySupport ()
+		{
+		}
 
-    static String getSystemProperty(final String propName) {
-	return (String)
-            AccessController.doPrivileged(new PrivilegedAction() {
-                public Object run() {
-                    return System.getProperty(propName);
-                }
-            });
-    }
+		internal static java.lang.ClassLoader getContextClassLoader ()
+		{
+			java.lang.ClassLoader cl = null;
+			try {
+				cl = java.lang.Thread.currentThread ().getContextClassLoader ();
+			} catch (java.lang.SecurityException ex) {
+			}
+			return cl;
+		
+		}
 
-    static FileInputStream getFileInputStream(final File file)
-        throws FileNotFoundException
-    {
-	try {
-            return (FileInputStream)
-                AccessController.doPrivileged(new PrivilegedExceptionAction() {
-                    public Object run() throws FileNotFoundException {
-                        return new FileInputStream(file);
-                    }
-                });
-	} catch (PrivilegedActionException e) {
-	    throw (FileNotFoundException)e.getException();
+		internal static String getSystemProperty (String propName)
+		{
+			return java.lang.SystemJ.getProperty (propName);
+		}
+
+		internal static java.io.FileInputStream getFileInputStream (java.io.File file)
+        //throws FileNotFoundException
+		{
+			return new java.io.FileInputStream (file);
+		}
+
+		internal static java.io.InputStream getResourceAsStream (java.lang.ClassLoader cl,
+		                                                          String name)
+		{
+			java.io.InputStream ris;
+			if (cl == null) {
+				ris = java.lang.ClassLoader.getSystemResourceAsStream (name);
+			} else {
+				ris = cl.getResourceAsStream (name);
+			}
+			return ris;
+		}
+
+		internal static bool doesFileExist (java.io.File f)
+		{
+			return f.exists ();
+		}
 	}
-    }
-
-    static InputStream getResourceAsStream(final ClassLoader cl,
-                                           final String name)
-    {
-        return (InputStream)
-            AccessController.doPrivileged(new PrivilegedAction() {
-                public Object run() {
-                    InputStream ris;
-                    if (cl == null) {
-                        ris = ClassLoader.getSystemResourceAsStream(name);
-                    } else {
-                        ris = cl.getResourceAsStream(name);
-                    }
-                    return ris;
-                }
-            });
-    }
-
-    static boolean doesFileExist(final File f) {
-    return ((Boolean)
-            AccessController.doPrivileged(new PrivilegedAction() {
-                public Object run() {
-                    return f.exists() ? Boolean.TRUE : Boolean.FALSE;
-                }
-            })).booleanValue();
-    }
-
 }

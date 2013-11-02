@@ -17,6 +17,8 @@
 
 // $Id: SourceLocator.java 446598 2006-09-15 12:55:40Z jeremias $
 
+using System;
+
 namespace biz.ritter.javapix.xml.transform{
 
 /**

@@ -1,12 +1,18 @@
 * JavApi 0.? (Target: MonoBuild, packages: java.lang)
   - javax.xml.crypto package
   - java.lang package extended
+  - java.util.prefs extended
   + java.io.PrintStream
     - print(char)
     - println(char)
+  + java.io.File
+    - mkdirs()
+    - getParentFile()
+  + java.nio.FileChannel implementations
   + BugFixes:
     - JavaExtensions.getClass()
     - Runtime.getRuntime.exec()
+  - 'repair' code documentation
 * JavApi 0.8.0.1
   - platform depended classes extracted
   + BugFixes:

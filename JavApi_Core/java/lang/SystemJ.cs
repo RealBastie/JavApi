@@ -147,8 +147,11 @@ namespace biz.ritter.javapi.lang
                 prop.Add("java.protocol.handler.pkgs", "biz.ritter.net.protocol|");
                 // GUI specific environment 
                 prop.Add("awt.toolkit", "biz.ritter.awt.forms.FormsToolkit");
-                // Sax specific environment
+                // XML SAX/DOM/JAXP specific environment
                 prop.Add("org.xml.sax.parser", null);// include the class for the default SAX Parser for example: org.apache.xerces.parsers.SaxParser
+				prop.Add("javax.xml.parsers.SAXParserFactory", null); // include the class for SAXParser for example: org.apache.xerces.jaxp.SAXParserFactoryImpl
+				prop.Add("javax.xml.parsers.DocumentBuilderFactory", null); // include the class for DOMParser for example: org.apache.xerces.jaxp.DocumentBuilderFactoryImpl
+				prop.Add ("jaxp.debug", "false"); // see f.e. javax.xml.parsers.FactoryFinder
                 // Logging properties (see java.util.logging.LogManager)
                 prop.Add("java.util.logging.config.class", null);
                 prop.Add("java.util.logging.config.file", null);

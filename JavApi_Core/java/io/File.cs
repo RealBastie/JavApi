@@ -74,6 +74,27 @@ namespace biz.ritter.javapi.io
                 //Empty strings are allowed in Java not in .net
             }
         }
+		public virtual bool mkdirs () {
+			try {
+				this.info.Directory.CreateSubdirectory (this.getAbsolutePath());
+				return true;
+			}
+			catch (Exception failed) {
+				return false;
+			}
+		}
+		public virtual File getParentFile () {
+			String parent = "";
+			if (isDirectory()) {
+				parent = this.info.Directory.Parent.FullName;
+			} else {
+				parent = this.info.Directory.FullName;
+			}
+			if (parent != null)
+				return new File (parent);
+			else
+				return default(File);
+		}
 
         public virtual int compareTo(File other) {
             String otherPath = "null";

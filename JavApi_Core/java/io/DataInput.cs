@@ -38,9 +38,8 @@ namespace biz.ritter.javapi.io
      * <p>
      * Please refer to <a href="http://unicode.org">The Unicode Standard</a> for
      * further information about character encoding. MUTF-8 is actually closer to
-     * the (relatively less well-known) encoding <a
-     * href="http://www.unicode.org/reports/tr26/">CESU-8</a> than to UTF-8 per se.
-     *</p>
+     * the (relatively less well-known) encoding <a href="http://www.unicode.org/reports/tr26/">CESU-8</a> than to UTF-8 per se.
+     * </p>
      * @see DataInputStream
      * @see RandomAccessFile
      */

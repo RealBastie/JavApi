@@ -16,9 +16,7 @@
  */
 // $Id: TypeInfoProvider.java 884939 2009-11-27 18:20:46Z mrglavas $
 
-package javax.xml.validation;
-
-import org.w3c.dom.TypeInfo;
+namespace biz.ritter.javapix.xml.validation{
 
 /**
  * This class provides access to the type information determined
@@ -44,7 +42,7 @@ public abstract class TypeInfoProvider {
     /**
      * Constructor for the derived class.
      * 
-     * <p>
+     * <p/>
      * The constructor does nothing.
      */
     protected TypeInfoProvider() {
@@ -53,7 +51,7 @@ public abstract class TypeInfoProvider {
     /**
      * <p>Returns the immutable {@link TypeInfo} object for the current element.</p>
      * 
-     * <p>
+     * <p/>
      * The method may only be called by the startElement and endElement event of
      * the {@link org.xml.sax.ContentHandler} that the application sets to the
      * {@link ValidatorHandler}.</p>
@@ -74,13 +72,13 @@ public abstract class TypeInfoProvider {
      *      an earlier error.)
      * 
      */
-    public abstract TypeInfo getElementTypeInfo();
+    public abstract org.w3c.dom.TypeInfo getElementTypeInfo();
     
     /**
      * Returns the immutable {@link TypeInfo} object for the specified
      * attribute of the current element.
      * 
-     * <p>
+     * <p/>
      * The method may only be called by the startElement event of
      * the {@link org.xml.sax.ContentHandler} that the application sets to the
      * {@link ValidatorHandler}.
@@ -106,23 +104,23 @@ public abstract class TypeInfoProvider {
      *      null if the validator is unable to
      *      determine the type.
      */
-    public abstract TypeInfo getAttributeTypeInfo(int index);
+    public abstract org.w3c.dom.TypeInfo getAttributeTypeInfo(int index);
     
     /**
      * Returns <tt>true</tt> if the specified attribute is determined
      * to be ID.
      * 
-     * <p>
+     * <p/>
      * Exactly how an attribute is "determined to be ID" is up to the
      * schema language. In case of W3C XML Schema, this means
      * that the actual type of the attribute is the built-in ID type
      * or its derived type.
      * 
-     * <p>
+     * <p/>
      * A {@link javax.xml.parsers.DocumentBuilder} uses this information
      * to properly implement {@link org.w3c.dom.Attr#isId()}.
      * 
-     * <p>
+     * <p/>
      * The method may only be called by the startElement event of
      * the {@link org.xml.sax.ContentHandler} that the application sets to the
      * {@link ValidatorHandler}.
@@ -141,22 +139,22 @@ public abstract class TypeInfoProvider {
      * @return true
      *      if the type of the specified attribute is ID.
      */
-    public abstract boolean isIdAttribute(int index);
+    public abstract bool isIdAttribute(int index);
     
     /**
      * Returns <tt>false</tt> if the attribute was added by the validator.
      * 
-     * <p>
+     * <p/>
      * This method provides information necessary for
      * a {@link javax.xml.parsers.DocumentBuilder} to determine what
      * the DOM tree should return from the {@link org.w3c.dom.Attr#getSpecified()} method.
      * 
-     * <p>
+     * <p/>
      * The method may only be called by the startElement event of
      * the {@link org.xml.sax.ContentHandler} that the application sets to the
      * {@link ValidatorHandler}.
      * 
-     * <p>
+     * <p/>
      * A general guideline for validators is to return true if
      * the attribute was originally present in the pipeline, and
      * false if it was added by the validator.
@@ -177,5 +175,6 @@ public abstract class TypeInfoProvider {
      *      processes input. <tt>false</tt> if the attribute was added
      *      by the validator.
      */
-    public abstract boolean isSpecified(int index);
+    public abstract bool isSpecified(int index);
+}
 }

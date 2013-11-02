@@ -11,7 +11,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  *  
- *  Copyright © 2011 Sebastian Ritter
+ *  Copyright © 2011,2013 Sebastian Ritter
  */
 using System;
 using java = biz.ritter.javapi;
@@ -34,5 +34,12 @@ namespace biz.ritter.javapi.lang
         {
             return this.name;
         }
+
+		public String getSpecificationTitle () {
+			return null;
+		}
+		public String getSpecificationVersion() {
+			return null;
+		}
     }
 }

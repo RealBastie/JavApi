@@ -23,8 +23,8 @@ using System;
 using java = biz.ritter.javapi;
 
 // Basties Apache XALAN-J project
-namespace org.apache.xpath {
-
+namespace org.apache.xpath
+{
 	/*
 import javax.xml.transform.TransformerException;
 
@@ -37,9 +37,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.traversal.NodeIterator;
 */
-
-
-/**
+	/**
  * The methods in this class are convenience methods into the
  * low-level XPath API.
  * These functions tend to be a little slow, since a number of objects must be
@@ -57,11 +55,9 @@ import org.w3c.dom.traversal.NodeIterator;
  *
  * @see <a href="http://www.w3.org/TR/xpath">XPath Specification</a> 
  * */
-public class XPathAPI
-{
-
-
-  /**
+	public class XPathAPI
+	{
+		/**
    *  Use an XPath string to select a nodelist.
    *  XPath namespace prefixes are resolved from the contextNode.
    *
@@ -71,13 +67,13 @@ public class XPathAPI
    *
    * @throws TransformerException
    */
-  public static NodeList selectNodeList(Node contextNode, String str)
+		public static org.w3c.dom.NodeList selectNodeList (org.w3c.dom.Node contextNode, String str)
          // throws TransformerException
-  {
-    return selectNodeList(contextNode, str, contextNode);
-  }
+		{
+			return selectNodeList (contextNode, str, contextNode);
+		}
 
-  /**
+		/**
    *  Use an XPath string to select a nodelist.
    *  XPath namespace prefixes are resolved from the namespaceNode.
    *
@@ -88,18 +84,14 @@ public class XPathAPI
    *
    * @throws TransformerException
    */
-  public static NodeList selectNodeList(
-          Node contextNode, String str, Node namespaceNode)
+		public static org.w3c.dom.NodeList selectNodeList (
+			org.w3c.dom.Node contextNode, String str, org.w3c.dom.Node namespaceNode)
             //throws TransformerException
-  {
+		{
 
-    // Execute the XPath, and have it return the result
+			// Execute the XPath, and have it return the result
 			throw new java.lang.UnsupportedOperationException ("XALAN-J not yet implemented");
-    XObject list = eval(contextNode, str, namespaceNode);
 
-    // Return a NodeList.
-    return list.nodelist();
-  }
-
-}
+		}
+	}
 }

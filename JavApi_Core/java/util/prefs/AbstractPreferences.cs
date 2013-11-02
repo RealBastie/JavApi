@@ -14,24 +14,10 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+using System;
+using java = biz.ritter.javapi;
 
-package java.util.prefs;
-
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.util.Collection;
-import java.util.EventListener;
-import java.util.EventObject;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeSet;
-
-import org.apache.harmony.luni.util.Base64;
-import org.apache.harmony.prefs.internal.nls.Messages;
+namespace biz.ritter.javapi.util.prefs{
 
 /**
  * This abstract class is a partial implementation of the abstract class
@@ -42,42 +28,42 @@ import org.apache.harmony.prefs.internal.nls.Messages;
  * @since 1.4
  * @see Preferences
  */
-public abstract class AbstractPreferences extends Preferences {
+public abstract class AbstractPreferences : Preferences {
     /*
      * ----------------------------------------------------------- Class fields
      * -----------------------------------------------------------
      */
     /** the unhandled events collection */
-    private static final List<EventObject> events = new LinkedList<EventObject>();
+    private static readonly List<EventObject> events = new LinkedList<EventObject>();
     /** the event dispatcher thread */
-    private static final EventDispatcher dispatcher = new EventDispatcher(
+    private static readonly EventDispatcher dispatcher = new EventDispatcher(
             "Preference Event Dispatcher"); //$NON-NLS-1$
 
     /*
      * ----------------------------------------------------------- Class
      * initializer -----------------------------------------------------------
      */
-    static {
+		static AbstractPreferences(){
         dispatcher.setDaemon(true);
         dispatcher.start();
-        Runtime.getRuntime().addShutdownHook(new Thread() {
-            @Override
-            public void run() {
-                Preferences uroot = Preferences.userRoot();
-                Preferences sroot = Preferences.systemRoot();
-                try {
-                    uroot.flush();
-                } catch (BackingStoreException e) {
-                    // ignore
-                }
-                try {
-                    sroot.flush();
-                } catch (BackingStoreException e) {
-                    // ignore
-                }
-            }
-        });
+        java.lang.Runtime.getRuntime().addShutdownHook(new IC_Thread());
     }
+		class IC_Thread : java.lang.Thread {
+			public override void run() {
+				Preferences uroot = Preferences.userRoot();
+				Preferences sroot = Preferences.systemRoot();
+				try {
+					uroot.flush();
+				} catch (BackingStoreException e) {
+					// ignore
+				}
+				try {
+					sroot.flush();
+				} catch (BackingStoreException e) {
+					// ignore
+				}
+			}
+		}
 
     /*
      * ----------------------------------------------------------- Instance
@@ -85,7 +71,7 @@ public abstract class AbstractPreferences extends Preferences {
      * -----------------------------------------------------------
      */
     /** true if this node is in user preference hierarchy */
-    boolean userNode;
+    bool userNode;
 
     /*
      * ----------------------------------------------------------- Instance
@@ -93,13 +79,13 @@ public abstract class AbstractPreferences extends Preferences {
      * -----------------------------------------------------------
      */
     /** Marker class for 'lock' field. */
-    private static class Lock {
+    private class Lock {
     }
 
     /**
      * The object used to lock this node.
      */
-    protected final Object lock;
+    protected internal readonly Object lockJ;
 
     /**
      * This field is true if this node is created while it doesn't exist in the
@@ -107,7 +93,7 @@ public abstract class AbstractPreferences extends Preferences {
      * when the node creation is completed, and if it is true, the node change
      * event will be fired for this node's parent.
      */
-    protected boolean newNode;
+    protected bool newNode;
 
     /** cached child nodes */
     private Map<String, AbstractPreferences> cachedNode;
@@ -123,7 +109,7 @@ public abstract class AbstractPreferences extends Preferences {
     private AbstractPreferences parentPref;
 
     // true if this node has been removed
-    private boolean isRemoved;
+    private bool isRemovedJ;
 
     // handler to this node's root node
     private AbstractPreferences root;
@@ -148,16 +134,16 @@ public abstract class AbstractPreferences extends Preferences {
      */
     protected AbstractPreferences(AbstractPreferences parent, String name) {
         if ((null == parent ^ name.length() == 0) || name.indexOf("/") >= 0) { //$NON-NLS-1$
-            throw new IllegalArgumentException();
+            throw new java.lang.IllegalArgumentException();
         }
         root = null == parent ? this : parent.root;
         nodeChangeListeners = new LinkedList<EventListener>();
         preferenceChangeListeners = new LinkedList<EventListener>();
-        isRemoved = false;
+        isRemovedJ = false;
         cachedNode = new HashMap<String, AbstractPreferences>();
         nodeName = name;
         parentPref = parent;
-        lock = new Lock();
+        lockJ = new Lock();
         userNode = root.userNode;
     }
 
@@ -170,7 +156,7 @@ public abstract class AbstractPreferences extends Preferences {
      * 
      * @return the array of cached child nodes.
      */
-    protected final AbstractPreferences[] cachedChildren() {
+    protected /*final*/ AbstractPreferences[] cachedChildren() {
         return cachedNode.values().toArray(
                 new AbstractPreferences[cachedNode.size()]);
     }
@@ -191,13 +177,13 @@ public abstract class AbstractPreferences extends Preferences {
      *             failure.
      */
     protected AbstractPreferences getChild(String name)
-            throws BackingStoreException {
-        synchronized (lock) {
+		{// throws BackingStoreException {
+        lock (lockJ) {
             checkState();
             AbstractPreferences result = null;
-            String[] childrenNames = childrenNames();
-            for (int i = 0; i < childrenNames.length; i++) {
-                if (childrenNames[i].equals(name)) {
+            String[] childrenNamesJ = childrenNames();
+            for (int i = 0; i < childrenNamesJ.Length; i++) {
+                if (childrenNamesJ[i].equals(name)) {
                     result = childSpi(name);
                     break;
                 }
@@ -214,9 +200,9 @@ public abstract class AbstractPreferences extends Preferences {
      * @return {@code true}, if this node has been removed, {@code false}
      *         otherwise.
      */
-    protected boolean isRemoved() {
-        synchronized (lock) {
-            return isRemoved;
+    protected internal bool isRemoved() {
+        lock (lockJ) {
+            return isRemovedJ;
         }
     }
 
@@ -230,7 +216,7 @@ public abstract class AbstractPreferences extends Preferences {
      *             if the backing store is unavailable or causes an operation
      *             failure.
      */
-    protected abstract void flushSpi() throws BackingStoreException;
+		protected abstract void flushSpi ();// throws BackingStoreException;
 
     /**
      * Returns the names of all of the child nodes of this node or an empty
@@ -242,7 +228,7 @@ public abstract class AbstractPreferences extends Preferences {
      *             if the backing store is unavailable or causes an operation
      *             failure.
      */
-    protected abstract String[] childrenNamesSpi() throws BackingStoreException;
+		protected abstract String[] childrenNamesSpi ();// throws BackingStoreException;
 
     /**
      * Returns the child preference node with the given name, creating it if it
@@ -296,7 +282,7 @@ public abstract class AbstractPreferences extends Preferences {
      *             if the backing store is unavailable or causes an operation
      *             failure.
      */
-    protected abstract String[] keysSpi() throws BackingStoreException;
+		protected abstract String[] keysSpi();// throws BackingStoreException;
 
     /**
      * Removes this node from the preference hierarchy tree. The caller of this
@@ -309,7 +295,7 @@ public abstract class AbstractPreferences extends Preferences {
      *             if the backing store is unavailable or causes an operation
      *             failure.
      */
-    protected abstract void removeNodeSpi() throws BackingStoreException;
+		protected abstract void removeNodeSpi();// throws BackingStoreException;
 
     /**
      * Removes the preference with the specified key. The caller of this method
@@ -331,15 +317,15 @@ public abstract class AbstractPreferences extends Preferences {
      *             if the backing store is unavailable or causes an operation
      *             failure.
      */
-    protected abstract void syncSpi() throws BackingStoreException;
+		protected abstract void syncSpi();// throws BackingStoreException;
 
     /*
      * ----------------------------------------------------------- Methods
      * inherited from Preferences
      * -----------------------------------------------------------
      */
-    @Override
-    public String absolutePath() {
+    
+    public override String absolutePath() {
         if (parentPref == null) {
             return "/"; //$NON-NLS-1$
         } else if (parentPref == root) {
@@ -348,71 +334,71 @@ public abstract class AbstractPreferences extends Preferences {
         return parentPref.absolutePath() + "/" + nodeName; //$NON-NLS-1$
     }
 
-    @Override
-    public String[] childrenNames() throws BackingStoreException {
-        synchronized (lock) {
+    
+    public override String[] childrenNames(){// throws BackingStoreException {
+        lock (lockJ) {
             checkState();
             TreeSet<String> result = new TreeSet<String>(cachedNode.keySet());
             String[] names = childrenNamesSpi();
-            for (int i = 0; i < names.length; i++) {
+            for (int i = 0; i < names.Length; i++) {
                 result.add(names[i]);
             }
             return result.toArray(new String[result.size()]);
         }
     }
 
-    @Override
-    public void clear() throws BackingStoreException {
-        synchronized (lock) {
+    
+    public override void clear() {//throws BackingStoreException {
+        lock (lockJ) {
             String[] keyList = keys();
-            for (int i = 0; i < keyList.length; i++) {
+            for (int i = 0; i < keyList.Length; i++) {
                 remove(keyList[i]);
             }
         }
     }
 
-    @Override
-    public void exportNode(OutputStream ostream) throws IOException,
-            BackingStoreException {
+    
+    public override void exportNode(java.io.OutputStream ostream) //throws IOException,
+		{//BackingStoreException {
         if (ostream == null) {
             // prefs.5=Stream is null
-            throw new NullPointerException(Messages.getString("prefs.5")); //$NON-NLS-1$
+				throw new java.lang.NullPointerException("Stream is null"); //$NON-NLS-1$
         }
         checkState();
         XMLParser.exportPrefs(this, ostream, false);
 
     }
 
-    @Override
-    public void exportSubtree(OutputStream ostream) throws IOException,
-            BackingStoreException {
+    
+    public override void exportSubtree(java.io.OutputStream ostream) //throws IOException,
+		{//BackingStoreException {
         if (ostream == null) {
             // prefs.5=Stream is null
-            throw new NullPointerException(Messages.getString("prefs.5")); //$NON-NLS-1$
+				throw new java.lang.NullPointerException("Stream is null"); //$NON-NLS-1$
         }
         checkState();
         XMLParser.exportPrefs(this, ostream, true);
     }
 
-    @Override
-    public void flush() throws BackingStoreException {
-        synchronized (lock) {
+    
+    public override void flush(){// throws BackingStoreException {
+        lock (lockJ) {
             flushSpi();
         }
         AbstractPreferences[] cc = cachedChildren();
         int i;
-        for (i = 0; i < cc.length; i++) {
+        for (i = 0; i < cc.Length; i++) {
             cc[i].flush();
         }
     }
 
-    @Override
-    public String get(String key, String deflt) {
+    
+    public override String get(String key, String deflt) {
         if (key == null) {
-            throw new NullPointerException();
+            throw new java.lang.NullPointerException();
         }
         String result = null;
-        synchronized (lock) {
+        lock (lockJ) {
             checkState();
             try {
                 result = getSpi(key);
@@ -423,8 +409,8 @@ public abstract class AbstractPreferences extends Preferences {
         return (result == null ? deflt : result);
     }
 
-    @Override
-    public boolean getBoolean(String key, boolean deflt) {
+    
+    public override bool getBoolean(String key, bool deflt) {
         String result = get(key, null);
         if (result == null) {
             return deflt;
@@ -438,9 +424,9 @@ public abstract class AbstractPreferences extends Preferences {
         }
     }
 
-    @Override
-    public byte[] getByteArray(String key, byte[] deflt) {
-        String svalue = get(key, null);
+    
+    public override byte[] getByteArray(String key, byte[] deflt) {
+        java.lang.StringJ svalue = get(key, null);
         if (svalue == null) {
             return deflt;
         }
@@ -449,89 +435,90 @@ public abstract class AbstractPreferences extends Preferences {
         }
         try {
             byte[] bavalue = svalue.getBytes("US-ASCII"); //$NON-NLS-1$
-            if (bavalue.length % 4 != 0) {
+            if (bavalue.Length % 4 != 0) {
                 return deflt;
             }
-            return Base64.decode(bavalue);
+			return new java.lang.StringJ(System.Text.Encoding.ASCII.GetString(Convert.FromBase64String(svalue))).getBytes ();
+            //return Base64.decode(bavalue);
         } catch (Exception e) {
             return deflt;
         }
     }
 
-    @Override
-    public double getDouble(String key, double deflt) {
+    
+    public override double getDouble(String key, double deflt) {
         String result = get(key, null);
         if (result == null) {
             return deflt;
         }
         try {
-            return Double.parseDouble(result);
-        } catch (NumberFormatException e) {
+            return java.lang.Double.parseDouble(result);
+        } catch (java.lang.NumberFormatException e) {
             return deflt;
         }
     }
 
-    @Override
-    public float getFloat(String key, float deflt) {
+    
+    public override float getFloat(String key, float deflt) {
         String result = get(key, null);
         if (result == null) {
             return deflt;
         }
         try {
-            return Float.parseFloat(result);
-        } catch (NumberFormatException e) {
+            return java.lang.Float.parseFloat(result);
+        } catch (java.lang.NumberFormatException e) {
             return deflt;
         }
     }
 
-    @Override
-    public int getInt(String key, int deflt) {
+    
+    public override int getInt(String key, int deflt) {
         String result = get(key, null);
         if (result == null) {
             return deflt;
         }
         try {
-            return Integer.parseInt(result);
-        } catch (NumberFormatException e) {
+            return java.lang.Integer.parseInt(result);
+        } catch (java.lang.NumberFormatException e) {
             return deflt;
         }
     }
 
-    @Override
-    public long getLong(String key, long deflt) {
+    
+    public override long getLong(String key, long deflt) {
         String result = get(key, null);
         if (result == null) {
             return deflt;
         }
         try {
-            return Long.parseLong(result);
-        } catch (NumberFormatException e) {
+            return java.lang.Long.parseLong(result);
+        } catch (java.lang.NumberFormatException e) {
             return deflt;
         }
     }
 
-    @Override
-    public boolean isUserNode() {
+    
+    public override bool isUserNode() {
         return root == Preferences.userRoot();
     }
 
-    @Override
-    public String[] keys() throws BackingStoreException {
-        synchronized (lock) {
+    
+    public override String[] keys(){// throws BackingStoreException {
+        lock (lockJ) {
             checkState();
             return keysSpi();
         }
     }
 
-    @Override
-    public String name() {
+    
+    public override String name() {
         return nodeName;
     }
 
-    @Override
-    public Preferences node(String name) {
+    
+    public override Preferences node(String name) {
         AbstractPreferences startNode = null;
-        synchronized (lock) {
+        lock (lockJ) {
             checkState();
             validateName(name);
             if ("".equals(name)) { //$NON-NLS-1$
@@ -557,24 +544,24 @@ public abstract class AbstractPreferences extends Preferences {
     private void validateName(String name) {
         if (name.endsWith("/") && name.length() > 1) { //$NON-NLS-1$
             // prefs.6=Name cannot end with '/'
-            throw new IllegalArgumentException(Messages.getString("prefs.6")); //$NON-NLS-1$
+				throw new java.lang.IllegalArgumentException("Name cannot end with '/'"); //$NON-NLS-1$
         }
         if (name.indexOf("//") >= 0) { //$NON-NLS-1$
             // prefs.7=Name cannot contains consecutive '/'
-            throw new IllegalArgumentException(Messages.getString("prefs.7")); //$NON-NLS-1$
+				throw new java.lang.IllegalArgumentException("Name cannot contains consecutive '/'"); //$NON-NLS-1$
         }
     }
 
-    private AbstractPreferences nodeImpl(String path, boolean createNew)
-            throws BackingStoreException {
+    private AbstractPreferences nodeImpl(String path, bool createNew)
+		{//throws BackingStoreException {
 
         String[] names = path.split("/");//$NON-NLS-1$
         AbstractPreferences currentNode = this;
         AbstractPreferences temp = null;
 
-        for (int i = 0; i < names.length; i++) {
+        for (int i = 0; i < names.Length; i++) {
             String name = names[i];
-            synchronized (currentNode.lock) {
+            lock (currentNode.lockJ) {
                 temp = currentNode.cachedNode.get(name);
                 if (temp == null) {
                     temp = getNodeFromBackend(createNew, currentNode, name);
@@ -588,13 +575,13 @@ public abstract class AbstractPreferences extends Preferences {
         return currentNode;
     }
 
-    private AbstractPreferences getNodeFromBackend(boolean createNew,
+    private AbstractPreferences getNodeFromBackend(bool createNew,
             AbstractPreferences currentNode, String name)
-            throws BackingStoreException {
+		{//throws BackingStoreException {
         if (name.length() > MAX_NAME_LENGTH) {
             // prefs.8=Name length is too long: {0}
-            throw new IllegalArgumentException(Messages.getString("prefs.8", //$NON-NLS-1$
-                    name));
+				throw new java.lang.IllegalArgumentException("Name length is too long: "+
+                    name);
         }
         AbstractPreferences temp;
         if (createNew) {
@@ -609,19 +596,19 @@ public abstract class AbstractPreferences extends Preferences {
         return temp;
     }
 
-    @Override
-    public boolean nodeExists(String name) throws BackingStoreException {
+    
+    public override bool nodeExists(String name) {//throws BackingStoreException {
         if (null == name) {
-            throw new NullPointerException();
+            throw new java.lang.NullPointerException();
         }
         AbstractPreferences startNode = null;
-        synchronized (lock) {
+        lock (lockJ) {
             if (isRemoved()) {
                 if ("".equals(name)) { //$NON-NLS-1$
                     return false;
                 }
                 // prefs.9=This node has been removed
-                throw new IllegalStateException(Messages.getString("prefs.9")); //$NON-NLS-1$
+					throw new java.lang.IllegalStateException("This node has been removed"); //$NON-NLS-1$
             }
             validateName(name);
             if ("".equals(name) || "/".equals(name)) { //$NON-NLS-1$ //$NON-NLS-2$
@@ -637,13 +624,13 @@ public abstract class AbstractPreferences extends Preferences {
         try {
             Preferences result = startNode.nodeImpl(name, false);
             return null == result ? false : true;
-        } catch (IllegalArgumentException e) {
+        } catch (java.lang.IllegalArgumentException e) {
             return false;
         }
     }
 
-    @Override
-    public Preferences parent() {
+    
+    public override Preferences parent() {
         checkState();
         return parentPref;
     }
@@ -651,104 +638,104 @@ public abstract class AbstractPreferences extends Preferences {
     private void checkState() {
         if (isRemoved()) {
             // prefs.9=This node has been removed
-            throw new IllegalStateException(Messages.getString("prefs.9")); //$NON-NLS-1$
+				throw new java.lang.IllegalStateException("This node has been removed"); //$NON-NLS-1$
         }
     }
 
-    @Override
-    public void put(String key, String value) {
+    
+    public override void put(String key, String value) {
         if (null == key || null == value) {
-            throw new NullPointerException();
+            throw new java.lang.NullPointerException();
         }
         if (key.length() > MAX_KEY_LENGTH || value.length() > MAX_VALUE_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new java.lang.IllegalArgumentException();
         }
-        synchronized (lock) {
+        lock (lockJ) {
             checkState();
             putSpi(key, value);
         }
         notifyPreferenceChange(key, value);
     }
 
-    @Override
-    public void putBoolean(String key, boolean value) {
-        String sval = String.valueOf(value);
+    
+    public override void putBoolean(String key, bool value) {
+        String sval = java.lang.StringJ.valueOf(value);
         put(key, sval);
     }
 
-    @Override
-    public void putByteArray(String key, byte[] value) {
+    
+    public override void putByteArray(String key, byte[] value) {
         try {
-            put(key, Base64.encode(value, "US-ASCII")); //$NON-NLS-1$
-        } catch (UnsupportedEncodingException e) {
-            throw new AssertionError(e);
+			put (key, Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(new java.lang.StringJ(value))));
+            //put(key, Base64.encode(value, "US-ASCII")); //$NON-NLS-1$
+        } catch (java.io.UnsupportedEncodingException e) {
+            throw new java.lang.AssertionError(e);
         }
     }
 
-    @Override
-    public void putDouble(String key, double value) {
-        String sval = Double.toString(value);
+    
+    public override void putDouble(String key, double value) {
+        String sval = java.lang.Double.toString(value);
         put(key, sval);
     }
 
-    @Override
-    public void putFloat(String key, float value) {
-        String sval = Float.toString(value);
+    
+    public override void putFloat(String key, float value) {
+        String sval = java.lang.Float.toString(value);
         put(key, sval);
     }
 
-    @Override
-    public void putInt(String key, int value) {
-        String sval = Integer.toString(value);
+    
+    public override void putInt(String key, int value) {
+        String sval = java.lang.Integer.toString(value);
         put(key, sval);
     }
 
-    @Override
-    public void putLong(String key, long value) {
-        String sval = Long.toString(value);
+    
+    public override void putLong(String key, long value) {
+        String sval = java.lang.Long.toString(value);
         put(key, sval);
     }
 
-    @Override
-    public void remove(String key) {
-        synchronized (lock) {
+    
+    public override void remove(String key) {
+        lock (lockJ) {
             checkState();
             removeSpi(key);
         }
         notifyPreferenceChange(key, null);
     }
 
-    @Override
-    public void removeNode() throws BackingStoreException {
+    
+    public override void removeNode(){// throws BackingStoreException {
         if (root == this) {
             // prefs.A=Cannot remove root node
-            throw new UnsupportedOperationException(Messages
-                    .getString("prefs.A")); //$NON-NLS-1$
+				throw new java.lang.UnsupportedOperationException("Cannot remove root node!"); //$NON-NLS-1$
         }
-        synchronized (parentPref.lock) {
+        lock (parentPref.lockJ) {
             removeNodeImpl();
         }
     }
 
-    private void removeNodeImpl() throws BackingStoreException {
-        synchronized (lock) {
+    private void removeNodeImpl(){// throws BackingStoreException {
+        lock (lockJ) {
             checkState();
             String[] childrenNames = childrenNamesSpi();
-            for (int i = 0; i < childrenNames.length; i++) {
+            for (int i = 0; i < childrenNames.Length; i++) {
                 if (null == cachedNode.get(childrenNames[i])) {
                     AbstractPreferences child = childSpi(childrenNames[i]);
                     cachedNode.put(childrenNames[i], child);
                 }
             }
 
-            final Collection<AbstractPreferences> values = cachedNode.values();
-            final AbstractPreferences[] children = values
+            java.util.Collection<AbstractPreferences> values = cachedNode.values();
+            AbstractPreferences[] children = values
                     .toArray(new AbstractPreferences[values.size()]);
-            for (AbstractPreferences child : children) {
+            foreach (AbstractPreferences child in children) {
                 child.removeNodeImpl();
             }
             removeNodeSpi();
-            isRemoved = true;
+            isRemovedJ = true;
             parentPref.cachedNode.remove(nodeName);
         }
         if (parentPref.nodeChangeListeners.size() > 0) {
@@ -756,68 +743,68 @@ public abstract class AbstractPreferences extends Preferences {
         }
     }
 
-    @Override
-    public void addNodeChangeListener(NodeChangeListener ncl) {
+    
+    public override void addNodeChangeListener(NodeChangeListener ncl) {
         if (null == ncl) {
-            throw new NullPointerException();
+            throw new java.lang.NullPointerException();
         }
         checkState();
-        synchronized (nodeChangeListeners) {
+        lock (nodeChangeListeners) {
             nodeChangeListeners.add(ncl);
         }
     }
 
-    @Override
-    public void addPreferenceChangeListener(PreferenceChangeListener pcl) {
+    
+    public override void addPreferenceChangeListener(PreferenceChangeListener pcl) {
         if (null == pcl) {
-            throw new NullPointerException();
+            throw new java.lang.NullPointerException();
         }
         checkState();
-        synchronized (preferenceChangeListeners) {
+        lock (preferenceChangeListeners) {
             preferenceChangeListeners.add(pcl);
         }
     }
 
-    @Override
-    public void removeNodeChangeListener(NodeChangeListener ncl) {
+    
+    public override void removeNodeChangeListener(NodeChangeListener ncl) {
         checkState();
-        synchronized (nodeChangeListeners) {
+        lock (nodeChangeListeners) {
             int pos;
             if ((pos = nodeChangeListeners.indexOf(ncl)) == -1) {
-                throw new IllegalArgumentException();
+                throw new java.lang.IllegalArgumentException();
             }
             nodeChangeListeners.remove(pos);
         }
     }
 
-    @Override
-    public void removePreferenceChangeListener(PreferenceChangeListener pcl) {
+    
+    public override void removePreferenceChangeListener(PreferenceChangeListener pcl) {
         checkState();
-        synchronized (preferenceChangeListeners) {
+        lock (preferenceChangeListeners) {
             int pos;
             if ((pos = preferenceChangeListeners.indexOf(pcl)) == -1) {
-                throw new IllegalArgumentException();
+                throw new java.lang.IllegalArgumentException();
             }
             preferenceChangeListeners.remove(pos);
         }
     }
 
-    @Override
-    public void sync() throws BackingStoreException {
-        synchronized (lock) {
+    
+    public override void sync(){// throws BackingStoreException {
+        lock (lockJ) {
             checkState();
             syncSpi();
         }
         AbstractPreferences[] cc = cachedChildren();
         int i;
-        for (i = 0; i < cc.length; i++) {
+        for (i = 0; i < cc.Length; i++) {
             cc[i].sync();
         }
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
+    
+    public override String ToString() {
+        java.lang.StringBuilder sb = new java.lang.StringBuilder();
         sb.append(isUserNode() ? "User" : "System"); //$NON-NLS-1$ //$NON-NLS-2$
         sb.append(" Preference Node: "); //$NON-NLS-1$
         sb.append(absolutePath());
@@ -826,7 +813,7 @@ public abstract class AbstractPreferences extends Preferences {
 
     private void notifyChildAdded(Preferences child) {
         NodeChangeEvent nce = new NodeAddEvent(this, child);
-        synchronized (events) {
+        lock (events) {
             events.add(nce);
             events.notifyAll();
         }
@@ -834,7 +821,7 @@ public abstract class AbstractPreferences extends Preferences {
 
     private void notifyChildRemoved(Preferences child) {
         NodeChangeEvent nce = new NodeRemoveEvent(this, child);
-        synchronized (events) {
+        lock (events) {
             events.add(nce);
             events.notifyAll();
         }
@@ -843,104 +830,105 @@ public abstract class AbstractPreferences extends Preferences {
     private void notifyPreferenceChange(String key, String newValue) {
         PreferenceChangeEvent pce = new PreferenceChangeEvent(this, key,
                 newValue);
-        synchronized (events) {
+        lock (events) {
             events.add(pce);
             events.notifyAll();
         }
     }
 
-    private static class EventDispatcher extends Thread {
-        EventDispatcher(String name) {
-            super(name);
+    private class EventDispatcher : java.lang.Thread {
+        internal EventDispatcher(String name) :
+            base(name){
         }
 
-        @Override
-        public void run() {
+        
+        public override void run() {
             while (true) {
-                EventObject event = null;
+                EventObject eventJ = null;
                 try {
-                    event = getEventObject();
-                } catch (InterruptedException e) {
+                    eventJ = getEventObject();
+                } catch (java.lang.InterruptedException e) {
                     e.printStackTrace();
                     continue;
                 }
-                AbstractPreferences pref = (AbstractPreferences) event
+                AbstractPreferences pref = (AbstractPreferences) eventJ
                         .getSource();
-                if (event instanceof NodeAddEvent) {
-                    dispatchNodeAdd((NodeChangeEvent) event,
+                if (eventJ is NodeAddEvent) {
+                    dispatchNodeAdd((NodeChangeEvent) eventJ,
                             pref.nodeChangeListeners);
-                } else if (event instanceof NodeRemoveEvent) {
-                    dispatchNodeRemove((NodeChangeEvent) event,
+                } else if (eventJ is NodeRemoveEvent) {
+                    dispatchNodeRemove((NodeChangeEvent) eventJ,
                             pref.nodeChangeListeners);
-                } else if (event instanceof PreferenceChangeEvent) {
-                    dispatchPrefChange((PreferenceChangeEvent) event,
+                } else if (eventJ is PreferenceChangeEvent) {
+                    dispatchPrefChange((PreferenceChangeEvent) eventJ,
                             pref.preferenceChangeListeners);
                 }
             }
         }
 
-        private EventObject getEventObject() throws InterruptedException {
-            synchronized (events) {
+        private EventObject getEventObject() {//throws InterruptedException {
+            lock (events) {
                 if (events.isEmpty()) {
                     events.wait();
                 }
-                EventObject event = events.get(0);
+                EventObject eventJ = events.get(0);
                 events.remove(0);
-                return event;
+                return eventJ;
             }
         }
 
-        private void dispatchPrefChange(PreferenceChangeEvent event,
+        private void dispatchPrefChange(PreferenceChangeEvent eventJ,
                 List<EventListener> preferenceChangeListeners) {
-            synchronized (preferenceChangeListeners) {
+            lock (preferenceChangeListeners) {
                 Iterator<EventListener> i = preferenceChangeListeners
                         .iterator();
                 while (i.hasNext()) {
                     PreferenceChangeListener pcl = (PreferenceChangeListener) i
                             .next();
-                    pcl.preferenceChange(event);
+                    pcl.preferenceChange(eventJ);
                 }
             }
         }
 
-        private void dispatchNodeRemove(NodeChangeEvent event,
+        private void dispatchNodeRemove(NodeChangeEvent eventJ,
                 List<EventListener> nodeChangeListeners) {
-            synchronized (nodeChangeListeners) {
+            lock (nodeChangeListeners) {
                 Iterator<EventListener> i = nodeChangeListeners.iterator();
                 while (i.hasNext()) {
                     NodeChangeListener ncl = (NodeChangeListener) i.next();
-                    ncl.childRemoved(event);
+                    ncl.childRemoved(eventJ);
                 }
             }
         }
 
-        private void dispatchNodeAdd(NodeChangeEvent event,
+        private void dispatchNodeAdd(NodeChangeEvent eventJ,
                 List<EventListener> nodeChangeListeners) {
-            synchronized (nodeChangeListeners) {
+            lock (nodeChangeListeners) {
                 Iterator<EventListener> i = nodeChangeListeners.iterator();
                 while (i.hasNext()) {
                     NodeChangeListener ncl = (NodeChangeListener) i.next();
-                    ncl.childAdded(event);
+                    ncl.childAdded(eventJ);
                 }
             }
         }
     }
 
-    private static class NodeAddEvent extends NodeChangeEvent {
+    private class NodeAddEvent : NodeChangeEvent {
         // The base class is NOT serializable, so this class isn't either.
-        private static final long serialVersionUID = 1L;
+        private static readonly long serialVersionUID = 1L;
 
-        public NodeAddEvent(Preferences p, Preferences c) {
-            super(p, c);
+        public NodeAddEvent(Preferences p, Preferences c) :
+            base(p, c){
         }
     }
 
-    private static class NodeRemoveEvent extends NodeChangeEvent {
+    private class NodeRemoveEvent : NodeChangeEvent {
         // The base class is NOT serializable, so this class isn't either.
-        private static final long serialVersionUID = 1L;
+        private static readonly long serialVersionUID = 1L;
 
-        public NodeRemoveEvent(Preferences p, Preferences c) {
-            super(p, c);
+        public NodeRemoveEvent(Preferences p, Preferences c) :
+            base(p, c){
         }
     }
+}
 }

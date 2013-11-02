@@ -16,10 +16,12 @@
  */
 
 // $Id: FactoryConfigurationError.java 569980 2007-08-27 03:58:15Z mrglavas $
+using System;
+using java = biz.ritter.javapi;
 
-package javax.xml.parsers;
-
-/**
+namespace biz.ritter.javapix.xml.parsers
+{
+	/**
  * Thrown when a problem with configuration with the Parser Factories
  * exists. This error will typically be thrown when the class of a
  * parser factory specified in the system properties cannot be found
@@ -29,37 +31,36 @@ package javax.xml.parsers;
  * @version $Revision: 569980 $, $Date: 2007-08-26 23:58:15 -0400 (Sun, 26 Aug 2007) $
  */
 
-public class FactoryConfigurationError extends Error {
-
-    /**
+	public class FactoryConfigurationError : java.lang.Error
+	{
+		/**
      *<code>Exception</code> that represents the error.
      */
-    private Exception exception;
+		private java.lang.Exception exception;
 
-    /**
+		/**
      * Create a new <code>FactoryConfigurationError</code> with no
      * detail message.
      */
 
-    public FactoryConfigurationError() {
-        super();
-        this.exception = null;
-    }
+		public FactoryConfigurationError () :base()
+		{
+			this.exception = null;
+		}
 
-    /**
+		/**
      * Create a new <code>FactoryConfigurationError</code> with
      * the <code>String </code> specified as an error message.
      *
      * @param msg The error message for the exception.
      */
     
-    public FactoryConfigurationError(String msg) {
-        super(msg);
-        this.exception = null;
-    }
+		public FactoryConfigurationError (String msg) :base(msg)
+		{
+			this.exception = null;
+		}
 
-
-    /**
+		/**
      * Create a new <code>FactoryConfigurationError</code> with a
      * given <code>Exception</code> base cause of the error.
      *
@@ -67,12 +68,12 @@ public class FactoryConfigurationError extends Error {
      * FactoryConfigurationError.
      */
     
-    public FactoryConfigurationError(Exception e) {
-        super(e.toString());
-        this.exception = e;
-    }
+		public FactoryConfigurationError (java.lang.Exception e) :base(e.toString())
+		{
+			this.exception = e;
+		}
 
-    /**
+		/**
      * Create a new <code>FactoryConfigurationError</code> with the
      * given <code>Exception</code> base cause and detail message.
      *
@@ -81,13 +82,12 @@ public class FactoryConfigurationError extends Error {
      * @param msg The detail message.
      */
     
-    public FactoryConfigurationError(Exception e, String msg) {
-        super(msg);
-        this.exception = e;
-    }
+		public FactoryConfigurationError (java.lang.Exception e, String msg) :base(msg)
+		{
+			this.exception = e;
+		}
 
-
-    /**
+		/**
      * Return the message (if any) for this error . If there is no
      * message for the exception and there is an encapsulated
      * exception then the message of that exception, if it exists will be 
@@ -97,24 +97,27 @@ public class FactoryConfigurationError extends Error {
      * @return The error message.
      */
     
-    public String getMessage () {
-        String message = super.getMessage ();
+		public override String getMessage ()
+		{
+			String message = base.getMessage ();
   
-        if (message == null && exception != null) {
-            return exception.getMessage();
-        }
+			if (message == null && exception != null) {
+				return exception.getMessage ();
+			}
 
-        return message;
-    }
-  
-    /**
+			return message;
+		}
+
+		/**
      * Return the actual exception (if any) that caused this exception to
      * be raised.
      *
      * @return The encapsulated exception, or null if there is none.
      */
     
-    public Exception getException () {
-        return exception;
-    }
+		public java.lang.Exception getException ()
+		{
+			return exception;
+		}
+	}
 }

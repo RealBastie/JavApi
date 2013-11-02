@@ -42,7 +42,7 @@ namespace biz.ritter.javapix.xml.crypto.dsig.dom
  * @author JSR 105 Expert Group
  * @see XMLSignatureFactory#unmarshalXMLSignature(XMLValidateContext)
  */
-public class DOMValidateContext : javax.xml.crypto.dom.DOMCryptoContext, 
+public class DOMValidateContext : biz.ritter.javapix.xml.crypto.dom.DOMCryptoContext, 
      XMLValidateContext {
 
     private org.w3c.dom.Node node;

@@ -38,7 +38,7 @@ namespace biz.ritter.javapi.awt
             this.owner = owner;
         }
 
-        public void addUserListener(T listener)
+        public override void addUserListener(T listener)
         {
             base.addUserListener(listener);
 

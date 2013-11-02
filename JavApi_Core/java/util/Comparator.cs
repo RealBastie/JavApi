@@ -38,8 +38,8 @@ namespace biz.ritter.javapi.util
          * <li>{@code compare(a,a)} returns zero for all {@code a}</li>
          * <li>the sign of {@code compare(a,b)} must be the opposite of the sign of {@code
          * compare(b,a)} for all pairs of (a,b)</li>
-         * <li>From {@code compare(a,b) > 0} and {@code compare(b,c) > 0} it must
-         * follow {@code compare(a,c) > 0} for all possible combinations of {@code
+         * <li>From {@code compare(a,b) &gt; 0} and {@code compare(b,c) &gt; 0} it must
+         * follow {@code compare(a,c) &gt; 0} for all possible combinations of {@code
          * (a,b,c)}</li>
          * </ul>
          * 
@@ -47,8 +47,8 @@ namespace biz.ritter.javapi.util
          *            an {@code Object}.
          * @param object2
          *            a second {@code Object} to compare with {@code object1}.
-         * @return an integer < 0 if {@code object1} is less than {@code object2}, 0 if they are
-         *         equal, and > 0 if {@code object1} is greater than {@code object2}.
+         * @return an integer &lt; 0 if {@code object1} is less than {@code object2}, 0 if they are
+         *         equal, and &gt; 0 if {@code object1} is greater than {@code object2}.
          * @throws ClassCastException
          *                if objects are not of the correct type.
          */
@@ -58,7 +58,7 @@ namespace biz.ritter.javapi.util
          * Compares this {@code Comparator} with the specified {@code Object} and indicates whether they
          * are equal. In order to be equal, {@code object} must represent the same object
          * as this instance using a class-specific comparison.
-         * <p>
+         * <p/>
          * A {@code Comparator} never needs to override this method, but may choose so for
          * performance reasons.
          * 

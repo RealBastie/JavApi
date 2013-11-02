@@ -15,31 +15,30 @@
  * limitations under the License.
  */
 // $Id: Validator.java 888884 2009-12-09 17:36:46Z mrglavas $
+using System;
+using java = biz.ritter.javapi;
+using javax = biz.ritter.javapix;
+using org.xml.sax;
 
-package javax.xml.validation;
-
-import java.io.IOException;
-
+namespace biz.ritter.javapix.xml.validation
+{
+	/*
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 
 import org.w3c.dom.ls.LSResourceResolver;
-import org.xml.sax.ErrorHandler;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXNotRecognizedException;
-import org.xml.sax.SAXNotSupportedException;
-
-/**
+*/
+	/**
  * <p>A processor that checks an XML document against {@link Schema}.</p>
  * 
- * <p>
+ * <p/>
  * A validator is a thread-unsafe and non-reentrant object.
  * In other words, it is the application's responsibility to make
  * sure that one {@link Validator} object is not used from
  * more than one thread at any given time, and while the <tt>validate</tt>
  * method is invoked, applications may not recursively call
  * the <tt>validate</tt> method.
- * <p>
+ * <p/>
  *
  * Note that while the {@link #validate(javax.xml.transform.Source)} and {@link #validate(javax.xml.transform.Source, javax.xml.transform.Result)}
  * methods take a {@link Source} instance, the <code>Source</code>
@@ -49,23 +48,24 @@ import org.xml.sax.SAXNotSupportedException;
  * @version $Revision: 888884 $, $Date: 2009-12-09 12:36:46 -0500 (Wed, 09 Dec 2009) $
  * @since 1.5
  */
-public abstract class Validator {
-    
-    /**
+	public abstract class Validator
+	{
+		/**
      * Constructor for derived classes.
      * 
-     * <p>
+     * <p/>
      * The constructor does nothing.
      * 
-     * <p>
+     * <p/>
      * Derived classes must create {@link Validator} objects that have
      * <tt>null</tt> {@link ErrorHandler} and
      * <tt>null</tt> {@link LSResourceResolver}.
      */
-    protected Validator() {
-    }
-    
-	/**
+		protected Validator ()
+		{
+		}
+
+		/**
 	 * <p>Reset this <code>Validator</code> to its original configuration.</p>
 	 * 
 	 * <p><code>Validator</code> is reset to the same state as when it was created with
@@ -77,12 +77,12 @@ public abstract class Validator {
 	 * <code>Object</code>s, e.g. {@link Object#equals(Object obj)}.  It is guaranteed to have a functionally equal
 	 * <code>LSResourceResolver</code> and <code>ErrorHandler</code>.</p>
 	 */
-	public abstract void reset();
+		public abstract void reset ();
 
-    /**
+		/**
      * Validates the specified input.
      * 
-     * <p>
+     * <p/>
      * This is just a convenience method of:
      * <pre>
      * validate(source,null);
@@ -90,20 +90,21 @@ public abstract class Validator {
      * 
      * @see #setErrorHandler(ErrorHandler)
      */
-    public void validate(Source source) throws SAXException, IOException {
-        validate(source, null);
-    }
-    
-    /**
+		public void validate (javax.xml.transform.Source source)
+		{//throws SAXException, IOException {
+			validate (source, null);
+		}
+
+		/**
      * Validates the specified input and send the augmented validation
      * result to the specified output.
      * 
-     * <p>
+     * <p/>
      * This method places the following restrictions on the types of
      * the {@link Source}/{@link Result} accepted.
      * 
      * <h4>{@link Source}/{@link Result} accepted:</h4>
-     * <table border=1>
+     * <table border='1'>
      * <thead>
      *  <tr>
      *   <td></td>
@@ -152,15 +153,15 @@ public abstract class Validator {
      * </tbody>
      * </table>
      *
-     * <p>
+     * <p/>
      * To validate one {@link Source} into another kind of {@link Result}, use the identity transformer
      * (see {@link javax.xml.transform.TransformerFactory#newTransformer()}).
      * 
-     * <p>
+     * <p/>
      * Errors found during the validation is sent to the specified
      * {@link ErrorHandler}.
      * 
-     * <p>
+     * <p/>
      * If a document is valid, or if a document contains some errors
      * but none of them were fatal and the {@link ErrorHandler} didn't
      * throw any exception, then the method returns normally.
@@ -205,35 +206,35 @@ public abstract class Validator {
      * 
      * @see #validate(Source)
      */
-    public abstract void validate(Source source, Result result) throws SAXException, IOException;
-    
-    /**
+		public abstract void validate (javax.xml.transform.Source source, javax.xml.transform.Result result);
+		// throws SAXException, IOException;
+		/**
      * Sets the {@link ErrorHandler} to receive errors encountered
      * during the <code>validate</code> method invocation.
      * 
-     * <p>
+     * <p/>
      * Error handler can be used to customize the error handling process
      * during a validation. When an {@link ErrorHandler} is set,
      * errors found during the validation will be first sent
      * to the {@link ErrorHandler}.
      * 
-     * <p>
+     * <p/>
      * The error handler can abort further validation immediately
      * by throwing {@link SAXException} from the handler. Or for example
      * it can print an error to the screen and try to continue the
      * validation by returning normally from the {@link ErrorHandler} 
      * 
-     * <p>
+     * <p/>
      * If any {@link Throwable} is thrown from an {@link ErrorHandler},
      * the caller of the <code>validate</code> method will be thrown
      * the same {@link Throwable} object.
      * 
-     * <p>
+     * <p/>
      * {@link Validator} is not allowed to
      * throw {@link SAXException} without first reporting it to
      * {@link ErrorHandler}.
      * 
-     * <p>
+     * <p/>
      * When the {@link ErrorHandler} is null, the implementation will
      * behave as if the following {@link ErrorHandler} is set:
      * <pre>
@@ -250,16 +251,16 @@ public abstract class Validator {
      * }
      * </pre>
      * 
-     * <p>
+     * <p/>
      * When a new {@link Validator} object is created, initially
      * this field is set to null.
      * 
      * @param   errorHandler
      *      A new error handler to be set. This parameter can be null.
      */
-    public abstract void setErrorHandler(ErrorHandler errorHandler);
-    
-    /**
+		public abstract void setErrorHandler (ErrorHandler errorHandler);
+
+		/**
      * Gets the current {@link ErrorHandler} set to this {@link Validator}.
      * 
      * @return
@@ -270,19 +271,19 @@ public abstract class Validator {
      * 
      * @see #setErrorHandler(ErrorHandler)
      */
-    public abstract ErrorHandler getErrorHandler();
-    
-    /**
+		public abstract ErrorHandler getErrorHandler ();
+
+		/**
      * Sets the {@link LSResourceResolver} to customize
      * resource resolution while in a validation episode.
      * 
-     * <p>
+     * <p/>
      * {@link Validator} uses a {@link LSResourceResolver}
      * when it needs to locate external resources while a validation,
      * although exactly what constitutes "locating external resources" is
      * up to each schema language.
      * 
-     * <p>
+     * <p/>
      * When the {@link LSResourceResolver} is null, the implementation will
      * behave as if the following {@link LSResourceResolver} is set:
      * <pre>
@@ -295,23 +296,23 @@ public abstract class Validator {
      * }
      * </pre>
      * 
-     * <p>
+     * <p/>
      * If a {@link LSResourceResolver} throws a {@link RuntimeException}
      *  (or instances of its derived classes),
      * then the {@link Validator} will abort the parsing and  
      * the caller of the <code>validate</code> method will receive
      * the same {@link RuntimeException}. 
      * 
-     * <p>
+     * <p/>
      * When a new {@link Validator} object is created, initially
      * this field is set to null.
      * 
      * @param   resourceResolver
      *      A new resource resolver to be set. This parameter can be null.
      */
-    public abstract void setResourceResolver(LSResourceResolver resourceResolver);
-    
-    /**
+		public abstract void setResourceResolver (org.w3c.dom.ls.LSResourceResolver resourceResolver);
+
+		/**
      * Gets the current {@link LSResourceResolver} set to this {@link Validator}.
      * 
      * @return
@@ -322,14 +323,12 @@ public abstract class Validator {
      * 
      * @see #setErrorHandler(ErrorHandler)
      */
-    public abstract LSResourceResolver getResourceResolver();
-    
-    
-    
-    /**
+		public abstract org.w3c.dom.ls.LSResourceResolver getResourceResolver ();
+
+		/**
      * Look up the value of a feature flag.
      *
-     * <p>The feature name is any fully-qualified URI.  It is
+     * <p/>The feature name is any fully-qualified URI.  It is
      * possible for a {@link Validator} to recognize a feature name but
      * temporarily be unable to return its value.
      * Some feature values may be available only in specific
@@ -349,12 +348,14 @@ public abstract class Validator {
      *          When the name parameter is null.
      * @see #setFeature(String, boolean)
      */
-    public boolean getFeature(String name) throws SAXNotRecognizedException, SAXNotSupportedException {
-        if(name==null) throw new NullPointerException("the name parameter is null");
-        throw new SAXNotRecognizedException(name);
-    }
-    
-    /**
+		public bool getFeature (String name)
+		{//throws SAXNotRecognizedException, SAXNotSupportedException {
+			if (name == null)
+				throw new java.lang.NullPointerException ("the name parameter is null");
+			throw new SAXNotRecognizedException (name);
+		}
+
+		/**
      * Set the value of a feature flag.
      *
      * <p>
@@ -382,12 +383,14 @@ public abstract class Validator {
      * 
      * @see #getFeature(String)
      */
-    public void setFeature(String name, boolean value) throws SAXNotRecognizedException, SAXNotSupportedException {
-        if(name==null) throw new NullPointerException("the name parameter is null");
-        throw new SAXNotRecognizedException(name);
-    }
-    
-    /**
+		public void setFeature (String name, bool value)
+		{//throws SAXNotRecognizedException, SAXNotSupportedException {
+			if (name == null)
+				throw new java.lang.NullPointerException ("the name parameter is null");
+			throw new SAXNotRecognizedException (name);
+		}
+
+		/**
      * Set the value of a property.
      *
      * <p>The property name is any fully-qualified URI.  It is
@@ -410,12 +413,14 @@ public abstract class Validator {
      * @throws NullPointerException
      *          When the name parameter is null.
      */
-    public void setProperty(String name, Object object) throws SAXNotRecognizedException, SAXNotSupportedException {
-        if(name==null) throw new NullPointerException("the name parameter is null");
-        throw new SAXNotRecognizedException(name);
-    }
-    
-    /**
+		public void setProperty (String name, Object objectJ)
+		{// throws SAXNotRecognizedException, SAXNotSupportedException {
+			if (name == null)
+				throw new java.lang.NullPointerException ("the name parameter is null");
+			throw new SAXNotRecognizedException (name);
+		}
+
+		/**
      * Look up the value of a property.
      *
      * <p>The property name is any fully-qualified URI.  It is
@@ -441,8 +446,11 @@ public abstract class Validator {
      *          When the name parameter is null.
      * @see #setProperty(String, Object)
      */
-    public Object getProperty(String name) throws SAXNotRecognizedException, SAXNotSupportedException {
-        if(name==null) throw new NullPointerException("the name parameter is null");
-        throw new SAXNotRecognizedException(name);
-    }
+		public Object getProperty (String name)
+		{//throws SAXNotRecognizedException, SAXNotSupportedException {
+			if (name == null)
+				throw new java.lang.NullPointerException ("the name parameter is null");
+			throw new SAXNotRecognizedException (name);
+		}
+	}
 }

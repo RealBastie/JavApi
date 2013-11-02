@@ -17,11 +17,13 @@
 
 // $Id: DocumentBuilderFactory.java 884950 2009-11-27 18:46:18Z mrglavas $
 
-package javax.xml.parsers;
+using System;
+using java = biz.ritter.javapi;
+using javax = biz.ritter.javapix;
 
-import javax.xml.validation.Schema;
-
-/**
+namespace biz.ritter.javapix.xml.parsers
+{
+	/**
  * Defines a factory API that enables applications to obtain a
  * parser that produces DOM object trees from XML documents.
  *
@@ -29,19 +31,20 @@ import javax.xml.validation.Schema;
  * @version $Revision: 884950 $, $Date: 2009-11-27 13:46:18 -0500 (Fri, 27 Nov 2009) $
  */
 
-public abstract class DocumentBuilderFactory {
+	public abstract class DocumentBuilderFactory
+	{
+		private bool validating = false;
+		private bool namespaceAware = false;
+		private bool whitespace = false;
+		private bool expandEntityRef = true;
+		private bool ignoreComments = false;
+		private bool coalescing = false;
 
-    private boolean validating = false;
-    private boolean namespaceAware = false;
-    private boolean whitespace = false;
-    private boolean expandEntityRef = true;
-    private boolean ignoreComments = false;
-    private boolean coalescing = false;
-    
-    protected DocumentBuilderFactory () {
-    }
+		protected DocumentBuilderFactory ()
+		{
+		}
 
-    /**
+		/**
      * Obtain a new instance of a
      * <code>DocumentBuilderFactory</code>. This static method creates
      * a new factory instance.
@@ -98,42 +101,42 @@ public abstract class DocumentBuilderFactory {
      * @exception FactoryConfigurationError if the implementation is not
      * available or cannot be instantiated.
      */
-    public static DocumentBuilderFactory newInstance() {
-        try {
-            return (DocumentBuilderFactory) FactoryFinder.find(
+		public static DocumentBuilderFactory newInstance ()
+		{
+			try {
+				return (DocumentBuilderFactory)FactoryFinder.find (
                 /* The default property name according to the JAXP spec */
-                "javax.xml.parsers.DocumentBuilderFactory",
+					"javax.xml.parsers.DocumentBuilderFactory",
                 /* The fallback implementation class name */
-                "org.apache.xerces.jaxp.DocumentBuilderFactoryImpl");
-        } 
-        catch (FactoryFinder.ConfigurationError e) {
-            throw new FactoryConfigurationError(e.getException(), e.getMessage());
-        }
-    }
-    
-    /**
+					"org.apache.xerces.jaxp.DocumentBuilderFactoryImpl");
+			} catch (FactoryFinder.ConfigurationError e) {
+				throw new FactoryConfigurationError (e.getException (), e.getMessage ());
+			}
+		}
+
+		/**
      * @return New instance of a <code>DocumentBuilderFactory</code>
      *
      * @exception FactoryConfigurationError if the implementation is not
      * available or cannot be instantiated.
      */
-    public static DocumentBuilderFactory newInstance(String factoryClassName,
-            ClassLoader classLoader) {
-        if (factoryClassName == null) {
-            throw new FactoryConfigurationError("factoryClassName cannot be null.");
-        }
-        if (classLoader == null) {
-            classLoader = SecuritySupport.getContextClassLoader();
-        }
-        try {
-            return (DocumentBuilderFactory) FactoryFinder.newInstance(factoryClassName, classLoader, false);
-        }
-        catch (FactoryFinder.ConfigurationError e) {
-            throw new FactoryConfigurationError(e.getException(), e.getMessage());
-        }
-    }
+		public static DocumentBuilderFactory newInstance (String factoryClassName,
+		                                                   java.lang.ClassLoader classLoader)
+		{
+			if (factoryClassName == null) {
+				throw new FactoryConfigurationError ("factoryClassName cannot be null.");
+			}
+			if (classLoader == null) {
+				classLoader = SecuritySupport.getContextClassLoader ();
+			}
+			try {
+				return (DocumentBuilderFactory)FactoryFinder.newInstance (factoryClassName, classLoader, false);
+			} catch (FactoryFinder.ConfigurationError e) {
+				throw new FactoryConfigurationError (e.getException (), e.getMessage ());
+			}
+		}
 
-    /**
+		/**
      * Creates a new instance of a {@link javax.xml.parsers.DocumentBuilder}
      * using the currently configured parameters.
      *
@@ -142,11 +145,9 @@ public abstract class DocumentBuilderFactory {
      * @return A new instance of a DocumentBuilder.
      */
     
-    public abstract DocumentBuilder newDocumentBuilder()
-        throws ParserConfigurationException;
-    
-    
-    /**
+		public abstract DocumentBuilder newDocumentBuilder ();
+		//throws ParserConfigurationException;
+		/**
      * Specifies that the parser produced by this code will
      * provide support for XML namespaces. By default the value of this is set
      * to <code>false</code>
@@ -155,11 +156,12 @@ public abstract class DocumentBuilderFactory {
      *                  for XML namespaces; false otherwise.
      */
     
-    public void setNamespaceAware(boolean awareness) {
-        this.namespaceAware = awareness;
-    }
+		public void setNamespaceAware (bool awareness)
+		{
+			this.namespaceAware = awareness;
+		}
 
-    /**
+		/**
      * Specifies that the parser produced by this code will
      * validate documents as they are parsed. By default the value of this
      * is set to <code>false</code>.
@@ -185,11 +187,12 @@ public abstract class DocumentBuilderFactory {
      *                   as they are parsed; false otherwise.
      */
     
-    public void setValidating(boolean validating) {
-        this.validating = validating;
-    }
+		public void setValidating (bool validating)
+		{
+			this.validating = validating;
+		}
 
-    /**
+		/**
      * Specifies that the parsers created by this  factory must eliminate
      * whitespace in element content (sometimes known loosely as
      * 'ignorable whitespace') when parsing XML documents (see XML Rec
@@ -204,11 +207,12 @@ public abstract class DocumentBuilderFactory {
      *                   false otherwise.
      */
 
-    public void setIgnoringElementContentWhitespace(boolean whitespace) {
-        this.whitespace = whitespace;
-    }
+		public void setIgnoringElementContentWhitespace (bool whitespace)
+		{
+			this.whitespace = whitespace;
+		}
 
-    /**
+		/**
      * Specifies that the parser produced by this code will
      * expand entity reference nodes. By default the value of this is set to
      * <code>true</code>
@@ -217,11 +221,12 @@ public abstract class DocumentBuilderFactory {
      *                        reference nodes; false otherwise.
      */
     
-    public void setExpandEntityReferences(boolean expandEntityRef) {
-        this.expandEntityRef = expandEntityRef;
-    }
+		public void setExpandEntityReferences (bool expandEntityRef)
+		{
+			this.expandEntityRef = expandEntityRef;
+		}
 
-    /**
+		/**
      * <p>Specifies that the parser produced by this code will
      * ignore comments. By default the value of this is set to <code>false
      * </code>.</p>
@@ -229,11 +234,12 @@ public abstract class DocumentBuilderFactory {
      * @param ignoreComments <code>boolean</code> value to ignore comments during processing
      */
     
-    public void setIgnoringComments(boolean ignoreComments) {
-        this.ignoreComments = ignoreComments;
-    }
+		public void setIgnoringComments (bool ignoreComments)
+		{
+			this.ignoreComments = ignoreComments;
+		}
 
-    /**
+		/**
      * Specifies that the parser produced by this code will
      * convert CDATA nodes to Text nodes and append it to the
      * adjacent (if any) text node. By default the value of this is set to
@@ -244,11 +250,12 @@ public abstract class DocumentBuilderFactory {
      *                    text node; false otherwise.
      */
     
-    public void setCoalescing(boolean coalescing) {
-        this.coalescing = coalescing;
-    }
+		public void setCoalescing (bool coalescing)
+		{
+			this.coalescing = coalescing;
+		}
 
-    /**
+		/**
      * Indicates whether or not the factory is configured to produce
      * parsers which are namespace aware.
      *
@@ -256,11 +263,12 @@ public abstract class DocumentBuilderFactory {
      *          are namespace aware; false otherwise.
      */
     
-    public boolean isNamespaceAware() {
-        return namespaceAware;
-    }
+		public bool isNamespaceAware ()
+		{
+			return namespaceAware;
+		}
 
-    /**
+		/**
      * Indicates whether or not the factory is configured to produce
      * parsers which validate the XML content during parse.
      *
@@ -268,11 +276,12 @@ public abstract class DocumentBuilderFactory {
      *          which validate the XML content during parse; false otherwise.
      */
     
-    public boolean isValidating() {
-        return validating;
-    }
+		public bool isValidating ()
+		{
+			return validating;
+		}
 
-    /**
+		/**
      * Indicates whether or not the factory is configured to produce
      * parsers which ignore ignorable whitespace in element content.
      *
@@ -281,11 +290,12 @@ public abstract class DocumentBuilderFactory {
      *          false otherwise.
      */
     
-    public boolean isIgnoringElementContentWhitespace() {
-        return whitespace;
-    }
+		public bool isIgnoringElementContentWhitespace ()
+		{
+			return whitespace;
+		}
 
-    /**
+		/**
      * Indicates whether or not the factory is configured to produce
      * parsers which expand entity reference nodes.
      *
@@ -293,11 +303,12 @@ public abstract class DocumentBuilderFactory {
      *          which expand entity reference nodes; false otherwise.
      */
     
-    public boolean isExpandEntityReferences() {
-        return expandEntityRef;
-    }
+		public bool isExpandEntityReferences ()
+		{
+			return expandEntityRef;
+		}
 
-    /**
+		/**
      * Indicates whether or not the factory is configured to produce
      * parsers which ignores comments.
      *
@@ -305,11 +316,12 @@ public abstract class DocumentBuilderFactory {
      *          which ignores comments; false otherwise.
      */
     
-    public boolean isIgnoringComments() {
-        return ignoreComments;
-    }
+		public bool isIgnoringComments ()
+		{
+			return ignoreComments;
+		}
 
-    /**
+		/**
      * Indicates whether or not the factory is configured to produce
      * parsers which converts CDATA nodes to Text nodes and appends it to
      * the adjacent (if any) Text node.
@@ -319,11 +331,12 @@ public abstract class DocumentBuilderFactory {
      *          the adjacent (if any) Text node; false otherwise.
      */
     
-    public boolean isCoalescing() {
-        return coalescing;
-    }
+		public bool isCoalescing ()
+		{
+			return coalescing;
+		}
 
-    /**
+		/**
      * Allows the user to set specific attributes on the underlying
      * implementation.
      * @param name The name of the attribute.
@@ -331,10 +344,9 @@ public abstract class DocumentBuilderFactory {
      * @exception IllegalArgumentException thrown if the underlying
      * implementation doesn't recognize the attribute.
      */
-    public abstract void setAttribute(String name, Object value)
-                throws IllegalArgumentException;
-
-    /**
+		public abstract void setAttribute (String name, Object value);
+		// throws IllegalArgumentException;
+		/**
      * Allows the user to retrieve specific attributes on the underlying
      * implementation.
      * @param name The name of the attribute.
@@ -342,10 +354,9 @@ public abstract class DocumentBuilderFactory {
      * @exception IllegalArgumentException thrown if the underlying
      * implementation doesn't recognize the attribute.
      */
-    public abstract Object getAttribute(String name)
-                throws IllegalArgumentException;
-                
-	/**
+		public abstract Object getAttribute (String name);
+		//throws IllegalArgumentException;
+		/**
 	 * <p>Set a feature for this <code>DocumentBuilderFactory</code> and <code>DocumentBuilder</code>s created by this factory.</p>
 	 * 
 	 * <p>
@@ -380,10 +391,9 @@ public abstract class DocumentBuilderFactory {
 	 *   it creates cannot support this feature.
      * @throws NullPointerException If the <code>name</code> parameter is null.
 	 */
-	public abstract void setFeature(String name, boolean value)
-		throws ParserConfigurationException;
-
-	/**
+		public abstract void setFeature (String name, bool value);
+		//throws ParserConfigurationException;
+		/**
 	 * <p>Get the state of the named feature.</p>
 	 * 
 	 * <p>
@@ -401,10 +411,9 @@ public abstract class DocumentBuilderFactory {
 	 * @throws ParserConfigurationException if this <code>DocumentBuilderFactory</code>
 	 *   or the <code>DocumentBuilder</code>s it creates cannot support this feature.
 	 */
-	public abstract boolean getFeature(String name)
-		throws ParserConfigurationException;
-    
-    /**
+		public abstract bool getFeature (String name);
+		//throws ParserConfigurationException;
+		/**
      * Gets the {@link Schema} object specified through
      * the {@link #setSchema(Schema schema)} method.
      * 
@@ -422,27 +431,28 @@ public abstract class DocumentBuilderFactory {
      * 
      * @since 1.5
      */
-    public Schema getSchema() {
-        throw new UnsupportedOperationException(
-            "This parser does not support specification \""
-            + this.getClass().getPackage().getSpecificationTitle()
-            + "\" version \""
-            + this.getClass().getPackage().getSpecificationVersion()
-            + "\""
-            );
+		public javax.xml.validation.Schema getSchema ()
+		{
+			throw new java.lang.UnsupportedOperationException (
+				"This parser does not support specification \""
+				+ this.getClass ().getPackage ().getSpecificationTitle ()
+				+ "\" version \""
+				+ this.getClass ().getPackage ().getSpecificationVersion ()
+				+ "\""
+			);
 
-    }
-    
-    /**
-     * <p>Set the {@link Schema} to be used by parsers created
+		}
+
+		/**
+     * <p/>Set the {@link Schema} to be used by parsers created
      * from this factory.
      * 
-     * <p>
+     * <p/>
      * When a {@link Schema} is non-null, a parser will use a validator
      * created from it to validate documents before it passes information
      * down to the application.
      * 
-     * <p>When errors are found by the validator, the parser is responsible
+     * <p/>When errors are found by the validator, the parser is responsible
      * to report them to the user-specified {@link org.xml.sax.ErrorHandler}
      * (or if the error handler is not set, ignore them or throw them), just
      * like any other errors found by the parser itself.
@@ -451,16 +461,16 @@ public abstract class DocumentBuilderFactory {
      * treated according to the implementation specific
      * default error handling rules.
      * 
-     * <p>
+     * <p/>
      * A validator may modify the outcome of a parse (for example by
      * adding default values that were missing in documents), and a parser
      * is responsible to make sure that the application will receive
      * modified DOM trees.  
      * 
-     * <p>
+     * <p/>
      * Initially, null is set as the {@link Schema}. 
      * 
-     * <p>
+     * <p/>
      * This processing will take effect even if
      * the {@link #isValidating()} method returns <tt>false</tt>.
      * 
@@ -473,7 +483,7 @@ public abstract class DocumentBuilderFactory {
      *
      *  
      * <h4>Note for implementors</h4>
-     * <p>
+     * <p/>
      * A parser must be able to work with any {@link Schema}
      * implementation. However, parsers and schemas are allowed
      * to use implementation-specific custom mechanisms
@@ -488,17 +498,18 @@ public abstract class DocumentBuilderFactory {
      * 
      * @since 1.5
      */
-    public void setSchema(Schema schema) {
-        throw new UnsupportedOperationException(
-            "This parser does not support specification \""
-            + this.getClass().getPackage().getSpecificationTitle()
-            + "\" version \""
-            + this.getClass().getPackage().getSpecificationVersion()
-            + "\""
-            );
-    }
-    
-    /**
+		public void setSchema (javax.xml.validation.Schema schema)
+		{
+			throw new java.lang.UnsupportedOperationException (
+				"This parser does not support specification \""
+				+ this.getClass ().getPackage ().getSpecificationTitle ()
+				+ "\" version \""
+				+ this.getClass ().getPackage ().getSpecificationVersion ()
+				+ "\""
+			);
+		}
+
+		/**
      * <p>Set state of XInclude processing.</p>
      * 
      * <p>If XInclude markup is found in the document instance, should it be
@@ -517,17 +528,18 @@ public abstract class DocumentBuilderFactory {
      * 
      * @since 1.5
      */
-    public void setXIncludeAware(final boolean state) {
-        throw new UnsupportedOperationException(
-            "This parser does not support specification \""
-            + this.getClass().getPackage().getSpecificationTitle()
-            + "\" version \""
-            + this.getClass().getPackage().getSpecificationVersion()
-            + "\""
-            );
-    }
+		public void setXIncludeAware (bool state)
+		{
+			throw new java.lang.UnsupportedOperationException (
+				"This parser does not support specification \""
+				+ this.getClass ().getPackage ().getSpecificationTitle ()
+				+ "\" version \""
+				+ this.getClass ().getPackage ().getSpecificationVersion ()
+				+ "\""
+			);
+		}
 
-    /**
+		/**
      * <p>Get state of XInclude processing.</p>
      * 
      * @return current state of XInclude processing
@@ -539,13 +551,15 @@ public abstract class DocumentBuilderFactory {
      * 
      * @since 1.5
      */
-    public boolean isXIncludeAware() {
-        throw new UnsupportedOperationException(
-            "This parser does not support specification \""
-            + this.getClass().getPackage().getSpecificationTitle()
-            + "\" version \""
-            + this.getClass().getPackage().getSpecificationVersion()
-            + "\""
-            );
-    }
+		public bool isXIncludeAware ()
+		{
+			throw new java.lang.UnsupportedOperationException (
+				"This parser does not support specification \""
+				+ this.getClass ().getPackage ().getSpecificationTitle ()
+				+ "\" version \""
+				+ this.getClass ().getPackage ().getSpecificationVersion ()
+				+ "\""
+			);
+		}
+	}
 }
