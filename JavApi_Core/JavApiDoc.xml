@@ -17556,103 +17556,6 @@
                      * @see Character
                      * @see Character#offsetByCodePoints(char[], int, int, int, int)
                      * @since 1.5</member>
-        <member name="T:biz.ritter.javapi.lang.annotation.Annotation">
-            <summary>
-            Do not use directly, better use AbstractAnnotation!!!
-            </summary>
-        </member>
-        <member name="T:biz.ritter.javapi.lang.annotation.AbstractAnnotation">
-                 * Defines the interface implemented by all annotations. Note that the interface
-                 * itself is <i>not</i> an annotation, and neither is an interface that simply
-                 * extends this one. Only the compiler is able to create proper annotation
-                 * types.
-                 *
-                 * <strong>Basties Note: implemented as abstract class</strong>
-                 * @since 1.5</member>
-        <member name="M:biz.ritter.javapi.lang.annotation.AbstractAnnotation.annotationType">
-                     * Returns the type of this annotation.
-                     *
-                     * @return A {@code Class} instance representing the annotation type.</member>
-        <member name="M:biz.ritter.javapi.lang.annotation.AbstractAnnotation.equals(System.Object)">
-                     * Determines whether or not this annotation is equivalent to the annotation
-                     * passed. This is determined according to the following rules:
-                     *
-                     * <ul>
-                     *     <li>
-                     *         Two annotations {@code x} and {@code y} are equal if and only if
-                     *         they are members of the same annotation type and all the member
-                     *         values of {@code x} are equal to the corresponding member values
-                     *         of {@code y}.
-                     *     </li>
-                     *     <li>
-                     *         The equality of primitive member values {@code x} and {@code y}
-                     *         is determined (in a way similar to) using the corresponding
-                     *         wrapper classes. For example,
-                     *         {@code Integer.valueOf(x).equals(Integer.valueOf(y)} is used for
-                     *         {@code int} values. Note: The behavior is identical to the
-                     *         {@code ==} operator for all but the floating point type, so the
-                     *         implementation may as well use {@code ==} in these cases for
-                     *         performance reasons. Only for the {@code float} and {@code double}
-                     *         types the result will be slightly different: {@code NaN} is equal
-                     *         to {@code NaN}, and {@code -0.0} is equal to {@code 0.0}, both of
-                     *         which is normally not the case.
-                     *     </li>
-                     *     <li>
-                     *         The equality of two array member values {@code x} and {@code y}
-                     *         is determined using the corresponding {@code equals(x, y)}
-                     *         helper function in {@link java.util.Arrays}.
-                     *     </li>
-                     *     <li>
-                     *         The hash code for all other member values is determined by simply
-                     *         calling their {@code equals()} method.
-                     *     </li>
-                     * </ul>
-                     *
-                     * @param obj
-                     *            The object to compare to.
-                     *
-                     * @return {@code true} if {@code obj} is equal to this annotation,
-                     *            {@code false} otherwise.</member>
-        <member name="M:biz.ritter.javapi.lang.annotation.AbstractAnnotation.hashCode">
-                     * Returns the hash code of this annotation. The hash code is determined
-                     * according to the following rules:
-                     *
-                     * <ul>
-                     *     <li>
-                     *         The hash code of an annotation is the sum of the hash codes of
-                     *         its annotation members.
-                     *     </li>
-                     *     <li>
-                     *         The hash code of an annotation member is calculated as {@code
-                     *         (0x7f * n.hashCode()) ^ v.hashCode())}, where {@code n} is the
-                     *         name of the member (as a {@code String}) and {@code v} its value.
-                     *     </li>
-                     *     <li>
-                     *         The hash code for a primitive member value is determined using
-                     *         the corresponding wrapper type. For example, {@code
-                     *         Integer.valueOf(v).hashCode()} is used for an {@code int} value
-                     *         {@code v}.
-                     *     </li>
-                     *     <li>
-                     *         The hash code for an array member value {@code v} is determined
-                     *         using the corresponding {@code hashCode(v)} helper function in
-                     *         {@link java.util.Arrays}.
-                     *     </li>
-                     *     <li>
-                     *         The hash code for all other member values is determined by simply
-                     *         calling their {@code hashCode} method.
-                     *     </li>
-                     * </ul>
-                     *
-                     * @return the hash code.</member>
-        <member name="M:biz.ritter.javapi.lang.annotation.AbstractAnnotation.toString">
-                     * Returns a {@code String} representation of this annotation. It is not
-                     * strictly defined what the representation has to look like, but it usually
-                     * consists of the name of the annotation, preceded by a "@". If the
-                     * annotation contains field members, their names and values are also
-                     * included in the result.
-                     *
-                     * @return the {@code String} that represents this annotation.</member>
         <member name="T:biz.ritter.javapi.lang.AssertionError">
                  * Thrown when an assertion has failed.
                  *
@@ -49703,5 +49606,234 @@
                *  @return A NodeIterator, should never be null.
                *
                * @throws TransformerException</member>
+        <member name="T:biz.ritter.javapi.lang.annotation.Annotation">
+            <summary>
+            Do not use directly, better use AbstractAnnotation!!!
+            </summary>
+        </member>
+        <member name="T:biz.ritter.javapi.lang.annotation.AbstractAnnotation">
+                 * Defines the interface implemented by all annotations. Note that the interface
+                 * itself is <i>not</i> an annotation, and neither is an interface that simply
+                 * extends this one. Only the compiler is able to create proper annotation
+                 * types.
+                 *
+                 * <strong>Basties Note: implemented as abstract class</strong>
+                 * @since 1.5</member>
+        <member name="M:biz.ritter.javapi.lang.annotation.AbstractAnnotation.annotationType">
+                     * Returns the type of this annotation.
+                     *
+                     * @return A {@code Class} instance representing the annotation type.</member>
+        <member name="M:biz.ritter.javapi.lang.annotation.AbstractAnnotation.equals(System.Object)">
+                     * Determines whether or not this annotation is equivalent to the annotation
+                     * passed. This is determined according to the following rules:
+                     *
+                     * <ul>
+                     *     <li>
+                     *         Two annotations {@code x} and {@code y} are equal if and only if
+                     *         they are members of the same annotation type and all the member
+                     *         values of {@code x} are equal to the corresponding member values
+                     *         of {@code y}.
+                     *     </li>
+                     *     <li>
+                     *         The equality of primitive member values {@code x} and {@code y}
+                     *         is determined (in a way similar to) using the corresponding
+                     *         wrapper classes. For example,
+                     *         {@code Integer.valueOf(x).equals(Integer.valueOf(y)} is used for
+                     *         {@code int} values. Note: The behavior is identical to the
+                     *         {@code ==} operator for all but the floating point type, so the
+                     *         implementation may as well use {@code ==} in these cases for
+                     *         performance reasons. Only for the {@code float} and {@code double}
+                     *         types the result will be slightly different: {@code NaN} is equal
+                     *         to {@code NaN}, and {@code -0.0} is equal to {@code 0.0}, both of
+                     *         which is normally not the case.
+                     *     </li>
+                     *     <li>
+                     *         The equality of two array member values {@code x} and {@code y}
+                     *         is determined using the corresponding {@code equals(x, y)}
+                     *         helper function in {@link java.util.Arrays}.
+                     *     </li>
+                     *     <li>
+                     *         The hash code for all other member values is determined by simply
+                     *         calling their {@code equals()} method.
+                     *     </li>
+                     * </ul>
+                     *
+                     * @param obj
+                     *            The object to compare to.
+                     *
+                     * @return {@code true} if {@code obj} is equal to this annotation,
+                     *            {@code false} otherwise.</member>
+        <member name="M:biz.ritter.javapi.lang.annotation.AbstractAnnotation.hashCode">
+                     * Returns the hash code of this annotation. The hash code is determined
+                     * according to the following rules:
+                     *
+                     * <ul>
+                     *     <li>
+                     *         The hash code of an annotation is the sum of the hash codes of
+                     *         its annotation members.
+                     *     </li>
+                     *     <li>
+                     *         The hash code of an annotation member is calculated as {@code
+                     *         (0x7f * n.hashCode()) ^ v.hashCode())}, where {@code n} is the
+                     *         name of the member (as a {@code String}) and {@code v} its value.
+                     *     </li>
+                     *     <li>
+                     *         The hash code for a primitive member value is determined using
+                     *         the corresponding wrapper type. For example, {@code
+                     *         Integer.valueOf(v).hashCode()} is used for an {@code int} value
+                     *         {@code v}.
+                     *     </li>
+                     *     <li>
+                     *         The hash code for an array member value {@code v} is determined
+                     *         using the corresponding {@code hashCode(v)} helper function in
+                     *         {@link java.util.Arrays}.
+                     *     </li>
+                     *     <li>
+                     *         The hash code for all other member values is determined by simply
+                     *         calling their {@code hashCode} method.
+                     *     </li>
+                     * </ul>
+                     *
+                     * @return the hash code.</member>
+        <member name="M:biz.ritter.javapi.lang.annotation.AbstractAnnotation.toString">
+                     * Returns a {@code String} representation of this annotation. It is not
+                     * strictly defined what the representation has to look like, but it usually
+                     * consists of the name of the annotation, preceded by a "@". If the
+                     * annotation contains field members, their names and values are also
+                     * included in the result.
+                     *
+                     * @return the {@code String} that represents this annotation.</member>
+        <member name="T:biz.ritter.javapi.lang.annotation.RetentionPolicy">
+             * Defines an enumeration for annotation retention policies. Used in conjunction
+             * with the {@link Retention} annotation to specify an annotation's time-to-live
+             * in the overall development life cycle.
+             *
+             * @since 1.5</member>
+        <member name="F:biz.ritter.javapi.lang.annotation.RetentionPolicy.SOURCE">
+                 * Annotation is only available in the source code.</member>
+        <member name="F:biz.ritter.javapi.lang.annotation.RetentionPolicy.CLASS">
+                 * Annotation is available in the source code and in the class file, but not
+                 * at runtime. This is the default policy.</member>
+        <member name="F:biz.ritter.javapi.lang.annotation.RetentionPolicy.RUNTIME">
+                 * Annotation is available in the source code, the class file and is
+                 * available at runtime.</member>
+        <member name="T:biz.ritter.javapi.lang.annotation.Documented">
+             * Defines a meta-annotation for indicating that an annotation is documented and
+             * considered part of the public API.
+             *
+             * @since 1.5</member>
+        <member name="T:biz.ritter.javapi.lang.annotation.Retention">
+             * Defines a meta-annotation for determining the scope of retention for an
+             * annotation. If the retention annotation is not set {@code
+             * RetentionPolicy.CLASS} is used as default retention.
+             *
+             * @see RetentionPolicy
+             * @since 1.5</member>
+        <member name="M:biz.ritter.javapi.lang.annotation.Retention.value">
+                 * Returns the retention policy for the annotation.
+                 *
+                 * @return a retention policy as defined in {@code RetentionPolicy}</member>
+        <member name="T:biz.ritter.javapi.lang.annotation.Target">
+             * Defines a meta-annotation for determining what {@link ElementType}s an
+             * annotation can be applied to.
+             *
+             * @see ElementType
+             * @since 1.5</member>
+        <member name="M:biz.ritter.javapi.lang.annotation.Target.value">
+                 * Returns the program element types for which this annotation is applied.
+                 *
+                 * @return the types of element as defined by {@code ElementType}</member>
+        <member name="T:biz.ritter.javapi.lang.annotation.ElementType">
+             * Defines an enumeration for Java program elements. It is used in conjunction
+             * with the {@link Target} meta-annotation to restrict the use of an annotation
+             * to certain program elements.
+             *
+             * @since 1.5</member>
+        <member name="F:biz.ritter.javapi.lang.annotation.ElementType.TYPE">
+                 * Class, interface or enum declaration.</member>
+        <member name="F:biz.ritter.javapi.lang.annotation.ElementType.FIELD">
+                 * Field declaration.</member>
+        <member name="F:biz.ritter.javapi.lang.annotation.ElementType.METHOD">
+                 * Method declaration.</member>
+        <member name="F:biz.ritter.javapi.lang.annotation.ElementType.PARAMETER">
+                 * Parameter declaration.</member>
+        <member name="F:biz.ritter.javapi.lang.annotation.ElementType.CONSTRUCTOR">
+                 * Constructor declaration.</member>
+        <member name="F:biz.ritter.javapi.lang.annotation.ElementType.LOCAL_VARIABLE">
+                 * Local variable declaration.</member>
+        <member name="F:biz.ritter.javapi.lang.annotation.ElementType.ANNOTATION_TYPE">
+                 * Annotation type declaration.</member>
+        <member name="F:biz.ritter.javapi.lang.annotation.ElementType.PACKAGE">
+                 * Package declaration.</member>
+        <member name="T:biz.ritter.javapi.lang.annotation.AnnotationFormatError">
+             * Indicates that an annotation in the binary representation of a class is
+             * syntactically incorrect and the annotation parser is unable to process it.
+             * This exception is unlikely to ever occur, given that the code has been
+             * compiled by an ordinary Java compiler.
+             *
+             * @since 1.5</member>
+        <member name="M:biz.ritter.javapi.lang.annotation.AnnotationFormatError.#ctor(System.String)">
+                 * Constructs an instance with the message provided.
+                 *
+                 * @param message
+                 *            the details of the error.</member>
+        <member name="M:biz.ritter.javapi.lang.annotation.AnnotationFormatError.#ctor(System.String,biz.ritter.javapi.lang.Throwable)">
+                 * Constructs an instance with a message and a cause.
+                 *
+                 * @param message
+                 *            the details of the error.
+                 * @param cause
+                 *            the cause of the error or {@code null} if none.</member>
+        <member name="M:biz.ritter.javapi.lang.annotation.AnnotationFormatError.#ctor(biz.ritter.javapi.lang.Throwable)">
+                 * Constructs an instance with a cause. If the cause is not
+                 * {@code null}, then {@code cause.toString()} is used as the
+                 * error's message.
+                 *
+                 * @param cause
+                 *            the cause of the error or {@code null} if none.</member>
+        <member name="T:biz.ritter.javapi.lang.annotation.AnnotationTypeMismatchException">
+             * Indicates that an annotation type has changed since it was compiled or
+             * serialized.
+             *
+             * @since 1.5</member>
+        <member name="M:biz.ritter.javapi.lang.annotation.AnnotationTypeMismatchException.#ctor(biz.ritter.javapi.lang.reflect.Method,System.String)">
+                 * Constructs an instance for the given type element and the type found.
+                 *
+                 * @param element
+                 *            the annotation type element.
+                 * @param foundType
+                 *            the invalid type that was found. This is actually the textual
+                 *            type description found in the binary class representation,
+                 *            so it may not be human-readable.</member>
+        <member name="M:biz.ritter.javapi.lang.annotation.AnnotationTypeMismatchException.element">
+                 * Returns the method object for the invalid type.
+                 *
+                 * @return a {@link Method} instance.</member>
+        <member name="M:biz.ritter.javapi.lang.annotation.AnnotationTypeMismatchException.foundType">
+                 * Returns the invalid type.
+                 *
+                 * @return a string describing the invalid data.</member>
+        <member name="T:biz.ritter.javapi.lang.annotation.IncompleteAnnotationException">
+             * Indicates that an element of an annotation type was accessed that was added
+             * after the type was compiled or serialized. This does not apply to new
+             * elements that have default values.
+             *
+             * @since 1.5</member>
+        <member name="M:biz.ritter.javapi.lang.annotation.IncompleteAnnotationException.#ctor(biz.ritter.javapi.lang.Class,System.String)">
+                 * Constructs an instance with the incomplete annotation type and the name
+                 * of the element that's missing.
+                 *
+                 * @param annotationType
+                 *            the annotation type.
+                 * @param elementName
+                 *            the name of the incomplete element.</member>
+        <member name="M:biz.ritter.javapi.lang.annotation.IncompleteAnnotationException.annotationType">
+                 * Returns the annotation type.
+                 *
+                 * @return a Class instance.</member>
+        <member name="M:biz.ritter.javapi.lang.annotation.IncompleteAnnotationException.elementName">
+                 * Returns the incomplete element's name.
+                 *
+                 * @return the name of the element.</member>
     </members>
 </doc>

@@ -1,6 +1,7 @@
 * JavApi 0.? (Target: MonoBuild, packages: java.lang)
   - javax.xml.crypto package
-  - java.lang package extended
+  - java.lang extended
+  - java.lang.annotation extended
   - java.util.prefs extended
   + java.io.PrintStream
     - print(char)

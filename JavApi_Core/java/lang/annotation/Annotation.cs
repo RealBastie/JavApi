@@ -14,17 +14,21 @@
 
 namespace biz.ritter.javapi.lang.annotation
 {
-    /// <summary>
-    /// Do not use directly, better use AbstractAnnotation!!!
-    /// </summary>
-    public interface Annotation
-    {
-        System.Type annotationType();
-        bool equals(System.Object obj);
-        int hashCode();
-        System.String toString();
-    }
-    /**
+	/// <summary>
+	/// Do not use directly, better use AbstractAnnotation!!!
+	/// </summary>
+	public interface Annotation
+	{
+		System.Type annotationType ();
+
+		bool equals (System.Object obj);
+
+		int hashCode ();
+
+		System.String toString ();
+	}
+
+	/**
      * Defines the interface implemented by all annotations. Note that the interface
      * itself is <i>not</i> an annotation, and neither is an interface that simply
      * extends this one. Only the compiler is able to create proper annotation
@@ -33,19 +37,19 @@ namespace biz.ritter.javapi.lang.annotation
      * <strong>Basties Note: implemented as abstract class</strong>
      * @since 1.5
      */
-    public abstract class AbstractAnnotation : System.Attribute, Annotation {
-
-        /**
+	public abstract class AbstractAnnotation : System.Attribute, Annotation
+	{
+		/**
          * Returns the type of this annotation.
          *
          * @return A {@code Class} instance representing the annotation type.
          */
-        public virtual System.Type annotationType()
-        {
-            return this.GetType();
-        }
+		public virtual System.Type annotationType ()
+		{
+			return this.GetType ();
+		}
 
-        /**
+		/**
          * Determines whether or not this annotation is equivalent to the annotation
          * passed. This is determined according to the following rules:
          * 
@@ -86,12 +90,12 @@ namespace biz.ritter.javapi.lang.annotation
          * @return {@code true} if {@code obj} is equal to this annotation,
          *            {@code false} otherwise.
          */
-        public bool equals(System.Object obj)
-        {
-            return this.Equals(obj);
-        }
+		public bool equals (System.Object obj)
+		{
+			return this.Equals (obj);
+		}
 
-        /**
+		/**
          * Returns the hash code of this annotation. The hash code is determined
          * according to the following rules:
          * 
@@ -124,12 +128,12 @@ namespace biz.ritter.javapi.lang.annotation
          *
          * @return the hash code.
          */
-        public virtual int hashCode()
-        {
-            return this.GetHashCode();
-        }
+		public virtual int hashCode ()
+		{
+			return this.GetHashCode ();
+		}
 
-        /**
+		/**
          * Returns a {@code String} representation of this annotation. It is not
          * strictly defined what the representation has to look like, but it usually
          * consists of the name of the annotation, preceded by a "@". If the
@@ -138,9 +142,9 @@ namespace biz.ritter.javapi.lang.annotation
          * 
          * @return the {@code String} that represents this annotation.
          */
-        public virtual System.String toString()
-        {
-            return this.ToString();
-        }
-    }
+		public virtual System.String toString ()
+		{
+			return this.ToString ();
+		}
+	}
 }

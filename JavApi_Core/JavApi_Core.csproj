@@ -333,7 +333,6 @@
     <Compile Include="java\io\ObjectOutputStream.cs" />
     <Compile Include="java\io\UTFDataFormatException.cs" />
     <Compile Include="java\lang\AbstractStringBuilder.cs" />
-    <Compile Include="java\lang\annotation\java.lang.annotation.Annotation.cs" />
     <Compile Include="java\lang\AssertionError.cs" />
     <Compile Include="java\lang\Boolean.cs" />
     <Compile Include="java\lang\Deprecated.cs" />
@@ -868,6 +867,15 @@
     <Compile Include="javax\xml\parsers\FactoryConfigurationError.cs" />
     <Compile Include="javax\xml\parsers\FilePathToURI.cs" />
     <Compile Include="org\apache\xpath\XPathAPI.cs" />
+    <Compile Include="java\lang\annotation\Annotation.cs" />
+    <Compile Include="java\lang\annotation\RetentionPolicy.cs" />
+    <Compile Include="java\lang\annotation\Documented.cs" />
+    <Compile Include="java\lang\annotation\Retention.cs" />
+    <Compile Include="java\lang\annotation\Target.cs" />
+    <Compile Include="java\lang\annotation\ElementType.cs" />
+    <Compile Include="java\lang\annotation\AnnotationFormatError.cs" />
+    <Compile Include="java\lang\annotation\AnnotationTypeMismatchException.cs" />
+    <Compile Include="java\lang\annotation\IncompleteAnnotationException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CHANGES" />

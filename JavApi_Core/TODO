@@ -2,11 +2,10 @@ CHECK:
  - java.lang.PrintStream vs. java.io.PrintStream (why lang package?)
  
 To Implement:
- - java.nio.channel (java.io.FileOutputStream.getChannel())
  - java.text.MessageFormat
- - FileLock (see http://social.msdn.microsoft.com/Forums/en-US/csharpgeneral/thread/a5300fc5-126c-4e33-8ae6-13376031e9fe/)
  - Serialism in Java format (see ... and ...)
-
+ - XML, XPath, ...
+ 
 Some tools are needed:
 
 Not implemented:
