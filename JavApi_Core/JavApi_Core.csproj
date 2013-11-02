@@ -876,6 +876,11 @@
     <Compile Include="java\lang\annotation\AnnotationFormatError.cs" />
     <Compile Include="java\lang\annotation\AnnotationTypeMismatchException.cs" />
     <Compile Include="java\lang\annotation\IncompleteAnnotationException.cs" />
+    <Compile Include="javax\annotation\PostConstruct.cs" />
+    <Compile Include="javax\annotation\PreDestroy.cs" />
+    <Compile Include="javax\annotation\Resources.cs" />
+    <Compile Include="javax\annotation\Resource.cs" />
+    <Compile Include="javax\annotation\Generated.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CHANGES" />
@@ -968,5 +973,6 @@
     <Folder Include="javax\xml\parsers\" />
     <Folder Include="javax\xml\validation\" />
     <Folder Include="org\apache\xpath\" />
+    <Folder Include="javax\annotation\" />
   </ItemGroup>
 </Project>
