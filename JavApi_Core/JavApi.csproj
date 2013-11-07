@@ -332,7 +332,7 @@
     <Compile Include="java\io\ObjectOutputStream.cs" />
     <Compile Include="java\io\UTFDataFormatException.cs" />
     <Compile Include="java\lang\AbstractStringBuilder.cs" />
-    <Compile Include="java\lang\annotation\java.lang.annotation.Annotation.cs" />
+    <Compile Include="java\lang\annotation\Annotation.cs" />
     <Compile Include="java\lang\AssertionError.cs" />
     <Compile Include="java\lang\Boolean.cs" />
     <Compile Include="java\lang\Deprecated.cs" />
@@ -407,8 +407,8 @@
     <Compile Include="java\text\ParseException.cs" />
     <Compile Include="java\text\ParsePosition.cs" />
     <Compile Include="java\util\AbstractCollection.cs" />
-    <Compile Include="java\nio\java.nio.CharArrayBuffer.cs" />
-    <Compile Include="java\nio\java.nio.CharSequenceAdapter.cs" />
+    <Compile Include="java\nio\CharArrayBuffer.cs" />
+    <Compile Include="java\nio\CharSequenceAdapter.cs" />
     <Compile Include="java\io\FilterReader.cs" />
     <Compile Include="java\io\BufferedReader.cs" />
     <Compile Include="java\io\PushbackReader.cs" />
@@ -480,18 +480,18 @@
     <Compile Include="java\net\Socket.cs" />
     <Compile Include="java\net\SocketOutputStream.cs" />
     <Compile Include="java\net\URI.cs" />
-    <Compile Include="java\nio\java.nio.BufferFactory.cs" />
-    <Compile Include="java\nio\java.nio.BufferOverflowException.cs" />
-    <Compile Include="java\nio\java.nio.BufferUnderflowException.cs" />
-    <Compile Include="java\nio\java.nio.ByteBuffer.cs" />
-    <Compile Include="java\nio\java.nio.ByteOrder.cs" />
-    <Compile Include="java\nio\java.nio.CharBuffer.cs" />
-    <Compile Include="java\nio\java.nio.HeapByteBuffer.cs" />
-    <Compile Include="java\nio\java.nio.InvalidMarkException.cs" />
-    <Compile Include="java\nio\java.nio.ReadOnlyBufferException.cs" />
-    <Compile Include="java\nio\java.nio.ReadOnlyHeapByteBuffer.cs" />
-    <Compile Include="java\nio\java.nio.ReadWriteCharArrayBuffer.cs" />
-    <Compile Include="java\nio\java.nio.ReadWriteHeapByteBuffer.cs" />
+    <Compile Include="java\nio\BufferFactory.cs" />
+    <Compile Include="java\nio\BufferOverflowException.cs" />
+    <Compile Include="java\nio\BufferUnderflowException.cs" />
+    <Compile Include="java\nio\ByteBuffer.cs" />
+    <Compile Include="java\nio\ByteOrder.cs" />
+    <Compile Include="java\nio\CharBuffer.cs" />
+    <Compile Include="java\nio\HeapByteBuffer.cs" />
+    <Compile Include="java\nio\InvalidMarkException.cs" />
+    <Compile Include="java\nio\ReadOnlyBufferException.cs" />
+    <Compile Include="java\nio\ReadOnlyHeapByteBuffer.cs" />
+    <Compile Include="java\nio\ReadWriteCharArrayBuffer.cs" />
+    <Compile Include="java\nio\ReadWriteHeapByteBuffer.cs" />
     <Compile Include="java\util\AbstractList.cs" />
     <Compile Include="java\util\AbstractMap.cs" />
     <Compile Include="java\util\AbstractSequentialList.cs" />
@@ -826,9 +826,6 @@
     <Compile Include="java\dotnet\lang\ConsoleInputStream.cs" />
     <Compile Include="java\dotnet\lang\ConsoleOutputPrintStream.cs" />
     <Compile Include="java\dotnet\lang\Operator.cs" />
-    <Compile Include="javax\imageio\ImageIO.cs" />
-    <Compile Include="javax\imageio\spi\ServiceRegistry.cs" />
-    <Compile Include="javax\imageio\spi\RegisterableService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CHANGES" />
@@ -844,6 +841,9 @@
     <None Include="javax\imageio\spi\ImageReaderWriterSpi.java" />
     <None Include="javax\imageio\spi\ImageTranscoderSpi.java" />
     <None Include="javax\imageio\spi\ImageWriterSpi.java" />
+    <None Include="javax\imageio\spi\ServiceRegistry.cs" />
+    <None Include="javax\imageio\spi\RegisterableService.cs" />
+    <None Include="javax\imageio\ImageIO.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -303,7 +303,7 @@ namespace biz.ritter.javapi.util
          *            the index one past the end of the sublist.
          * @return a list of a portion of this {@code List}.
          * @throws IndexOutOfBoundsException
-         *                if {@code start < 0, start > end} or {@code end >
+         *                if {@code start &lt; 0, start &gt; end} or {@code end &gt;
          *                size()}
          */
         List<E> subList(int start, int end);

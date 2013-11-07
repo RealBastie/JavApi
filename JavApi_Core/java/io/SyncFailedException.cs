@@ -18,7 +18,7 @@ namespace biz.ritter.javapi.io
 {
 
 	/// <summary>
-	/// Signals that the <see cref="biz.ritter.javapi.io.FileDescriptor#sync"/> method has failed to complete
+	/// Signals that the biz.ritter.javapi.io.FileDescriptor#sync" method has failed to complete
 	/// Sync failed exception.
 	/// </summary>
 	public class SyncFailedException : IOException

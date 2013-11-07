@@ -47,6 +47,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
+    <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="biz\ritter\awt\forms\DialogFormsPeer.cs">
@@ -810,7 +811,6 @@
     <Compile Include="java\dotnet\lang\ConsoleInputStream.cs" />
     <Compile Include="java\dotnet\lang\ConsoleOutputPrintStream.cs" />
     <Compile Include="java\dotnet\lang\Operator.cs" />
-    <Compile Include="javax\imageio\ImageIO.cs" />
     <Compile Include="java\lang\Runtime.cs" />
     <Compile Include="java\nio\BufferFactory.cs" />
     <Compile Include="java\nio\BufferOverflowException.cs" />
@@ -881,6 +881,9 @@
     <Compile Include="javax\annotation\Resources.cs" />
     <Compile Include="javax\annotation\Resource.cs" />
     <Compile Include="javax\annotation\Generated.cs" />
+    <Compile Include="biz\ritter\text\MessageFormatConverter.cs" />
+    <Compile Include="java\net\URLClassLoader.cs" />
+    <Compile Include="java\security\SecureClassLoader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CHANGES" />
@@ -897,8 +900,6 @@
     <None Include="javax\imageio\spi\ImageTranscoderSpi.java" />
     <None Include="javax\imageio\spi\ImageWriterSpi.java" />
     <None Include="java\io\SyncFailedException.cs" />
-    <None Include="javax\imageio\spi\RegisterableService.cs" />
-    <None Include="javax\imageio\spi\ServiceRegistry.cs" />
     <None Include="JavApiDoc.xml">
       <Visible>False</Visible>
     </None>
@@ -947,6 +948,9 @@
     <None Include="javax\xml\validation\SecuritySupport.java">
       <Visible>False</Visible>
     </None>
+    <None Include="javax\imageio\ImageIO.cs" />
+    <None Include="javax\imageio\spi\RegisterableService.cs" />
+    <None Include="javax\imageio\spi\ServiceRegistry.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -974,5 +978,6 @@
     <Folder Include="javax\xml\validation\" />
     <Folder Include="org\apache\xpath\" />
     <Folder Include="javax\annotation\" />
+    <Folder Include="biz\ritter\text\" />
   </ItemGroup>
 </Project>

@@ -172,6 +172,24 @@ namespace biz.ritter.javapi.io
             File[] content = new File[entries.size()];
             return entries.toArray<File>(content);
         }
+
+		public File[] listFiles (FilenameFilter filter) {
+			if (!this.isDirectory()) return null;
+			java.util.ArrayList<File> entries = new util.ArrayList<File>();
+			foreach (String next in System.IO.Directory.EnumerateFileSystemEntries(this.fullQualifiedFile))
+			{
+				if (filter.accept (this, next)) {
+					entries.add(new File(next));
+				}
+			}
+			File[] content = new File[entries.size()];
+			return entries.toArray<File>(content);
+		}
+
+		public java.net.URI toURI () {
+			return new java.net.URI (new System.Uri(this.getAbsolutePath()).AbsoluteUri);
+		}
+
         public String getName()
         {
             return this.info.Name;

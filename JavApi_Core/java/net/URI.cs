@@ -11,7 +11,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  *  
- *  Copyright © 2011 Sebastian Ritter
+ *  Copyright © 2011, 2013 Sebastian Ritter
  */
 using System;
 using System.Text;
@@ -55,6 +55,10 @@ namespace biz.ritter.javapi.net
                 throw new URISyntaxException (uri,ufe.Message);
             }
         }
+
+		public String toASCIIString () {
+			return System.Web.HttpUtility.UrlDecode (this.delegateInstance.AbsoluteUri);
+		}
 
         /**
          * Creates a new URI instance using the given arguments. This constructor

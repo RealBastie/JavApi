@@ -176,6 +176,13 @@ namespace biz.ritter.javapi.lang
             return systemProperties;
         }
 
+		public static String setProperty(String key, String value)
+		{
+			String oldValue = systemProperties.ContainsKey (key) ? getProperty (key) : null;
+			systemProperties.Add (key, value);
+			return oldValue;
+		}
+
         public static String getProperty(String key)
         {
             return getProperties().getProperty(key);

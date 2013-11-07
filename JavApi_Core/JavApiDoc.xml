@@ -28961,7 +28961,19 @@
                      * Returns the number of elements in this {@code List}.
                      *
                      * @return the number of elements in this {@code List}.</member>
-        <!--FIXME: Invalid documentation markup was found for member M:biz.ritter.javapi.util.List`1.subList(System.Int32,System.Int32)-->
+        <member name="M:biz.ritter.javapi.util.List`1.subList(System.Int32,System.Int32)">
+                     * Returns a {@code List} of the specified portion of this {@code List} from the given start
+                     * index to the end index minus one. The returned {@code List} is backed by this
+                     * {@code List} so changes to it are reflected by the other.
+                     *
+                     * @param start
+                     *            the index at which to start the sublist.
+                     * @param end
+                     *            the index one past the end of the sublist.
+                     * @return a list of a portion of this {@code List}.
+                     * @throws IndexOutOfBoundsException
+                     *                if {@code start &lt; 0, start &gt; end} or {@code end &gt;
+                     *                size()}</member>
         <member name="M:biz.ritter.javapi.util.List`1.toArray">
                      * Returns an array containing all elements contained in this {@code List}.
                      *
@@ -49835,5 +49847,32 @@
                  * Returns the incomplete element's name.
                  *
                  * @return the name of the element.</member>
+        <member name="M:biz.ritter.javapi.MessageFormatConverter.convert(System.String)">
+            <summary>
+            Convert formatted Java Message to formatted C# Message
+            </summary>
+            <para>
+                <strong>Java:</strong>
+                <code>%[argument_index$][flags][width][.precision]conversion</code>
+                <br />
+                <strong>C#:</strong>
+                <code>{index[,alignment][:formatString]}</code>
+            </para>
+            <para>
+                <strong>Java:</strong>
+                <code>"The %s costs $%.2f for %d months.%n", "studio", 499.0, 3</code>
+                <br />
+                <strong>C#:</strong>
+                <code>"The {0} costs {1:C} for {2} months.\n", "studio", 499.0, 3</code>
+            </para>
+            <para>
+                <strong>Java:</strong>
+                <code>"Today is %tD%n", new java.util.Date()</code>
+                <br />
+                <strong>C#:</strong>
+                <code>"Today is " + DateTime.Now.ToShortDateString()</code>
+            </para>
+            <param name="msg">Message.</param>
+        </member>
     </members>
 </doc>

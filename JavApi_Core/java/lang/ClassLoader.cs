@@ -11,7 +11,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  *  
- *  Copyright © 2011 Sebastian Ritter
+ *  Copyright © 2011, 2013 Sebastian Ritter
  */
 using System;
 using System.Diagnostics;
@@ -30,8 +30,9 @@ namespace biz.ritter.javapi.lang
         {
             systemClassLoader = new ClassLoader(null);
         }
-
-        protected ClassLoader(ClassLoader parent)
+		protected internal ClassLoader() : this(getSystemClassLoader()){
+		}
+        protected internal ClassLoader(ClassLoader parent)
         {
             this.parent = parent;
         }
@@ -87,6 +88,10 @@ namespace biz.ritter.javapi.lang
              */
             return new java.net.URL(name);
         }
+
+		public static java.net.URL getSystemResource(String name) {
+			return ClassLoader.getSystemClassLoader ().getResource (name);
+		}
 
         /// <summary>
         /// Find the resource with given name

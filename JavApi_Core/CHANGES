@@ -2,6 +2,7 @@
   - javax.xml.crypto package
   - java.lang extended
   - java.lang.annotation extended
+  + java.net extended
   - java.util.prefs extended
   + java.io.PrintStream
     - print(char)
@@ -9,6 +10,8 @@
   + java.io.File
     - mkdirs()
     - getParentFile()
+    - listFiles(FilenameFilter)
+    - toURI()
   + java.nio.FileChannel implementations
   + BugFixes:
     - JavaExtensions.getClass()

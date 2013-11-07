@@ -17,27 +17,36 @@
 using System;
 using java = biz.ritter.javapi;
 
-namespace biz.ritter.javapix.annotation{
-
+namespace biz.ritter.javapix.annotation
+{
 	[java.lang.annotation.Documented]
-	[java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy.SOURCE)]
-	[java.lang.annotation.Target(new java.lang.annotation.ElementType[] { java.lang.annotation.ElementType.PACKAGE, java.lang.annotation.ElementType.TYPE,
+	[java.lang.annotation.Retention (java.lang.annotation.RetentionPolicy.SOURCE)]
+	[java.lang.annotation.Target (new java.lang.annotation.ElementType[] { java.lang.annotation.ElementType.PACKAGE, java.lang.annotation.ElementType.TYPE,
 		java.lang.annotation.ElementType.ANNOTATION_TYPE, java.lang.annotation.ElementType.METHOD,
 		java.lang.annotation.ElementType.CONSTRUCTOR, java.lang.annotation.ElementType.FIELD, java.lang.annotation.ElementType.LOCAL_VARIABLE,
-		java.lang.annotation.ElementType.PARAMETER })]
-public class Generated : java.lang.annotation.AbstractAnnotation {
+		java.lang.annotation.ElementType.PARAMETER
+	})]
+	public class Generated : java.lang.annotation.AbstractAnnotation
+	{
+		public String[] valueJ;
 
-		public String []valueJ;
-    public String[] value() {
+		public String[] value ()
+		{
 			return this.valueJ;
 		}
+
 		private String commentsJ;
-    public String comments(){
+
+		public String comments ()
+		{
 			return this.commentsJ;
 		}
+
 		private String dateJ;
-    public String date(){
+
+		public String date ()
+		{
 			return this.dateJ;
 		}
-}
+	}
 }
