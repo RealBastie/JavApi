@@ -225,5 +225,30 @@ namespace biz.ritter.javapi.lang
             java.net.URL url = getResource(name);
             return url.openStream();
         }
+
+		public java.lang.reflect.Method getDeclaredMethod (String name, params Class [] param) {
+			if (null == name)
+				throw new NullPointerException ("Method name is null");
+			java.lang.reflect.Method[] allMethods = this.getDeclaredMethods ();
+			foreach (java.lang.reflect.Method m in allMethods) {
+				Class[] clazz = m.getParameterTypes ();
+				if (param.Length == clazz.Length) {
+					if (param.Length == 0) {
+						// No params needed and method has no params - we found it!
+						return m;
+					}
+					bool allParamsIdentical = true;
+					for (int i = 0; i < param.Length && allParamsIdentical; i++) {
+						if (param [i].GetType () != clazz [i].GetType ()) {
+							allParamsIdentical = false;
+						}
+						if (allParamsIdentical) {
+							return m;
+						}
+					}
+				}
+			}
+			throw new NoSuchMethodException ();
+		}
     }
 }

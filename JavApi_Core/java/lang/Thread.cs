@@ -248,5 +248,13 @@ namespace biz.ritter.javapi.lang
             catch (System.Threading.ThreadStateException) { }
             throw t;
         }
+
+		public void joinJ () {
+			this.delegateInstance.Join ();
+		}
+		public void joinJ(long timeout) {
+			System.Threading.Thread.Sleep ((int)(timeout*1000));
+		}
+
     }
 }

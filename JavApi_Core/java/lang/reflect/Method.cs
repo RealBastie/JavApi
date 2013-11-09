@@ -19,7 +19,7 @@ using java = biz.ritter.javapi;
 
 namespace biz.ritter.javapi.lang.reflect
 {
-    public class Method
+    public class Method : AccessibleObject
     {
         private MethodInfo delegateInstance;
 

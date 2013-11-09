@@ -83,6 +83,9 @@ namespace biz.ritter.javapi.io
 				return false;
 			}
 		}
+		public virtual File getAbsoluteFile () {
+			return new File (this.getAbsolutePath());
+		}
 		public virtual File getParentFile () {
 			String parent = "";
 			if (isDirectory()) {
@@ -188,6 +191,10 @@ namespace biz.ritter.javapi.io
 
 		public java.net.URI toURI () {
 			return new java.net.URI (new System.Uri(this.getAbsolutePath()).AbsoluteUri);
+		}
+
+		public java.net.URL toURL () {
+			return new java.net.URL (new System.Uri (this.getAbsolutePath ()).AbsoluteUri);
 		}
 
         public String getName()

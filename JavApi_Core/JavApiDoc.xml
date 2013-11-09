@@ -49874,5 +49874,165 @@
             </para>
             <param name="msg">Message.</param>
         </member>
+        <member name="T:biz.ritter.javapi.lang.reflect.Proxy">
+             * {@code Proxy} defines methods for creating dynamic proxy classes and instances.
+             * A proxy class implements a declared set of interfaces and delegates method
+             * invocations to an {@code InvocationHandler}.
+             *
+             * @see InvocationHandler
+             * @since 1.3</member>
+        <member name="F:biz.ritter.javapi.lang.reflect.Proxy.h">
+                 * The invocation handler on which the method calls are dispatched.</member>
+        <member name="M:biz.ritter.javapi.lang.reflect.Proxy.#ctor(biz.ritter.javapi.lang.reflect.InvocationHandler)">
+                 * Constructs a new {@code Proxy} instance with the specified invocation
+                 * handler.
+                 *
+                 * @param h
+                 *            the invocation handler for the newly created proxy</member>
+        <member name="M:biz.ritter.javapi.lang.reflect.Proxy.isProxyClass(biz.ritter.javapi.lang.Class)">
+                 * Indicates whether or not the specified class is a dynamically generated
+                 * proxy class.
+                 *
+                 * @param cl
+                 *            the class
+                 * @return {@code true} if the class is a proxy class, {@code false}
+                 *         otherwise
+                 * @throws NullPointerException
+                 *                if the class is {@code null}</member>
+        <member name="M:biz.ritter.javapi.lang.reflect.Proxy.getInvocationHandler(System.Object)">
+                 * Returns the invocation handler of the specified proxy instance.
+                 *
+                 * @param proxy
+                 *            the proxy instance
+                 * @return the invocation handler of the specified proxy instance
+                 * @throws IllegalArgumentException
+                 *                if the supplied {@code proxy} is not a proxy object</member>
+        <member name="T:biz.ritter.javapi.util.WeakHashMap`2">
+             * WeakHashMap is an implementation of Map with keys which are WeakReferences. A
+             * key/value mapping is removed when the key is no longer referenced. All
+             * optional operations (adding and removing) are supported. Keys and values can
+             * be any objects. Note that the garbage collector acts similar to a second
+             * thread on this collection, possibly removing keys.
+             *
+             * @since 1.2
+             * @see HashMap
+             * @see WeakReference</member>
+        <member name="M:biz.ritter.javapi.util.WeakHashMap`2.#ctor">
+                 * Constructs a new empty {@code WeakHashMap} instance.</member>
+        <member name="M:biz.ritter.javapi.util.WeakHashMap`2.#ctor(System.Int32)">
+                 * Constructs a new {@code WeakHashMap} instance with the specified
+                 * capacity.
+                 *
+                 * @param capacity
+                 *            the initial capacity of this map.
+                 * @throws IllegalArgumentException
+                 *                if the capacity is less than zero.</member>
+        <member name="M:biz.ritter.javapi.util.WeakHashMap`2.#ctor(System.Int32,System.Single)">
+                 * Constructs a new {@code WeakHashMap} instance with the specified capacity
+                 * and load factor.
+                 *
+                 * @param capacity
+                 *            the initial capacity of this map.
+                 * @param loadFactor
+                 *            the initial load factor.
+                 * @throws IllegalArgumentException
+                 *             if the capacity is less than zero or the load factor is less
+                 *             or equal to zero.</member>
+        <member name="M:biz.ritter.javapi.util.WeakHashMap`2.#ctor(biz.ritter.javapi.util.Map{`0,`1})">
+                 * Constructs a new {@code WeakHashMap} instance containing the mappings
+                 * from the specified map.
+                 *
+                 * @param map
+                 *            the mappings to add.</member>
+        <member name="M:biz.ritter.javapi.util.WeakHashMap`2.clear">
+                 * Removes all mappings from this map, leaving it empty.
+                 *
+                 * @see #isEmpty()
+                 * @see #size()</member>
+        <member name="M:biz.ritter.javapi.util.WeakHashMap`2.containsKey(System.Object)">
+                 * Returns whether this map contains the specified key.
+                 *
+                 * @param key
+                 *            the key to search for.
+                 * @return {@code true} if this map contains the specified key,
+                 *         {@code false} otherwise.</member>
+        <member name="M:biz.ritter.javapi.util.WeakHashMap`2.entrySet">
+                 * Returns a set containing all of the mappings in this map. Each mapping is
+                 * an instance of {@link Map.Entry}. As the set is backed by this map,
+                 * changes in one will be reflected in the other. It does not support adding
+                 * operations.
+                 *
+                 * @return a set of the mappings.</member>
+        <member name="M:biz.ritter.javapi.util.WeakHashMap`2.keySet">
+                 * Returns a set of the keys contained in this map. The set is backed by
+                 * this map so changes to one are reflected by the other. The set does not
+                 * support adding.
+                 *
+                 * @return a set of the keys.</member>
+        <member name="M:biz.ritter.javapi.util.WeakHashMap`2.values">
+                 * Returns a collection of the values contained in this map. The collection
+                 * is backed by this map so changes to one are reflected by the other. The
+                 * collection supports remove, removeAll, retainAll and clear operations,
+                 * and it does not support add or addAll operations.
+                 * <p />
+                 * This method returns a collection which is the subclass of
+                 * AbstractCollection. The iterator method of this subclass returns a
+                 * "wrapper object" over the iterator of map's entrySet(). The size method
+                 * wraps the map's size method and the contains method wraps the map's
+                 * containsValue method.
+                 * <p />
+                 * The collection is created when this method is called at first time and
+                 * returned in response to all subsequent calls. This method may return
+                 * different Collection when multiple calls to this method, since it has no
+                 * synchronization performed.
+                 *
+                 * @return a collection of the values contained in this map.</member>
+        <member name="M:biz.ritter.javapi.util.WeakHashMap`2.get(System.Object)">
+                 * Returns the value of the mapping with the specified key.
+                 *
+                 * @param key
+                 *            the key.
+                 * @return the value of the mapping with the specified key, or {@code null}
+                 *         if no mapping for the specified key is found.</member>
+        <member name="M:biz.ritter.javapi.util.WeakHashMap`2.containsValue(System.Object)">
+                 * Returns whether this map contains the specified value.
+                 *
+                 * @param value
+                 *            the value to search for.
+                 * @return {@code true} if this map contains the specified value,
+                 *         {@code false} otherwise.</member>
+        <member name="M:biz.ritter.javapi.util.WeakHashMap`2.isEmpty">
+                 * Returns the number of elements in this map.
+                 *
+                 * @return the number of elements in this map.</member>
+        <member name="M:biz.ritter.javapi.util.WeakHashMap`2.put(`0,`1)">
+                 * Maps the specified key to the specified value.
+                 *
+                 * @param key
+                 *            the key.
+                 * @param value
+                 *            the value.
+                 * @return the value of any previous mapping with the specified key or
+                 *         {@code null} if there was no mapping.</member>
+        <member name="M:biz.ritter.javapi.util.WeakHashMap`2.putAll(biz.ritter.javapi.util.Map{`0,`1})">
+                 * Copies all the mappings in the given map to this map. These mappings will
+                 * replace all mappings that this map had for any of the keys currently in
+                 * the given map.
+                 *
+                 * @param map
+                 *            the map to copy mappings from.
+                 * @throws NullPointerException
+                 *             if {@code map} is {@code null}.</member>
+        <member name="M:biz.ritter.javapi.util.WeakHashMap`2.remove(System.Object)">
+                 * Removes the mapping with the specified key from this map.
+                 *
+                 * @param key
+                 *            the key of the mapping to remove.
+                 * @return the value of the removed mapping or {@code null} if no mapping
+                 *         for the specified key was found.</member>
+        <member name="M:biz.ritter.javapi.util.WeakHashMap`2.size">
+                 * Returns the number of elements in this map.
+                 *
+                 * @return the number of elements in this map.</member>
     </members>
 </doc>

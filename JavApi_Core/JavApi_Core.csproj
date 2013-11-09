@@ -884,6 +884,11 @@
     <Compile Include="biz\ritter\text\MessageFormatConverter.cs" />
     <Compile Include="java\net\URLClassLoader.cs" />
     <Compile Include="java\security\SecureClassLoader.cs" />
+    <Compile Include="java\lang\reflect\InvocationHandler.cs" />
+    <Compile Include="java\lang\reflect\Proxy.cs" />
+    <Compile Include="java\util\WeakHashMap.cs">
+      <Visible>False</Visible>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="CHANGES" />
@@ -919,9 +924,6 @@
       <Visible>False</Visible>
     </None>
     <None Include="java\util\ServiceLoader.java">
-      <Visible>False</Visible>
-    </None>
-    <None Include="java\util\WeakHashMap.java">
       <Visible>False</Visible>
     </None>
     <None Include="java\util\logging\SocketHandler.java">

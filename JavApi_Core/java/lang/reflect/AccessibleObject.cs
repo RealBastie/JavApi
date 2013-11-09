@@ -27,7 +27,7 @@ namespace biz.ritter.javapi.lang.reflect
          * @see ReflectPermission
          * @throws SecurityException if the request is denied
          */
-        public void setAccessible(bool flag)
+        public virtual void setAccessible(bool flag)
         {//throws SecurityException {
             return;
         }
