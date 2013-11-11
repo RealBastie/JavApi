@@ -11,11 +11,9 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  *  
- *  Copyright © 2011 Sebastian Ritter
+ *  Copyright © 2011, 2013 Sebastian Ritter
  */
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 using java = biz.ritter.javapi;
@@ -34,6 +32,19 @@ namespace biz.ritter.javapi.lang
         {
             this.Kill();
         }
+
+		/// <summary>
+		/// Return the InputStream for executing process
+		/// </summary>
+		/// <returns>The input stream.</returns>
+		public virtual java.io.InputStream getInputStream () {
+			return new biz.ritter.io.InputStreamWrapper4Reader (this.StandardOutput);
+
+		}
+
+		public int exitValue(){
+			return this.ExitCode;
+		}
 
     }
 }

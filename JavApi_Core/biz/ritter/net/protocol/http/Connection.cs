@@ -11,7 +11,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  *  
- *  Copyright © 2012 Sebastian Ritter
+ *  Copyright © 2012,2013 Sebastian Ritter
  */
 using System;
 using java = biz.ritter.javapi;
@@ -121,7 +121,7 @@ namespace biz.ritter.net.protocol.http
             }
             this.httpResponse = (HttpWebResponse) this.httpRequest.GetResponse();
 
-            return new InputStreamWrapper(this.httpResponse.GetResponseStream());
+            return new biz.ritter.io.InputStreamWrapper(this.httpResponse.GetResponseStream());
         }
 
         /**

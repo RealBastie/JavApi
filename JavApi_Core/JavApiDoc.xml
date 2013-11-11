@@ -81,13 +81,19 @@
                      * @param key
                      *            the name of the header field.
                      * @return the value of the header field.</member>
-        <member name="T:biz.ritter.net.protocol.http.InputStreamWrapper">
+        <member name="T:biz.ritter.io.InputStreamWrapper">
             <summary>
             Wrap .net System.IO.Stream instance as java.io.InputStream
             </summary>
         </member>
-        <member name="M:biz.ritter.net.protocol.http.InputStreamWrapper.read(System.Byte[],System.Int32,System.Int32)">
+        <member name="M:biz.ritter.io.InputStreamWrapper.read(System.Byte[],System.Int32,System.Int32)">
             Optimized reading for files</member>
+        <member name="T:biz.ritter.io.InputStreamWrapper4Reader">
+            <summary>
+            Wrap .net System.IO.TextReader instance as java.io.InputStream, because
+            java.lang.Process need InputStream not Reader
+            </summary>
+        </member>
         <member name="T:biz.ritter.javapi.awt.ActiveEvent">
                  * @author Michael Danilov</member>
         <member name="T:biz.ritter.javapi.awt.ComponentBehavior">
@@ -26189,6 +26195,12 @@
                      * @param cause
                      *            the cause of this exception, may be {@code null}.
                      * @since 1.5</member>
+        <member name="M:biz.ritter.javapi.lang.Process.getInputStream">
+            <summary>
+            Return the InputStream for executing process
+            </summary>
+            <returns>The input stream.</returns>
+        </member>
         <member name="T:biz.ritter.javapi.lang.StringIndexOutOfBoundsException">
                  * Thrown by <code>String</code> methods to indicate that an index
                  * is either negative or greater than the size of the string.  For
@@ -26448,7 +26460,7 @@
                          * The thread is waiting for a specified amount of time.</member>
         <member name="F:biz.ritter.javapi.lang.Thread.State.TERMINATED">
                          * The thread has been terminated.</member>
-        <member name="M:biz.ritter.javapi.lang.Thread.sleep(System.Int32)">
+        <member name="M:biz.ritter.javapi.lang.Thread.sleep(System.Int64)">
             <summary>
             Let the Thread instance sleeping
             </summary>
@@ -50034,5 +50046,272 @@
                  * Returns the number of elements in this map.
                  *
                  * @return the number of elements in this map.</member>
+        <member name="T:biz.ritter.javapi.security.DigestInputStream">
+             * {@code DigestInputStream} is a {@code FilterInputStream} which maintains an
+             * associated message digest.</member>
+        <member name="F:biz.ritter.javapi.security.DigestInputStream.digest">
+                 * The message digest for this stream.</member>
+        <member name="M:biz.ritter.javapi.security.DigestInputStream.#ctor(biz.ritter.javapi.io.InputStream,biz.ritter.javapi.security.MessageDigest)">
+                 * Constructs a new instance of this {@code DigestInputStream}, using the
+                 * given {@code stream} and the {@code digest}.
+                 *
+                 * @param stream
+                 *            the input stream.
+                 * @param digest
+                 *            the message digest.</member>
+        <member name="M:biz.ritter.javapi.security.DigestInputStream.getMessageDigest">
+                 * Returns the message digest for this stream.
+                 *
+                 * @return the message digest for this stream.</member>
+        <member name="M:biz.ritter.javapi.security.DigestInputStream.setMessageDigest(biz.ritter.javapi.security.MessageDigest)">
+                 * Sets the message digest which this stream will use.
+                 *
+                 * @param digest
+                 *            the message digest which this stream will use.</member>
+        <member name="M:biz.ritter.javapi.security.DigestInputStream.read">
+                 * Reads the next byte and returns it as an {@code int}. Updates the digest
+                 * for the byte if this function is {@link #on(boolean)}.
+                 * <p />
+                 * This operation is blocking.
+                 *
+                 * @return the byte which was read or -1 at end of stream.
+                 * @throws IOException
+                 *             if reading the source stream causes an {@code IOException}.</member>
+        <member name="M:biz.ritter.javapi.security.DigestInputStream.read(System.Byte[],System.Int32,System.Int32)">
+                 * Reads {@code len} bytes into the specified {@code byte[]}, starting from
+                 * the specified offset. Updates the digest if this function is
+                 * {@link #on(boolean)}.
+                 * <p />
+                 * This operation is blocking.
+                 *
+                 * @param b
+                 *            the byte array in which to store the bytes
+                 * @param off
+                 *            the initial position in {@code b} to store the bytes read from
+                 *            this stream
+                 * @param len
+                 *            the maximum number of bytes to store in {@code b}
+                 * @return the number of bytes actually read or -1 if the end of the
+                 *         filtered stream has been reached while reading
+                 * @throws IOException
+                 *             if reading the source stream causes an {@code IOException}</member>
+        <member name="M:biz.ritter.javapi.security.DigestInputStream.on(System.Boolean)">
+                 * Enables or disables the digest function (default is on).
+                 *
+                 * @param on
+                 *            {@code true} if the digest should be computed, {@code false}
+                 *            otherwise.
+            	 * @see MessageDigest</member>
+        <member name="M:biz.ritter.javapi.security.DigestInputStream.ToString">
+                 * Returns a string containing a concise, human-readable description of this
+                 * {@code DigestInputStream} including the digest.
+                 *
+                 * @return a printable representation for this {@code DigestInputStream}.</member>
+        <member name="T:biz.ritter.javapi.security.DigestOutputStream">
+             * {@code DigestOutputStream} is a {@code FilterOutputStream} which maintains an
+             * associated message digest.</member>
+        <member name="F:biz.ritter.javapi.security.DigestOutputStream.digest">
+                 * The message digest for this stream.</member>
+        <member name="M:biz.ritter.javapi.security.DigestOutputStream.#ctor(biz.ritter.javapi.io.OutputStream,biz.ritter.javapi.security.MessageDigest)">
+                 * Constructs a new instance of this {@code DigestOutputStream}, using the
+                 * given {@code stream} and the {@code digest}.
+                 *
+                 * @param stream
+                 *            the output stream.
+                 * @param digest
+                 *            the message digest.</member>
+        <member name="M:biz.ritter.javapi.security.DigestOutputStream.getMessageDigest">
+                 * Returns the message digest for this stream.
+                 *
+                 * @return the message digest for this stream.</member>
+        <member name="M:biz.ritter.javapi.security.DigestOutputStream.setMessageDigest(biz.ritter.javapi.security.MessageDigest)">
+                 * Sets the message digest which this stream will use.
+                 *
+                 * @param digest
+                 *            the message digest which this stream will use.</member>
+        <member name="M:biz.ritter.javapi.security.DigestOutputStream.write(System.Int32)">
+                 * Writes the specified {@code int} to the stream. Updates the digest if
+                 * this function is {@link #on(boolean)}.
+                 *
+                 * @param b
+                 *            the byte to be written.
+                 * @throws IOException
+                 *             if writing to the stream causes a {@code IOException}</member>
+        <member name="M:biz.ritter.javapi.security.DigestOutputStream.write(System.Byte[],System.Int32,System.Int32)">
+                 * Writes {@code len} bytes into the stream, starting from the specified
+                 * offset. Updates the digest if this function is {@link #on(boolean)}.
+                 *
+                 * @param b
+                 *            the buffer to write to.
+                 * @param off
+                 *            the index of the first byte in {@code b} to write.
+                 * @param len
+                 *            the number of bytes in {@code b} to write.
+                 * @throws IOException
+                 *             if writing to the stream causes an {@code IOException}.</member>
+        <member name="M:biz.ritter.javapi.security.DigestOutputStream.on(System.Boolean)">
+                 * Enables or disables the digest function (default is on).
+                 *
+                 * @param on
+                 *            {@code true} if the digest should be computed, {@code false}
+                 *            otherwise.
+            	 * @see MessageDigest</member>
+        <member name="M:biz.ritter.javapi.security.DigestOutputStream.ToString">
+                 * Returns a string containing a concise, human-readable description of this
+                 * {@code DigestOutputStream} including the digest.
+                 *
+                 * @return a printable representation for this {@code DigestOutputStream}.</member>
+        <member name="T:biz.ritter.javapi.lang.reflect.Field">
+             * This class represents a field. Information about the field can be accessed,
+             * and the field's value can be accessed dynamically.</member>
+        <member name="M:biz.ritter.javapi.lang.reflect.Field.#ctor">
+                 * Prevent this class from being instantiated</member>
+        <member name="M:biz.ritter.javapi.lang.reflect.Field.isSynthetic">
+                 * Indicates whether or not this field is synthetic.
+                 *
+                 * @return {@code true} if this field is synthetic, {@code false} otherwise</member>
+        <member name="M:biz.ritter.javapi.lang.reflect.Field.toGenericString">
+                 * Returns the string representation of this field, including the field's
+                 * generic type.
+                 *
+                 * @return the string representation of this field
+                 * @since 1.5</member>
+        <member name="M:biz.ritter.javapi.lang.reflect.Field.isEnumConstant">
+                 * Indicates whether or not this field is an enumeration constant.
+                 *
+                 * @return {@code true} if this field is an enumeration constant, {@code
+                 *         false} otherwise
+                 * @since 1.5</member>
+        <member name="M:biz.ritter.javapi.lang.reflect.Field.getGenericType">
+                 * Returns the generic type of this field.
+                 *
+                 * @return the generic type
+                 * @throws GenericSignatureFormatError
+                 *             if the generic field signature is invalid
+                 * @throws TypeNotPresentException
+                 *             if the generic type points to a missing type
+                 * @throws MalformedParameterizedTypeException
+                 *             if the generic type points to a type that cannot be
+                 *             instantiated for some reason
+                 * @since 1.5</member>
+        <member name="M:biz.ritter.javapi.lang.reflect.Field.Equals(System.Object)">
+                 * Indicates whether or not the specified {@code object} is equal to this
+                 * field. To be equal, the specified object must be an instance of
+                 * {@code Field} with the same declaring class, type and name as this field.
+                 *
+                 * @param object
+                 *            the object to compare
+                 * @return {@code true} if the specified object is equal to this method,
+                 *         {@code false} otherwise
+                 * @see #hashCode</member>
+        <member name="M:biz.ritter.javapi.lang.reflect.Field.get(System.Object)">
+                 * Returns the value of the field in the specified object. This reproduces
+                 * the effect of {@code object.fieldName}
+                 * <p />
+                 * If the type of this field is a primitive type, the field value is
+                 * automatically wrapped.
+                 * <p />
+                 * If this field is static, the object argument is ignored.
+                 * Otherwise, if the object is null, a NullPointerException is thrown. If
+                 * the object is not an instance of the declaring class of the method, an
+                 * IllegalArgumentException is thrown.
+                 * <p />
+                 * If this Field object is enforcing access control (see AccessibleObject)
+                 * and this field is not accessible from the current context, an
+                 * IllegalAccessException is thrown.
+                 *
+                 * @param object
+                 *            the object to access
+                 * @return the field value, possibly wrapped
+                 * @throws NullPointerException
+                 *             if the object is {@code null} and the field is non-static
+                 * @throws IllegalArgumentException
+                 *             if the object is not compatible with the declaring class
+                 * @throws IllegalAccessException
+                 *             if this field is not accessible</member>
+        <!--FIXME: Invalid documentation markup was found for member M:biz.ritter.javapi.lang.reflect.Field.getBoolean(System.Object)-->
+        <member name="M:biz.ritter.javapi.lang.reflect.Field.getByte(System.Object)">
+                 * Returns the value of the field in the specified object as a {@code byte}.
+                 * This reproduces the effect of {@code object.fieldName}
+                 * <p />
+                 * If this field is static, the object argument is ignored.
+                 * Otherwise, if the object is {@code null}, a NullPointerException is
+                 * thrown. If the object is not an instance of the declaring class of the
+                 * method, an IllegalArgumentException is thrown.
+                 * <p />
+                 * If this Field object is enforcing access control (see AccessibleObject)
+                 * and this field is not accessible from the current context, an
+                 * IllegalAccessException is thrown.
+                 *
+                 * @param object
+                 *            the object to access
+                 * @return the field value
+                 * @throws NullPointerException
+                 *             if the object is {@code null} and the field is non-static
+                 * @throws IllegalArgumentException
+                 *             if the object is not compatible with the declaring class
+                 * @throws IllegalAccessException
+                 *             if this field is not accessible</member>
+        <member name="M:biz.ritter.javapi.lang.reflect.Field.getChar(System.Object)">
+                 * Returns the value of the field in the specified object as a {@code char}.
+                 * This reproduces the effect of {@code object.fieldName}
+                 * <p />
+                 * If this field is static, the object argument is ignored.
+                 * Otherwise, if the object is {@code null}, a NullPointerException is
+                 * thrown. If the object is not an instance of the declaring class of the
+                 * method, an IllegalArgumentException is thrown.
+                 * <p />
+                 * If this Field object is enforcing access control (see AccessibleObject)
+                 * and this field is not accessible from the current context, an
+                 * IllegalAccessException is thrown.
+                 *
+                 * @param object
+                 *            the object to access
+                 * @return the field value
+                 * @throws NullPointerException
+                 *             if the object is {@code null} and the field is non-static
+                 * @throws IllegalArgumentException
+                 *             if the object is not compatible with the declaring class
+                 * @throws IllegalAccessException
+                 *             if this field is not accessible</member>
+        <member name="M:biz.ritter.javapi.lang.reflect.Field.getDeclaringClass">
+                 * Returns the class that declares this field.
+                 *
+                 * @return the declaring class</member>
+        <!--FIXME: Invalid documentation markup was found for member M:biz.ritter.javapi.lang.reflect.Field.getDouble(System.Object)-->
+        <!--FIXME: Invalid documentation markup was found for member M:biz.ritter.javapi.lang.reflect.Field.getFloat(System.Object)-->
+        <!--FIXME: Invalid documentation markup was found for member M:biz.ritter.javapi.lang.reflect.Field.getInt(System.Object)-->
+        <!--FIXME: Invalid documentation markup was found for member M:biz.ritter.javapi.lang.reflect.Field.getLong(System.Object)-->
+        <member name="M:biz.ritter.javapi.lang.reflect.Field.getModifiers">
+                 * Returns the modifiers for this field. The {@link Modifier} class should
+                 * be used to decode the result.
+                 *
+                 * @return the modifiers for this field
+                 * @see Modifier</member>
+        <member name="M:biz.ritter.javapi.lang.reflect.Field.getName">
+                 * Returns the name of this field.
+                 *
+                 * @return the name of this field</member>
+        <!--FIXME: Invalid documentation markup was found for member M:biz.ritter.javapi.lang.reflect.Field.getShort(System.Object)-->
+        <member name="M:biz.ritter.javapi.lang.reflect.Field.getType">
+                 * Return the {@link Class} associated with the type of this field.
+                 *
+                 * @return the type of this field</member>
+        <!--FIXME: Invalid documentation markup was found for member M:biz.ritter.javapi.lang.reflect.Field.GetHashCode-->
+        <!--FIXME: Invalid documentation markup was found for member M:biz.ritter.javapi.lang.reflect.Field.set(System.Object,System.Object)-->
+        <!--FIXME: Invalid documentation markup was found for member M:biz.ritter.javapi.lang.reflect.Field.setBoolean(System.Object,System.Boolean)-->
+        <!--FIXME: Invalid documentation markup was found for member M:biz.ritter.javapi.lang.reflect.Field.setByte(System.Object,System.Byte)-->
+        <!--FIXME: Invalid documentation markup was found for member M:biz.ritter.javapi.lang.reflect.Field.setChar(System.Object,System.Char)-->
+        <!--FIXME: Invalid documentation markup was found for member M:biz.ritter.javapi.lang.reflect.Field.setDouble(System.Object,System.Double)-->
+        <!--FIXME: Invalid documentation markup was found for member M:biz.ritter.javapi.lang.reflect.Field.setFloat(System.Object,System.Single)-->
+        <!--FIXME: Invalid documentation markup was found for member M:biz.ritter.javapi.lang.reflect.Field.setInt(System.Object,System.Int32)-->
+        <!--FIXME: Invalid documentation markup was found for member M:biz.ritter.javapi.lang.reflect.Field.setLong(System.Object,System.Int64)-->
+        <!--FIXME: Invalid documentation markup was found for member M:biz.ritter.javapi.lang.reflect.Field.setShort(System.Object,System.Int16)-->
+        <!--FIXME: Invalid documentation markup was found for member M:biz.ritter.javapi.lang.reflect.Field.ToString-->
+        <member name="T:biz.ritter.javapi.lang.reflect.MemberConstants">
+            <summary>
+            Constants of java.lang.reflect.Member interface
+            </summary>
+        </member>
     </members>
 </doc>

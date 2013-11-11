@@ -250,5 +250,30 @@ namespace biz.ritter.javapi.lang
 			}
 			throw new NoSuchMethodException ();
 		}
+
+		public Class[] getInterfaces() {
+			Type[] types = this.delegateInstance.GetInterfaces ();
+			Class[] result = new Class[types.Length];
+			for (int i = 0; i < types.Length; i++) {
+				result [i] = new Class (types [i]);
+			}
+			return result;
+		}
+
+		public bool isArray () {
+			return this.GetType ().IsArray;
+		}
+
+		public bool isPrimitive() {
+			return this.GetType ().IsPrimitive;
+		}
+
+		public bool isInterface() {
+			return this.GetType ().IsInterface;
+		}
+
+		public Class getComponentType () {
+			return new Class (this.GetType ().GetElementType ());
+		}
     }
 }

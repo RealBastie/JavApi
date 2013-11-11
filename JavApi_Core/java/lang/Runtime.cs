@@ -11,7 +11,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  *  
- *  Copyright © 2011,2012,2013 Sebastian Ritter
+ *  Copyright © 2011, 2012, 2013 Sebastian Ritter
  */
 using System;
 using System.Diagnostics;
@@ -38,24 +38,23 @@ namespace biz.ritter.javapi.lang
         {
             return Environment.ProcessorCount;
         }
-
-        public Process exec (String command) {
+		public java.lang.Process exec (String command) {
             return exec(command, new String [0], null);
         }
-        public Process exec(String command, String[] env) {
+		public java.lang.Process exec(String command, String[] env) {
             return exec(command, env, null);
         }
-        public Process exec(String command, String[] env, java.io.File dir) {
+		public java.lang.Process exec(String command, String[] env, java.io.File dir) {
             return exec(command.Split(new char []{' ','\t','\n','\r','\f'}),env, dir);
         }
-        public Process exec(String[] cmdArray) {
+		public java.lang.Process exec(String[] cmdArray) {
             return exec(cmdArray, new String[0], null);
         }
-        public Process exec(String[] cmdArray, String[] env) {
+		public java.lang.Process exec(String[] cmdArray, String[] env) {
             return exec(cmdArray, env, null);
         }
-        public Process exec(String[] cmdArray, String[] env, java.io.File dir) {
-            Process p = new Process();
+        public java.lang.Process exec(String[] cmdArray, String[] env, java.io.File dir) {
+            java.lang.Process p = new java.lang.Process();
             p.StartInfo.WorkingDirectory = (null!=dir) ? dir.toString () : SystemJ.getProperty("user.dir");
             p.StartInfo.FileName = cmdArray[0];
             for (int i = 0; i < env.Length; i++) {
@@ -66,6 +65,9 @@ namespace biz.ritter.javapi.lang
                 p.StartInfo.Arguments.Insert(i - 1, cmdArray[i]);
             }
             p.StartInfo.UseShellExecute = true;
+			p.StartInfo.RedirectStandardOutput = true;
+			p.StartInfo.RedirectStandardInput = true;
+			p.StartInfo.RedirectStandardError = true;
             p.Start();
             return p;
         }

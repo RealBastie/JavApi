@@ -210,10 +210,10 @@ namespace biz.ritter.javapi.lang
         /// Let the Thread instance sleeping
         /// </summary>
         /// <param name="millis"></param>
-        public static void sleep(int millis)
+        public static void sleep(long millis)
         {
             if (millis < 0) throw new IllegalArgumentException("Sleep time need to be greater or equals zero");
-            System.Threading.Thread.Sleep(millis);
+            System.Threading.Thread.Sleep((int)millis);
         }
 
         internal void setThreadLocal (ThreadLocal<Object> tl, Object obj) {

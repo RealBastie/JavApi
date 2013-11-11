@@ -113,7 +113,29 @@ namespace biz.ritter.javapi.lang
         }
 		public static double cbrt(double d) {
 			return radix(3d,d);
-
+		}
+		public static double asin(double a){
+			return System.Math.Asin (a);
+		}
+		public static double atan(double a) {
+			return System.Math.Atan (a);
+		}
+		public static double atan2(double a, double b) {
+			return System.Math.Atan2 (a, b);
+		}
+		public static double tan(double a) {
+			return System.Math.Tan (a);
+		}
+		public static double exp (double a) {
+			return System.Math.Exp (a);
+		}
+		public static double toRadians(double a)
+		{
+			return PI * a / 180.0;
+		}
+		public static double toDegrees(double a)
+		{
+			return a * (180.0 / PI);
 		}
 
 		private static double radix (double r, double n) {

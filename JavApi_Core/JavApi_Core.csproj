@@ -889,6 +889,11 @@
     <Compile Include="java\util\WeakHashMap.cs">
       <Visible>False</Visible>
     </Compile>
+    <Compile Include="java\security\DigestInputStream.cs" />
+    <Compile Include="java\security\DigestOutputStream.cs" />
+    <Compile Include="java\lang\reflect\Field.cs" />
+    <Compile Include="java\lang\reflect\Member.cs" />
+    <Compile Include="java\lang\reflect\MemberConstants.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CHANGES" />

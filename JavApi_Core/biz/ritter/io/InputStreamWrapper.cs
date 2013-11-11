@@ -11,12 +11,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  *  
- *  Copyright © 2012 Sebastian Ritter
+ *  Copyright © 2012, 2013 Sebastian Ritter
  */
 using System;
 using java = biz.ritter.javapi;
 
-namespace biz.ritter.net.protocol.http
+namespace biz.ritter.io
 {
 
     /// <summary>
@@ -25,11 +25,13 @@ namespace biz.ritter.net.protocol.http
     public class InputStreamWrapper : java.io.InputStream
     {
         private System.IO.Stream delegateInstance;
+		private System.IO.TextReader otherDelegateInstance;
 
         public InputStreamWrapper(System.IO.Stream input)
         {
             this.delegateInstance = input;
         }
+
         public override int read()
         {
             return this.delegateInstance.ReadByte();
@@ -50,4 +52,14 @@ namespace biz.ritter.net.protocol.http
             return (int)(this.delegateInstance.Length - this.delegateInstance.Position);
         }
     }
+	/// <summary>
+	/// Wrap .net System.IO.TextReader instance as java.io.InputStream, because
+	/// java.lang.Process need InputStream not Reader
+	/// </summary>
+	public class InputStreamWrapper4Reader : InputStreamWrapper
+	{
+
+		public InputStreamWrapper4Reader(System.IO.StreamReader input) : base (input.BaseStream){
+		}
+	}
 }
